@@ -8,6 +8,8 @@
 # testing
 /coverage
 
+# dot env
+.env
 # production
 /build
 

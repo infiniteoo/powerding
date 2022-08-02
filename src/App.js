@@ -1,7 +1,12 @@
 import "./App.css";
+import { useEffect } from "react";
 const logo = require("./img/speech.png");
 
 function App() {
+  useEffect(() => {
+    console.log("App.js");
+  }, []);
+
   // init speech synthesis API
   const synth = window.speechSynthesis;
 
@@ -88,23 +93,23 @@ function App() {
   // event listeners
 
   // text form submit
-  textForm.addEventListener("submit", (e) => {
+  /*   textForm.addEventListener("submit", (e) => {
     e.preventDefault();
     speak();
     textInput.blur();
-  });
+  }); */
 
   // rate value change
-  rate.addEventListener("change", (e) => (rateValue.textContent = rate.value));
+  /* rate.addEventListener("change", (e) => (rateValue.textContent = rate.value)); */
 
   // pitch value change
-  pitch.addEventListener(
+  /*  pitch.addEventListener(
     "change",
     (e) => (pitchValue.textContent = pitch.value)
-  );
+  ); */
 
   // Voice select change
-  voiceSelect.addEventListener("change", (e) => speak());
+  /*  voiceSelect.addEventListener("change", (e) => speak()); */
 
   return (
     <div className="App">
@@ -135,9 +140,7 @@ function App() {
                 max="2"
                 value="1"
                 step="0.1"
-                onChange={() => {
-                  console.log("hi");
-                }}
+                onChange={(e) => (rateValue.textContent = rate.value)}
               ></input>
             </div>
             <div className="form-group">
@@ -152,9 +155,7 @@ function App() {
                 min="0.0"
                 max="2"
                 value="1"
-                onChange={() => {
-                  console.log("hi");
-                }}
+                onChange={(e) => (pitchValue.textContent = pitch.value)}
                 step="0.1"
               ></input>
             </div>
@@ -162,9 +163,19 @@ function App() {
               <select
                 id="voice-select"
                 className="form-control form-control-lg"
+                onChange={(e) => speak()}
               ></select>
             </div>
-            <button className="btn btn-light btn-lg btn-block">Speak It</button>
+            <button
+              className="btn btn-light btn-lg btn-block"
+              onClick={(e) => {
+                e.preventDefault();
+                speak();
+                textInput.blur();
+              }}
+            >
+              Speak It
+            </button>
           </form>
         </div>
       </div>
