@@ -1,5 +1,8 @@
 import "./App.css";
 import { useEffect } from "react";
+import { Route } from "react-router-dom";
+import SignUp from "./components/SignUp";
+import Login from "./components/login-form";
 const logo = require("./img/speech.png");
 
 function App() {
@@ -189,6 +192,8 @@ function App() {
         integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT"
         crossOrigin="anonymous"
       ></script>
+      <Route path="/login" render={() => <Login />} />
+      <Route path="/signup" render={() => <SignUp />} />
     </div>
   );
 }
