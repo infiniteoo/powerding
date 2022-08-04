@@ -1,41 +1,222 @@
-.App {
-  text-align: center;
-}
-
 body {
-  background: #141414;
-}
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+  font-family: "Comfortaa", cursive !important;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.css-10hburv-MuiTypography-root {
+  font-family: "Comfortaa", cursive !important;
+  font-size: 12px !important;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.css-ojxnvh-MuiButtonBase-root-MuiListItemButton-root:hover {
+  background-color: white !important;
+}
+
+::-webkit-scrollbar {
+  width: 7px;
+}
+
+.loading_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: grey;
+  border-radius: 10px;
+}
+
+.css-1x51dt5-MuiInputBase-input-MuiInput-input:focus {
+  color: white !important;
+  border-bottom: white;
+}
+
+.css-1x51dt5-MuiInputBase-input-MuiInput-input {
+  color: white !important;
+  width: 100% !important;
+  border-bottom-color: rgba(255, 255, 255, 1) !important;
+}
+
+.row {
+  --bs-gutter-x: 0rem !important;
+}
+
+.audioPlayer_container {
+  position: relative;
+
+  margin-top: 2.05%;
+  width: 100%;
+
+  border-radius: 10px;
+  border: 2px solid white;
+}
+.splashScreen {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 94.5vh;
+}
+.homeSplash {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  height: 94.5vh;
+}
+.adminSplash {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 100px;
+  height: 100vh;
+}
+.mt-5 {
+  margin-top: 0rem !important;
 }
 
-.App-link {
-  color: #61dafb;
+.logout-button-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1rem;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.navbar a {
+  text-decoration: none;
+}
+
+.nav_logo {
+  flex: 0 0 33%;
+}
+
+.nav_search {
+  flex: 0 0 50%;
+}
+
+.nav-account {
+  flex: 0 0 4%;
+}
+
+.navbar span:hover {
+  color: #32fbe2 !important;
+}
+
+.add-sound-form label {
+  margin-top: 10px;
+}
+
+.searchButton {
+  margin-left: 5px;
+  border-radius: 10px;
+}
+
+.audioPlayer_container {
+  position: fixed !important;
+  width: 87%;
+  z-index: 100;
+
+  overflow: hidden;
+  background: rgb(37, 36, 36);
+}
+.audioPlayer_header {
+  border-bottom: 2px solid white;
+}
+
+.css-x3xxi0-MuiSvgIcon-root {
+  margin-right: 4px !important;
+}
+
+.audioplayer_elements {
+  border-right: 2px solid white;
+  padding-top: 1rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex: 0 0 20%;
+}
+
+.audioplayer_master {
+  display: flex !important;
+  flex: 0 0 80%;
+  flex-direction: row !important;
+  justify-content: flex-start !important;
+  align-items: space-between !important;
+  padding-left: 1rem;
+}
+.searchbar_holder {
+  flex: 0 0 60% !important;
+}
+
+.volume_holder {
+  flex: 0 0 30% !important;
+  padding-left: 1rem;
+  align-items: center;
+}
+.divider_holder {
+  flex: 0 0 10% !important;
+  border-right: 1px solid white;
+}
+
+.navholder {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex: auto;
+  background-color: #000 !important;
+  width: 100vw;
+  position: fixed;
+  border-bottom: 2px solid white;
+  z-index: 100;
+  height: 10%;
+  padding-left: 10%;
+  list-style-type: none;
+
+  align-items: center;
+  justify-content: space-between;
+  position: fixed !important;
+  top: 0;
+  z-index: 100;
+  overflow: hidden;
+  background: linear-gradient(
+    120deg,
+    rgba(255, 255, 255, 1) 32%,
+    rgba(214, 51, 132, 1) 56%,
+    rgba(0, 0, 0, 1) 100%
+  );
+}
+
+.dashboard_container {
+  display: grid;
+  grid-template-columns: auto;
+
+  height: 100%;
+}
+
+.mainContainer {
+  width: 87%;
+  margin-left: 11%;
+}
+
+.dashboard_container img {
+  height: 100px;
+  margin-right: auto;
+}
+
+.white-text {
+  color: white !important;
+}
+
+.css-bf9wz-MuiButtonBase-root-MuiPaginationItem-root.Mui-selected {
+  background-color: rgb(167, 54, 110) !important;
+}
+
+.css-bf9wz-MuiButtonBase-root-MuiPaginationItem-root {
+  color: #fff !important;
 }

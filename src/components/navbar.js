@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import "../App.css";
 import PopOver from "./accountpopover";
+import logo from "../assets/amfmfx.com text logo.png";
+import SearchBar from "./SearchBar";
 
 class Navbar extends Component {
   constructor() {
@@ -41,7 +43,7 @@ class Navbar extends Component {
               <ul className="navholder">
                 <li className="nav_logo">
                   <a href="/">
-                    <img alt="" srcSet="" height="60px" />
+                    <img src={logo} alt="" srcSet="" height="60px" />
                   </a>
                 </li>
                 {/*  <li className="nav_search">
@@ -57,7 +59,7 @@ class Navbar extends Component {
               </ul>
             ) : (
               <div>
-                {/*   <Link to="/" className="btn btn-link text-secondary">
+                <Link to="/" className="btn btn-link text-secondary">
                   <span className="text-secondary">home</span>
                 </Link>
                 <Link to="/login" className="btn btn-link text-secondary">
@@ -65,7 +67,7 @@ class Navbar extends Component {
                 </Link>
                 <Link to="/signup" className="btn btn-link">
                   <span className="text-secondary">sign up</span>
-                </Link> */}
+                </Link>
               </div>
             )}
           </div>

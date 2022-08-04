@@ -1,11 +1,17 @@
 import React from "react";
-import ReactDOM from "react-dom/client";
-import "./index.css";
+import ReactDOM from "react-dom";
+
 import App from "./App";
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(
-  <React.StrictMode>
+import { BrowserRouter } from "react-router-dom"; //don't need to specify localhost url in axios http address
+
+//style
+
+import "./bootstrap.min.css";
+
+ReactDOM.render(
+  <BrowserRouter>
     <App />
-  </React.StrictMode>
+  </BrowserRouter>,
+  document.getElementById("root")
 );

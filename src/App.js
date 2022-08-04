@@ -1,227 +1,137 @@
-import "./App.css";
-import { useEffect, useState } from "react";
-import { Route, Routes, Router } from "react-router-dom";
+import React, { Component } from "react";
+import axios from "axios";
+import { Route } from "react-router-dom";
+
+// components
+
 import SignUp from "./components/SignUp";
-import Login from "./components/login-form";
+import LoginForm from "./components/login-form";
 import Navbar from "./components/navbar";
+import Home from "./components/home";
+import Dashboard from "./components/dashboard";
+import Admin from "./components/admin";
 
-const logo = require("./img/speech.png");
+class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      loggedIn: false,
+      username: null,
+      accessLevel: null,
+      downloadsRemaining: null,
+      userId: null,
+      lastLogin: null,
+      previousLogin: null,
+      confirmed: false,
+    };
 
-function App() {
-  // init speech synthesis API
-  const synth = window.speechSynthesis;
+    this.getUser = this.getUser.bind(this);
+    this.componentDidMount = this.componentDidMount.bind(this);
+    this.updateUser = this.updateUser.bind(this);
+  }
 
-  // DOM element reference vars
-  const textForm = document.querySelector("form");
-  const textInput = document.querySelector("#text-input");
-  const voiceSelect = document.querySelector("#voice-select");
-  const rate = document.querySelector("#rate");
-  const rateValue = document.querySelector("#rate-value");
-  const pitch = document.querySelector("#pitch");
-  const pitchValue = document.querySelector("#pitch-value");
-  const body = document.querySelector("body");
+  componentDidMount() {
+    this.getUser();
+  }
 
-  // init voices array
-  /* let voices = []; */
-  /*  voices = synth.getVoices(); */
-  console.log(synth);
-  // create state array for voices
-  const [voices, setVoices] = useState(window.speechSynthesis.getVoices());
-  /* setVoices = [1, 2, 3, 4, 5]; */
-  console.log("voices", voices);
+  updateUser(userObject) {
+    this.setState(userObject);
+  }
 
-  const getVoices = () => {
-    voices = synth.getVoices();
+  getUser() {
+    axios.get("/user/").then((response) => {
+      if (response.data.user) {
+        console.log("Get User: There is a user saved in the server session: ");
 
-    // loop through voices and create an option for each one
-
-    voices.forEach((voice) => {
-      // create an option element
-      const option = document.createElement("option");
-      // fill the option with the voice and language
-      option.textContent = voice.name + "(" + voice.lang + ")";
-      // set needed option attributes
-      option.setAttribute("data-lang", voice.lang);
-      option.setAttribute("data-name", voice.name);
-      /*  voiceSelect.appendChild(option); */
+        this.setState({
+          loggedIn: true,
+          username: response.data.user.username,
+          accessLevel: response.data.user.accessLevel,
+          downloadsRemaining: response.data.user.downloadsRemaining,
+          userId: response.data.user.userId,
+          lastLogin: response.data.user.lastLogin,
+          email: response.data.user.email,
+          confirmed: response.data.user.confirmed,
+        });
+      } else {
+        console.log("Get user: no user");
+        this.setState({
+          loggedIn: false,
+          username: null,
+          accessLevel: null,
+          downloadsRemaining: null,
+          userId: null,
+          lastLogin: null,
+          email: null,
+          confirmed: false,
+        });
+      }
     });
-  };
+  }
 
-  /* getVoices();
-  if (synth.onvoiceschanged !== undefined) {
-    synth.onvoiceschanged = getVoices;
-  } */
+  render() {
+    return (
+      <React.Fragment>
+        <Navbar
+          updateUser={this.updateUser}
+          loggedIn={this.state.loggedIn}
+          userInfo={this.state}
+        />
+        <div className="mainContainer">
+          {/* greet user if logged in: */}
+          {this.state.loggedIn && (
+            <p>
+              welcome, {this.state.username}! (downloads remaining:{" "}
+              {this.state.downloadsRemaining})
+            </p>
+          )}
+          {/* Routes to different components */}
 
-  // speak
-  const speak = () => {
-    // check if speaking
-    if (synth.speaking) {
-      console.error("Already speaking...");
-      return;
-    }
-    if (textInput.value !== "") {
-      // add background animation gif
-      body.style.background = "#141414 url(./img/wave.gif)";
-      body.style.backgroundRepeat = "repeat-x";
-      body.style.backgroundSize = "100% 100%";
-      // get speak text
-      const speakText = new SpeechSynthesisUtterance(textInput.value);
-      // speak end
-      speakText.onend = (e) => {
-        console.log("Done speaking..");
-        body.style.background = "#141414";
-      };
-
-      // speak error
-      speakText.onerror = (e) => {
-        console.error("something went wrong!");
-      };
-
-      // selected voice
-      const selectedVoice =
-        voiceSelect.selectedOptions[0].getAttribute("data-name");
-      console.log("selected voice", selectedVoice);
-
-      // loop through voices
-      voices.forEach((voice) => {
-        if (voice.name === selectedVoice) {
-          speakText.voice = voice;
-        }
-      });
-
-      // set pitch and rate
-      speakText.rate = rate.value;
-      speakText.pitch = pitch.value;
-
-      // speak!
-      synth.speak(speakText);
-    }
-  };
-
-  /* useEffect(() => {
-    console.log("App.js");
-    getVoices();
-    if (synth.onvoiceschanged !== undefined) {
-      synth.onvoiceschanged = getVoices;
-    }
-  }, [getVoices, synth, voiceSelect]); */
-
-  // event listeners
-
-  // text form submit
-  /*   textForm.addEventListener("submit", (e) => {
-    e.preventDefault();
-    speak();
-    textInput.blur();
-  }); */
-
-  // rate value change
-  /* rate.addEventListener("change", (e) => (rateValue.textContent = rate.value)); */
-
-  // pitch value change
-  /*  pitch.addEventListener(
-    "change",
-    (e) => (pitchValue.textContent = pitch.value)
-  ); */
-
-  // Voice select change
-  /*  voiceSelect.addEventListener("change", (e) => speak()); */
-
-  return (
-    <div className="App">
-      <Navbar />
-      <div className="container text-center">
-        <img src={logo} className="mb-5" alt="power ding" />
-      </div>
-      <div className="row">
-        <div className="col-md-6 mx-auto">
-          <form action="">
-            <div className="form-group">
-              <textarea
-                className="form-control form-control-lg"
-                name=""
-                id="text-input"
-                placeholder="Type anything..."
-              ></textarea>
-            </div>
-            <div className="form-group">
-              <label htmlFor="rate">Rate</label>
-              <div id="rate-value" className="badge badge-primary float-right">
-                1
-              </div>
-              <input
-                type="range"
-                id="rate"
-                className="custom-range"
-                min="0.5"
-                max="2"
-                value="1"
-                step="0.1"
-                onChange={(e) => (rateValue.textContent = rate.value)}
-              ></input>
-            </div>
-            <div className="form-group">
-              <label htmlFor="pitch">Pitch</label>
-              <div id="pitch-value" className="badge badge-primary float-right">
-                1
-              </div>
-              <input
-                type="range"
-                id="pitch"
-                className="custom-range"
-                min="0.0"
-                max="2"
-                value="1"
-                onChange={(e) => (pitchValue.textContent = pitch.value)}
-                step="0.1"
-              ></input>
-            </div>
-            <div className="form-group">
-              <select
-                id="voice-select"
-                className="form-control form-control-lg"
-                onChange={(e) => speak()}
-              >
-                <option>Select a voice...</option>
-                {voices.map((voice) => (
-                  <option value={voice.name} key={voice.lang + voice.name}>
-                    {voice.name} {voice.lang}
-                  </option>
-                ))}
-              </select>
-            </div>
-            <button
-              className="btn btn-light btn-lg btn-block"
-              onClick={(e) => {
-                e.preventDefault();
-                speak();
-                textInput.blur();
-              }}
-            >
-              Speak It
-            </button>
-          </form>
-        </div>
-      </div>
-
-      <script
-        src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
-        integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
-        crossOrigin="anonymous"
-      ></script>
-      <script
-        src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js"
-        integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT"
-        crossOrigin="anonymous"
-      ></script>
-      {/* <Router>
-        <Routes>
-          <Route path="/login" render={() => <Login />} />
+          <Route
+            exact
+            path="/"
+            render={
+              this.state.loggedIn && this.state.confirmed
+                ? () => (
+                    <Dashboard
+                      updateUser={this.updateUser}
+                      state={this.state}
+                    />
+                  )
+                : () => <Home />
+            }
+          />
+          <Route
+            exact
+            path="/admin"
+            render={
+              this.state.loggedIn &&
+              this.state.accessLevel > 4 &&
+              this.state.confirmed
+                ? () => (
+                    <Admin updateUser={this.updateUser} state={this.state} />
+                  )
+                : this.state.loggedIn &&
+                  this.state.accessLevel < 4 &&
+                  this.state.confirmed
+                ? () => (
+                    <Dashboard
+                      updateUser={this.updateUser}
+                      state={this.state}
+                    />
+                  )
+                : () => <Home />
+            }
+          />
+          <Route
+            path="/login"
+            render={() => <LoginForm updateUser={this.updateUser} />}
+          />
           <Route path="/signup" render={() => <SignUp />} />
-        </Routes>
-      </Router> */}
-    </div>
-  );
+        </div>
+      </React.Fragment>
+    );
+  }
 }
 
 export default App;
