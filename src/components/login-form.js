@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import { Redirect } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import axios from "axios";
-import amfmfxLogo from "../assets/amfmfx.com text logo.png";
+/* import amfmfxLogo from "../assets/amfmfx.com text logo.png"; */
 import { ThumbUpSharp } from "@mui/icons-material";
 import ErrorSnackbar from "./Snackbar";
 import { responsiveFontSizes } from "@material-ui/core";
@@ -74,13 +74,13 @@ class LoginForm extends Component {
 
   render() {
     if (this.state.redirectTo) {
-      return <Redirect to={{ pathname: this.state.redirectTo }} />;
+      return <Navigate to={{ pathname: this.state.redirectTo }} />;
     } else {
       return (
         <div className="splashScreen">
           <div className="">
             <div className="">
-              <img src={amfmfxLogo} alt="" />
+              <img /* src={amfmfxLogo} */ alt="" />
               <h1 className="text-center mb-3">
                 <i className="fas fa-sign-in-alt"></i> member login
               </h1>

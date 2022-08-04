@@ -1,15 +1,13 @@
 import "./App.css";
-import { useEffect } from "react";
-import { Route } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Route, Routes, Router } from "react-router-dom";
 import SignUp from "./components/SignUp";
 import Login from "./components/login-form";
+import Navbar from "./components/navbar";
+
 const logo = require("./img/speech.png");
 
 function App() {
-  useEffect(() => {
-    console.log("App.js");
-  }, []);
-
   // init speech synthesis API
   const synth = window.speechSynthesis;
 
@@ -24,7 +22,13 @@ function App() {
   const body = document.querySelector("body");
 
   // init voices array
-  let voices = [];
+  /* let voices = []; */
+  /*  voices = synth.getVoices(); */
+  console.log(synth);
+  // create state array for voices
+  const [voices, setVoices] = useState(window.speechSynthesis.getVoices());
+  /* setVoices = [1, 2, 3, 4, 5]; */
+  console.log("voices", voices);
 
   const getVoices = () => {
     voices = synth.getVoices();
@@ -39,14 +43,14 @@ function App() {
       // set needed option attributes
       option.setAttribute("data-lang", voice.lang);
       option.setAttribute("data-name", voice.name);
-      voiceSelect.appendChild(option);
+      /*  voiceSelect.appendChild(option); */
     });
   };
 
-  getVoices();
+  /* getVoices();
   if (synth.onvoiceschanged !== undefined) {
     synth.onvoiceschanged = getVoices;
-  }
+  } */
 
   // speak
   const speak = () => {
@@ -76,6 +80,7 @@ function App() {
       // selected voice
       const selectedVoice =
         voiceSelect.selectedOptions[0].getAttribute("data-name");
+      console.log("selected voice", selectedVoice);
 
       // loop through voices
       voices.forEach((voice) => {
@@ -92,6 +97,14 @@ function App() {
       synth.speak(speakText);
     }
   };
+
+  /* useEffect(() => {
+    console.log("App.js");
+    getVoices();
+    if (synth.onvoiceschanged !== undefined) {
+      synth.onvoiceschanged = getVoices;
+    }
+  }, [getVoices, synth, voiceSelect]); */
 
   // event listeners
 
@@ -116,6 +129,7 @@ function App() {
 
   return (
     <div className="App">
+      <Navbar />
       <div className="container text-center">
         <img src={logo} className="mb-5" alt="power ding" />
       </div>
@@ -167,7 +181,14 @@ function App() {
                 id="voice-select"
                 className="form-control form-control-lg"
                 onChange={(e) => speak()}
-              ></select>
+              >
+                <option>Select a voice...</option>
+                {voices.map((voice) => (
+                  <option value={voice.name} key={voice.lang + voice.name}>
+                    {voice.name} {voice.lang}
+                  </option>
+                ))}
+              </select>
             </div>
             <button
               className="btn btn-light btn-lg btn-block"
@@ -182,6 +203,7 @@ function App() {
           </form>
         </div>
       </div>
+
       <script
         src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
         integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
@@ -192,8 +214,12 @@ function App() {
         integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT"
         crossOrigin="anonymous"
       ></script>
-      <Route path="/login" render={() => <Login />} />
-      <Route path="/signup" render={() => <SignUp />} />
+      {/* <Router>
+        <Routes>
+          <Route path="/login" render={() => <Login />} />
+          <Route path="/signup" render={() => <SignUp />} />
+        </Routes>
+      </Router> */}
     </div>
   );
 }

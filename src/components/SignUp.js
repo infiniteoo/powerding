@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import amfmfxLogo from "../assets/amfmfx.com text logo.png";
+/* import amfmfxLogo from "../assets/amfmfx.com text logo.png"; */
 import ErrorSnackbar from "./Snackbar";
 
 const SignUp = () => {
@@ -54,7 +54,7 @@ const SignUp = () => {
 
   return state.successfulSignUp === "true" ? (
     <div className="homeSplash">
-      <img src={amfmfxLogo} alt="" />
+      <img /* src={amfmfxLogo} */ alt="" />
       <br /> <br />
       <h1>account created!</h1>
       <br />
@@ -68,7 +68,7 @@ const SignUp = () => {
     <div className="splashScreen">
       <div className="">
         <div className="">
-          <img src={amfmfxLogo} alt="" />
+          <img /* src={amfmfxLogo} */ alt="" />
           <h1 className="text-center mb-3">create account</h1>
 
           <form>
