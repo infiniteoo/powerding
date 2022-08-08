@@ -7,6 +7,7 @@ const Example = () => {
   const [pitch, setPitch] = useState(1);
   const [rate, setRate] = useState(1);
   const [voiceIndex, setVoiceIndex] = useState(null);
+  const [charsRemaining, setCharsRemaining] = useState(250);
   const onEnd = () => {
     // You could do something here after speaking has finished
   };
@@ -26,7 +27,7 @@ const Example = () => {
   return (
     <Container>
       <form>
-        <h2>Speech Synthesis</h2>
+        {/* <h2>Speech Synthesis</h2> */}
         {!supported && (
           <p>
             Oh no, it looks like your browser doesn&#39;t support Speech
@@ -35,11 +36,11 @@ const Example = () => {
         )}
         {supported && (
           <React.Fragment>
-            <p>
+            {/*  <p>
               {`Type a message below then click 'Speak'
                 and SpeechSynthesis will read it out.`}
-            </p>
-            <label htmlFor="voice">Voice</label>
+            </p> */}
+            <label htmlFor="voice">TTS Voice</label>
             <select
               id="voice"
               name="voice"
@@ -55,7 +56,7 @@ const Example = () => {
                 </option>
               ))}
             </select>
-            <div style={styleContainerRatePitch}>
+            {/* <div style={styleContainerRatePitch}>
               <div style={styleFlexRow}>
                 <label htmlFor="rate">Rate: </label>
                 <div className="rate-value">{rate}</div>
@@ -71,8 +72,8 @@ const Example = () => {
                   setRate(event.target.value);
                 }}
               />
-            </div>
-            <div style={styleContainerRatePitch}>
+            </div> */}
+            {/*   <div style={styleContainerRatePitch}>
               <div style={styleFlexRow}>
                 <label htmlFor="pitch">Pitch: </label>
                 <div className="pitch-value">{pitch}</div>
@@ -88,8 +89,8 @@ const Example = () => {
                   setPitch(event.target.value);
                 }}
               />
-            </div>
-            <label htmlFor="message">Message</label>
+            </div> */}
+            <label htmlFor="message">Optional Message ({charsRemaining})</label>
             <textarea
               id="message"
               name="message"
@@ -97,6 +98,7 @@ const Example = () => {
               value={text}
               onChange={(event) => {
                 setText(event.target.value);
+                setCharsRemaining(250 - event.target.value.length);
               }}
             />
             {speaking ? (

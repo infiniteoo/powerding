@@ -14,28 +14,12 @@ export const Row = styled.div`
   flex-wrap: wrap;
 `;
 
-export const Title = styled.h1`
-  text-align: center;
-`;
-
-export const GitLink = styled.div`
-  align-items: center;
-  display: flex;
-  justify-content: center;
-  margin-top: 20px;
-  img {
-    height: 32px;
-    margin-right: 10px;
-    width: 32px;
-  }
-`;
-
 export const Container = styled.div`
   border-radius: 10px;
-  background-color: lightgrey;
+  background-color: black;
   padding: 20px;
   margin: 0 20px 20px 20px;
-  max-width: 300px;
+  width: 100%;
   button {
     border-radius: 4px;
     font-size: 16px;

@@ -10,18 +10,13 @@ const Home = () => {
     <div width="100%">
       <div className="homeSplash">
         <img src={amfmfxLogo} alt="" />
-      </div>
-      <div>
-        <GlobalStyles />
-        <Title>
-          {"react-speech-kit "}
-          <span role="img" aria-label="microphone">
-            🎤
-          </span>
-        </Title>
+
         <Row>
           <SpeechSynthesisExample />
         </Row>
+      </div>
+      <div>
+        <GlobalStyles />
       </div>
     </div>
   );
