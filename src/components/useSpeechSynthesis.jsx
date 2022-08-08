@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useSpeechSynthesis } from './useSpeechSynthesis';
+import { useSpeechSynthesis } from "./";
 import { Container } from "./shared";
 
 const Example = () => {

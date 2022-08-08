@@ -1,17 +1,27 @@
 import React from "react";
-import amfmfxLogo from "../assets/amfmfx.com text logo.png";
-import Waveform from "./homeWaveform/Waveform";
-import demoAudio from "../assets/pp_demo_sept21.mp3";
+import { render } from "react-dom";
 import SpeechSynthesisExample from "./useSpeechSynthesis";
+
+import { GlobalStyles, Row, GitLink, Title } from "./shared";
+import amfmfxLogo from "../assets/amfmfx.com text logo.png";
 
 const Home = () => {
   return (
     <div width="100%">
       <div className="homeSplash">
         <img src={amfmfxLogo} alt="" />
-
-        <Waveform url={demoAudio} />
-        <SpeechSynthesisExample />
+      </div>
+      <div>
+        <GlobalStyles />
+        <Title>
+          {"react-speech-kit "}
+          <span role="img" aria-label="microphone">
+            🎤
+          </span>
+        </Title>
+        <Row>
+          <SpeechSynthesisExample />
+        </Row>
       </div>
     </div>
   );
