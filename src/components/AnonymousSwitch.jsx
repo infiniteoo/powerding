@@ -15,8 +15,7 @@ const AnonymousSwitch = () => {
         size="sm"
       />
       <label htmlFor="message" style={{ marginLeft: "10px" }}>
-        {" "}
-        Send Anonymously{" "}
+        Send Anonymously
       </label>
     </Row>
   );

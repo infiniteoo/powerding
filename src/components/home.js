@@ -1,8 +1,6 @@
 import React from "react";
-import { render } from "react-dom";
-import SpeechSynthesisExample from "./useSpeechSynthesis";
-
-import { GlobalStyles, Row, GitLink, Title } from "./shared";
+import TTS_Submission_Form from "./useSpeechSynthesis";
+import { GlobalStyles } from "./shared";
 import amfmfxLogo from "../assets/amfmfx.com text logo.png";
 
 const Home = () => {
@@ -10,11 +8,9 @@ const Home = () => {
     <div width="100%">
       <div className="homeSplash">
         <img src={amfmfxLogo} alt="" />
-
-        <Row>
-          <SpeechSynthesisExample />
-        </Row>
+        <TTS_Submission_Form />
       </div>
+
       <div>
         <GlobalStyles />
       </div>

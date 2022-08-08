@@ -68,6 +68,7 @@ body {
   align-items: center;
   justify-content: center;
   height: 94.5vh;
+  width: 100%;
 }
 .adminSplash {
   display: flex;

@@ -1,14 +1,13 @@
 import React, { useState } from "react";
 import { useSpeechSynthesis } from "./";
-import { Container, Row } from "./shared";
+import { Container } from "./shared";
 
 import AnonymousSwitch from "./AnonymousSwitch";
+import MediaLink from "./MediaLink";
 
 const Example = () => {
-  const [text, setText] = useState("I am a robot");
-  const [pitch, setPitch] = useState(1);
-  const [rate, setRate] = useState(1);
-  const [voiceIndex, setVoiceIndex] = useState(null);
+  const [text, setText] = useState("");
+    const [voiceIndex, setVoiceIndex] = useState(null);
   const [charsRemaining, setCharsRemaining] = useState(250);
   const onEnd = () => {
     // You could do something here after speaking has finished
@@ -28,7 +27,7 @@ const Example = () => {
 
   return (
     <Container>
-      <form>
+      <form style={{ width: "100%" }}>
         {!supported && (
           <p>
             Oh no, it looks like your browser doesn&#39;t support Speech
@@ -38,6 +37,7 @@ const Example = () => {
         {supported && (
           <React.Fragment>
             <AnonymousSwitch />
+
             <label htmlFor="voice">TTS Voice</label>
             <select
               id="voice"
@@ -66,7 +66,8 @@ const Example = () => {
                 setCharsRemaining(250 - event.target.value.length);
               }}
             />
-            {speaking ? (
+            <MediaLink />
+            {/*   {speaking ? (
               <button type="button" onClick={cancel}>
                 Stop
               </button>
@@ -77,7 +78,7 @@ const Example = () => {
               >
                 Speak
               </button>
-            )}
+            )} */}
           </React.Fragment>
         )}
       </form>
