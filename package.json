@@ -15,6 +15,7 @@
     "bootstrap": "^5.2.0",
     "bootstrap-switch-button-react": "^1.2.0",
     "connect-mongo": "^2.0.1",
+    "dotenv": "^16.0.1",
     "express": "^4.16.2",
     "express-session": "^1.15.6",
     "mongoose": "^5.0.2",

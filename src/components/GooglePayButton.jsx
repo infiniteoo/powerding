@@ -10,7 +10,6 @@ const PayButton = ({ donationAmount }) => {
         style={{
           width: "50%",
           height: "100%",
-         
         }}
         environment="TEST"
         paymentRequest={{
@@ -27,13 +26,13 @@ const PayButton = ({ donationAmount }) => {
                 type: "PAYMENT_GATEWAY",
                 parameters: {
                   gateway: "example",
-                  gatewayMerchantId: "exampleGatewayMerchantId",
+                  gatewayMerchantId: process.env.REACT_APP_MERCHANT_ID,
                 },
               },
             },
           ],
           merchantInfo: {
-            merchantId: "12345678901234567890",
+            merchantId: process.env.REACT_APP_MERCHANT_ID,
             merchantName: "Demo Merchant",
           },
           transactionInfo: {
