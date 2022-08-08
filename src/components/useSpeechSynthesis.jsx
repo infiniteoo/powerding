@@ -5,6 +5,7 @@ import { Container, Row } from "./shared";
 import AnonymousSwitch from "./AnonymousSwitch";
 import MediaLink from "./MediaLink";
 import Amount from "./Amount";
+import GooglePayButton from "./GooglePayButton";
 
 const Example = () => {
   const [text, setText] = useState("");
@@ -73,6 +74,7 @@ const Example = () => {
               donationAmount={donationAmount}
               setDonationAmount={setDonationAmount}
             />
+            <GooglePayButton />
 
             {/*   {speaking ? (
               <button type="button" onClick={cancel}>
