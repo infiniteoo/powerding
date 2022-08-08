@@ -2,7 +2,7 @@ import React from "react";
 import BootstrapSwitchButton from "bootstrap-switch-button-react";
 import { Row } from "./shared";
 
-const AnonymousSwitch = () => {
+const AnonymousSwitch = ({ isAnonymous, setIsAnonymous }) => {
   return (
     <Row>
       <BootstrapSwitchButton
@@ -10,7 +10,8 @@ const AnonymousSwitch = () => {
         onlabel="On"
         offlabel="Off"
         onChange={(checked) => {
-          console.log(checked);
+          setIsAnonymous(!isAnonymous);
+          console.log("isAnonymous", isAnonymous);
         }}
         size="sm"
       />

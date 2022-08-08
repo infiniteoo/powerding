@@ -1,10 +1,17 @@
 import React from "react";
 import GooglePayButton from "@google-pay/button-react";
 
-const PayButton = () => {
+const PayButton = ({ donationAmount }) => {
   return (
     <div>
       <GooglePayButton
+        buttonColor="white"
+        buttonSizeMode="fill"
+        style={{
+          width: "50%",
+          height: "100%",
+         
+        }}
         environment="TEST"
         paymentRequest={{
           apiVersion: 2,
@@ -32,7 +39,7 @@ const PayButton = () => {
           transactionInfo: {
             totalPriceStatus: "FINAL",
             totalPriceLabel: "Total",
-            totalPrice: "100.00",
+            totalPrice: donationAmount,
             currencyCode: "USD",
             countryCode: "US",
           },

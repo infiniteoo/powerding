@@ -22,23 +22,12 @@ const Amount = ({ donationAmount, setDonationAmount }) => {
               style={{ width: "100%" }}
               placeholder={donationAmount}
             />
-            <Button onClick={() => setDonationAmount("$3.00")}>$3</Button>
-            <Button onClick={() => setDonationAmount("$10.00")}>$10</Button>
-            <Button onClick={() => setDonationAmount("$15.00")}>$15</Button>
-            <Button onClick={() => setDonationAmount("$20.00")}>$20</Button>
+            <Button onClick={() => setDonationAmount("3.00")}>$3</Button>
+            <Button onClick={() => setDonationAmount("10.00")}>$10</Button>
+            <Button onClick={() => setDonationAmount("15.00")}>$15</Button>
+            <Button onClick={() => setDonationAmount("20.00")}>$20</Button>
           </ButtonGroup>
         </div>
-        <label
-          style={{
-            fontSize: "13px",
-            color: "darkgray",
-            marginBottom: "5px",
-            marginTop: "5px",
-            width: "100%",
-          }}
-        >
-          All Transactions are final and non-refundable.
-        </label>
       </div>
     </div>
   );

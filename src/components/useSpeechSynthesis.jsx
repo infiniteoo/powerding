@@ -6,12 +6,15 @@ import AnonymousSwitch from "./AnonymousSwitch";
 import MediaLink from "./MediaLink";
 import Amount from "./Amount";
 import GooglePayButton from "./GooglePayButton";
+import TransactionDisclosure from "./TransactionDisclosure";
+import DonatorNameInput from "./donatorName";
 
 const Example = () => {
   const [text, setText] = useState("");
   const [voiceIndex, setVoiceIndex] = useState(null);
   const [charsRemaining, setCharsRemaining] = useState(250);
   const [donationAmount, setDonationAmount] = useState("");
+  const [isAnonymous, setIsAnonymous] = useState(true);
   const onEnd = () => {
     // You could do something here after speaking has finished
   };
@@ -39,7 +42,12 @@ const Example = () => {
         )}
         {supported && (
           <React.Fragment>
-            <AnonymousSwitch />
+            <AnonymousSwitch
+              isAnonymous={isAnonymous}
+              setIsAnonymous={setIsAnonymous}
+            />
+
+            {!isAnonymous ? <DonatorNameInput /> : null}
 
             <label htmlFor="voice">TTS Voice</label>
             <select
@@ -74,8 +82,12 @@ const Example = () => {
               donationAmount={donationAmount}
               setDonationAmount={setDonationAmount}
             />
-            <GooglePayButton />
-
+            <Row>
+              <TransactionDisclosure />
+            </Row>
+            <Row>
+              <GooglePayButton donationAmount={donationAmount} />
+            </Row>
             {/*   {speaking ? (
               <button type="button" onClick={cancel}>
                 Stop
