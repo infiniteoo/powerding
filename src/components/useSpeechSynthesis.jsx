@@ -1,13 +1,14 @@
 import React, { useState } from "react";
 import { useSpeechSynthesis } from "./";
-import { Container } from "./shared";
+import { Container, Row } from "./shared";
 
 import AnonymousSwitch from "./AnonymousSwitch";
 import MediaLink from "./MediaLink";
+import Amount from "./Amount";
 
 const Example = () => {
   const [text, setText] = useState("");
-    const [voiceIndex, setVoiceIndex] = useState(null);
+  const [voiceIndex, setVoiceIndex] = useState(null);
   const [charsRemaining, setCharsRemaining] = useState(250);
   const onEnd = () => {
     // You could do something here after speaking has finished
@@ -67,6 +68,8 @@ const Example = () => {
               }}
             />
             <MediaLink />
+            <Amount />
+          
             {/*   {speaking ? (
               <button type="button" onClick={cancel}>
                 Stop

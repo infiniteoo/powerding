@@ -9,7 +9,7 @@ const MediaLink = () => {
       </div>
       <label
         style={{
-          fontSize: "10px",
+          fontSize: "13px",
           color: "darkgray",
           marginBottom: "5px",
           width: "100%",
