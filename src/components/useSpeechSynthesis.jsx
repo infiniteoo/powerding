@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useSpeechSynthesis } from "./";
-import { Container } from "./shared";
+import { Container, Row } from "./shared";
+
+import AnonymousSwitch from "./AnonymousSwitch";
 
 const Example = () => {
   const [text, setText] = useState("I am a robot");
@@ -27,7 +29,6 @@ const Example = () => {
   return (
     <Container>
       <form>
-        {/* <h2>Speech Synthesis</h2> */}
         {!supported && (
           <p>
             Oh no, it looks like your browser doesn&#39;t support Speech
@@ -36,10 +37,7 @@ const Example = () => {
         )}
         {supported && (
           <React.Fragment>
-            {/*  <p>
-              {`Type a message below then click 'Speak'
-                and SpeechSynthesis will read it out.`}
-            </p> */}
+            <AnonymousSwitch />
             <label htmlFor="voice">TTS Voice</label>
             <select
               id="voice"
@@ -56,40 +54,7 @@ const Example = () => {
                 </option>
               ))}
             </select>
-            {/* <div style={styleContainerRatePitch}>
-              <div style={styleFlexRow}>
-                <label htmlFor="rate">Rate: </label>
-                <div className="rate-value">{rate}</div>
-              </div>
-              <input
-                type="range"
-                min="0.5"
-                max="2"
-                defaultValue="1"
-                step="0.1"
-                id="rate"
-                onChange={(event) => {
-                  setRate(event.target.value);
-                }}
-              />
-            </div> */}
-            {/*   <div style={styleContainerRatePitch}>
-              <div style={styleFlexRow}>
-                <label htmlFor="pitch">Pitch: </label>
-                <div className="pitch-value">{pitch}</div>
-              </div>
-              <input
-                type="range"
-                min="0"
-                max="2"
-                defaultValue="1"
-                step="0.1"
-                id="pitch"
-                onChange={(event) => {
-                  setPitch(event.target.value);
-                }}
-              />
-            </div> */}
+
             <label htmlFor="message">Optional Message ({charsRemaining})</label>
             <textarea
               id="message"
