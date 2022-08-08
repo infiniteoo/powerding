@@ -1,9 +1,9 @@
 import React from "react";
 import Button from "@mui/material/Button";
 import ButtonGroup from "@mui/material/ButtonGroup";
-import { Row } from "./shared";
 
-const Amount = () => {
+const Amount = ({ donationAmount, setDonationAmount }) => {
+  console.log("in amount ", donationAmount);
   return (
     <div>
       <label>Amount</label>
@@ -17,11 +17,15 @@ const Amount = () => {
             <Button variant="text" color="inherit">
               USD
             </Button>
-            <input type="text" style={{ width: "100%" }} />
-            <Button>$3</Button>
-            <Button>$10</Button>
-            <Button>$15</Button>
-            <Button>$20</Button>
+            <input
+              type="text"
+              style={{ width: "100%" }}
+              placeholder={donationAmount}
+            />
+            <Button onClick={() => setDonationAmount("$3.00")}>$3</Button>
+            <Button onClick={() => setDonationAmount("$10.00")}>$10</Button>
+            <Button onClick={() => setDonationAmount("$15.00")}>$15</Button>
+            <Button onClick={() => setDonationAmount("$20.00")}>$20</Button>
           </ButtonGroup>
         </div>
         <label

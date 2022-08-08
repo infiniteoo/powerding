@@ -10,6 +10,7 @@ const Example = () => {
   const [text, setText] = useState("");
   const [voiceIndex, setVoiceIndex] = useState(null);
   const [charsRemaining, setCharsRemaining] = useState(250);
+  const [donationAmount, setDonationAmount] = useState("");
   const onEnd = () => {
     // You could do something here after speaking has finished
   };
@@ -68,8 +69,11 @@ const Example = () => {
               }}
             />
             <MediaLink />
-            <Amount />
-          
+            <Amount
+              donationAmount={donationAmount}
+              setDonationAmount={setDonationAmount}
+            />
+
             {/*   {speaking ? (
               <button type="button" onClick={cancel}>
                 Stop
