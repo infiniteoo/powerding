@@ -14,6 +14,7 @@ const PORT = process.env.PORT || 7777;
 const user = require("./routes/user");
 const sounds = require("./routes/sounds");
 const email = require("./routes/email");
+const powerdings = require("./routes/powerdings");
 
 // MIDDLEWARE
 app.use(morgan("dev"));
@@ -39,6 +40,7 @@ app.use(passport.session()); // calls the deserializeUser
 app.use("/user", user);
 app.use("/api", sounds);
 app.use("/email", email);
+spp.udr("/powerdings", powerdings);
 
 app.use(express.static("public"));
 
