@@ -1,6 +1,6 @@
-import React, { Component } from "react";
+import React, { Component, useState } from "react";
 import axios from "axios";
-import { Route } from "react-router-dom";
+import { Route, Link } from "react-router-dom";
 
 // components
 
@@ -23,6 +23,7 @@ class App extends Component {
       lastLogin: null,
       previousLogin: null,
       confirmed: false,
+      streamerName: null,
     };
 
     this.getUser = this.getUser.bind(this);
@@ -86,7 +87,6 @@ class App extends Component {
             </p>
           )}
           {/* Routes to different components */}
-
           <Route
             exact
             path="/"
@@ -128,6 +128,7 @@ class App extends Component {
             render={() => <LoginForm updateUser={this.updateUser} />}
           />
           <Route path="/signup" render={() => <SignUp />} />
+          <Route path="/:streamer" component={Home} />
         </div>
       </React.Fragment>
     );

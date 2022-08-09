@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useSpeechSynthesis } from "./";
+import { useSpeechSynthesis } from ".";
 import { Container, Row } from "./shared";
 
 import AnonymousSwitch from "./AnonymousSwitch";
