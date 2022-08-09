@@ -17,6 +17,7 @@ const TTS_Submission_Form = ({ streamer }) => {
   const [donationAmount, setDonationAmount] = useState("");
   const [isAnonymous, setIsAnonymous] = useState(true);
   const [donatorName, setDonatorName] = useState("");
+  const [mediaLink, setMediaLink] = useState("");
 
   /*  const [contentCreator, setContentCreator] = useState(streamer); */
 
@@ -88,7 +89,7 @@ const TTS_Submission_Form = ({ streamer }) => {
                 setCharsRemaining(250 - event.target.value.length);
               }}
             />
-            <MediaLink />
+            <MediaLink setMediaLink={setMediaLink} />
             <Amount
               donationAmount={donationAmount}
               setDonationAmount={setDonationAmount}
@@ -112,6 +113,7 @@ const TTS_Submission_Form = ({ streamer }) => {
                       isAnonymous,
                       streamer,
                       donatorName,
+                      mediaLink,
                     })
                     .then((response) => {
                       console.log(response);

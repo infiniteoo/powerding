@@ -1,11 +1,17 @@
 import React from "react";
 
-const MediaLink = () => {
+const MediaLink = ({ setMediaLink }) => {
   return (
     <div>
       <label>Media ($10 for 720s)</label>
       <div>
-        <input type="text" style={{ width: "100%" }} />
+        <input
+          type="text"
+          style={{ width: "100%" }}
+          onChange={(e) => {
+            setMediaLink(e.target.value);
+          }}
+        />
       </div>
       <label
         style={{
