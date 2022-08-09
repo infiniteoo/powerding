@@ -11,7 +11,10 @@ const SignUp = () => {
     email: "",
     successfulSignUp: "false",
     organization: "",
+    applyForStreamer: false,
   });
+
+  console.log(state);
 
   const [closeSnackbar, setCloseSnackbar] = useState(false);
 
@@ -29,6 +32,7 @@ const SignUp = () => {
         password: state.password,
         email: state.email,
         organization: state.organization,
+        streamer: state.applyForStreamer,
       })
       .then((response) => {
         console.log(response.data.errmsg);
@@ -61,7 +65,7 @@ const SignUp = () => {
       <br />
       <h4>
         please check your email inbox to confirm your email address and activate
-        your account. welcome to amfmfx.com!
+        your account. welcome to powerding.com!
       </h4>
     </div>
   ) : (
@@ -118,6 +122,26 @@ const SignUp = () => {
                 value={state.organization}
                 onChange={handleChange}
               />
+              <br></br>
+              <input
+                type="checkbox"
+                id="streamer"
+                name="streamer"
+                /* value={state.applyForStreamer} */
+                onChange={() => {
+                  setState({
+                    ...state,
+                    applyForStreamer: !state.applyForStreamer,
+                  });
+                  console.log(state.applyForStreamer);
+                }}
+              ></input>
+
+              <label for="streamer" style={{ marginLeft: "3px" }}>
+                {" "}
+                Sign Up as Streamer
+              </label>
+              <br></br>
             </div>
 
             <button

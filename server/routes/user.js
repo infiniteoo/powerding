@@ -9,8 +9,8 @@ const emailMsgs = require("../email/email.msgs");
 
 router.post("/", (req, res) => {
   console.log("user signup");
-
-  const { username, password, email, organization } = req.body;
+ 
+  const { username, password, email, organization, streamer } = req.body;
 
   // ADD VALIDATION
   User.findOne({ email }, (err, user) => {
@@ -27,6 +27,7 @@ router.post("/", (req, res) => {
         password: password,
         accessLevel: 0,
         organization: organization,
+        streamer: streamer,
         confirmed: false,
         downloadsRemaining: 5,
         lastLogin: Date.now(),
@@ -126,6 +127,7 @@ router.post(
                   userId: user._id,
                   email: user.email,
                   confirmed: user.confirmed,
+                  streamer: user.streamer,
                 };
                 res.send(userInfo);
               }
@@ -145,6 +147,7 @@ router.post(
           previousLogin: user.previousLogin,
           email: user.email,
           confirmed: user.confirmed,
+          streamer: user.streamer,
         };
         res.send(userInfo);
       }
@@ -157,10 +160,11 @@ router.get("/streamer/:streamer", (req, res) => {
   User.findOne({ username: req.params.streamer }, (err, user) => {
     if (err) {
       console.log(err);
+      res.json(err);
     } else {
       res.json(user);
     }
-  }).select("username accessLevel");
+  });
 });
 
 router.get("/", (req, res, next) => {
