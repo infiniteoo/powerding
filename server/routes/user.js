@@ -152,6 +152,11 @@ router.post(
   }
 );
 
+router.get("/streamer/:streamer", (req, res) => {
+  console.log("streamer route hit");
+  res.send("streamer route hit");
+});
+
 router.get("/", (req, res, next) => {
   console.log("===== user!!======");
   /*  console.log(req.user); */
