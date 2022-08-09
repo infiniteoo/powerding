@@ -30,7 +30,7 @@ const Home = (props) => {
     <div width="100%">
       <div className="homeSplash">
         <img src={amfmfxLogo} alt="" />
-        <TTS_Submission_Form />
+        <TTS_Submission_Form streamer={streamer} />
       </div>
 
       <div>

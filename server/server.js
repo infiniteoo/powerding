@@ -40,7 +40,7 @@ app.use(passport.session()); // calls the deserializeUser
 app.use("/user", user);
 app.use("/api", sounds);
 app.use("/email", email);
-spp.udr("/powerdings", powerdings);
+app.use("/powerding", powerdings);
 
 app.use(express.static("public"));
 

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useSpeechSynthesis } from ".";
 import { Container, Row } from "./shared";
+import axios from "axios";
 
 import AnonymousSwitch from "./AnonymousSwitch";
 import MediaLink from "./MediaLink";
@@ -9,12 +10,16 @@ import GooglePayButton from "./GooglePayButton";
 import TransactionDisclosure from "./TransactionDisclosure";
 import DonatorNameInput from "./donatorName";
 
-const Example = () => {
+const TTS_Submission_Form = ({ streamer }) => {
   const [text, setText] = useState("");
   const [voiceIndex, setVoiceIndex] = useState(null);
   const [charsRemaining, setCharsRemaining] = useState(250);
   const [donationAmount, setDonationAmount] = useState("");
   const [isAnonymous, setIsAnonymous] = useState(true);
+  const [donatorName, setDonatorName] = useState("");
+
+  /*  const [contentCreator, setContentCreator] = useState(streamer); */
+
   const onEnd = () => {
     // You could do something here after speaking has finished
   };
@@ -47,7 +52,9 @@ const Example = () => {
               setIsAnonymous={setIsAnonymous}
             />
 
-            {!isAnonymous ? <DonatorNameInput /> : null}
+            {!isAnonymous ? (
+              <DonatorNameInput setDonatorName={setDonatorName} />
+            ) : null}
 
             <label htmlFor="voice">TTS Voice</label>
             <select
@@ -55,7 +62,11 @@ const Example = () => {
               name="voice"
               value={voiceIndex || ""}
               onChange={(event) => {
-                setVoiceIndex(event.target.value);
+                setVoiceIndex(
+                  event.target.value
+                  // if i need the text string this is how. for now we will use the index number
+                  /* event.target.options[event.target.selectedIndex].text */
+                );
               }}
             >
               <option value="">Default</option>
@@ -88,6 +99,31 @@ const Example = () => {
             <Row>
               <GooglePayButton donationAmount={donationAmount} />
             </Row>
+            <Row>
+              <button
+                type="button"
+                onClick={() => {
+                  // axios post to server with text, voice, and amount
+                  axios
+                    .post("/powerding", {
+                      text,
+                      voice: voiceIndex,
+                      donationAmount,
+                      isAnonymous,
+                      streamer,
+                      donatorName,
+                    })
+                    .then((response) => {
+                      console.log(response);
+                    })
+                    .catch((error) => {
+                      console.log(error);
+                    });
+                }}
+              >
+                SUMBIT POWERDING
+              </button>
+            </Row>
             {/*   {speaking ? (
               <button type="button" onClick={cancel}>
                 Stop
@@ -107,4 +143,4 @@ const Example = () => {
   );
 };
 
-export default Example;
+export default TTS_Submission_Form;

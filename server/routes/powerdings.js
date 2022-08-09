@@ -2,11 +2,15 @@ const express = require("express");
 const router = express.Router();
 const PowerDings = require("../database/models/powerdings");
 
-// @route   GET api/powerdings
-// @desc    Get all powerdings
-// @access  Public
-router.get("/powerdings", (req, res) => {
-  PowerDings.find()
+router.get("/", (req, res) => {
+  console.log("powerding route hit");
+});
+
+router.post("/", (req, res) => {
+  // get all powerdings with streamer name
+  console.log("powerding POST route hit");
+  console.log(req.body);
+  PowerDings.find({ streamer: req.params.streamer })
     .sort({ date: -1 })
     .then((powerdings) => res.json(powerdings));
 });
