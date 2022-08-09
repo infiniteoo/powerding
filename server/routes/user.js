@@ -154,7 +154,13 @@ router.post(
 
 router.get("/streamer/:streamer", (req, res) => {
   console.log("streamer route hit");
-  res.send("streamer route hit");
+  User.findOne({ username: req.params.streamer }, (err, user) => {
+    if (err) {
+      console.log(err);
+    } else {
+      res.json(user);
+    }
+  }).select("username accessLevel");
 });
 
 router.get("/", (req, res, next) => {

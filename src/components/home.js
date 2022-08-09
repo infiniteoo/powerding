@@ -17,12 +17,13 @@ const Home = (props) => {
   // if yes, render TTS_Submission_Form component
 
   axios.get(`/user/streamer/${streamer}`).then((res) => {
-    if (res.data.length === 0) {
+    /* if (res.data.length === 0) {
       console.log("no streamer found in database");
     } else {
       console.log("res.data", res.data);
       return <TTS_Submission_Form />;
-    }
+    } */
+    console.log("res.data", res.data);
   });
 
   return (
