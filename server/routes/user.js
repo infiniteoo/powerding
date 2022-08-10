@@ -9,7 +9,7 @@ const emailMsgs = require("../email/email.msgs");
 
 router.post("/", (req, res) => {
   console.log("user signup");
- 
+
   const { username, password, email, organization, streamer } = req.body;
 
   // ADD VALIDATION
@@ -179,10 +179,13 @@ router.get("/", (req, res, next) => {
 
 router.post("/logout", (req, res) => {
   if (req.user) {
-    req.logout();
-    res.send({ msg: "logging out" });
-  } else {
-    res.send({ msg: "no user to log out" });
+    req.logout((err) => {
+      if (err) {
+        res.status(500).send(err);
+      } else {
+        res.status(200).send("logout successful");
+      }
+    });
   }
 });
 
