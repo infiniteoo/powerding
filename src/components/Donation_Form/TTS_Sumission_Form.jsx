@@ -30,13 +30,6 @@ const TTS_Submission_Form = ({ streamer }) => {
 
   const voice = voices[voiceIndex] || null;
 
-  const styleFlexRow = { display: "flex", flexDirection: "row" };
-  const styleContainerRatePitch = {
-    display: "flex",
-    flexDirection: "column",
-    marginBottom: 12,
-  };
-
   return (
     <Container>
       <form style={{ width: "100%" }}>

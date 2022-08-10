@@ -1,13 +1,14 @@
-import React, { Component, useState } from "react";
+import React, { Component } from "react";
 import axios from "axios";
-import { Route, Link } from "react-router-dom";
+import { Route } from "react-router-dom";
 
 // components
 
 import SignUp from "./components/SignUp";
 import LoginForm from "./components/login-form";
 import Navbar from "./components/navbar";
-import Home from "./components/home";
+import SplashPage from "./components/SplashPage";
+import StreamerHomePage from "./components/StreamerHomePage";
 import Dashboard from "./components/dashboard";
 import Admin from "./components/admin";
 
@@ -98,7 +99,7 @@ class App extends Component {
                       state={this.state}
                     />
                   )
-                : () => <Home />
+                : () => <SplashPage />
             }
           />
           <Route
@@ -120,7 +121,7 @@ class App extends Component {
                       state={this.state}
                     />
                   )
-                : () => <Home />
+                : () => <SplashPage />
             }
           />
           <Route
@@ -129,7 +130,7 @@ class App extends Component {
           />
           <Route path="/signup" render={() => <SignUp />} />
 
-          <Route path="/u/:streamer" component={Home} />
+          <Route path="/u/:streamer" component={StreamerHomePage} />
         </div>
       </React.Fragment>
     );

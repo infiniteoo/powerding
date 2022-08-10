@@ -1,10 +1,10 @@
 import React from "react";
-import TTS_Submission_Form from "./Donation_Form/TTS_Sumission_Form";
+import TTSSubmissionForm from "./Donation_Form/TTS_Sumission_Form";
 import { GlobalStyles } from "./Donation_Form/shared";
 import amfmfxLogo from "../assets/amfmfx.com text logo.png";
 import axios from "axios";
 
-const Home = (props) => {
+const StreamerHome = (props) => {
   console.log("home props", props);
   let streamer;
 
@@ -30,7 +30,7 @@ const Home = (props) => {
     <div width="100%">
       <div className="homeSplash">
         <img src={amfmfxLogo} alt="" />
-        <TTS_Submission_Form streamer={streamer} />
+        <TTSSubmissionForm streamer={streamer} />
       </div>
 
       <div>
@@ -40,4 +40,4 @@ const Home = (props) => {
   );
 };
 
-export default Home;
+export default StreamerHome;

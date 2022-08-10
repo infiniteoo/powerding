@@ -2,9 +2,7 @@ import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
 import axios from "axios";
 import amfmfxLogo from "../assets/amfmfx.com text logo.png";
-import { ThumbUpSharp } from "@mui/icons-material";
 import ErrorSnackbar from "./Snackbar";
-import { responsiveFontSizes } from "@material-ui/core";
 
 class LoginForm extends Component {
   constructor() {
