@@ -7,10 +7,10 @@ const { CLIENT_ORIGIN } = require("../config");
 // (eg. unsubscribe) in the future.
 module.exports = {
   confirm: (id) => ({
-    subject: "Welcome to AMFMFX.com!  Please Verify Your Email Address",
+    subject: "Welcome to PowerDing.com!  Please Verify Your Email Address",
     html: `
       <img src="cid:bruce@brucethecat.ee"/><br/></br>
-      Thank you for signing up for AMFMFX.com!  To access your account, you must first verify your email address by clicking 
+      Thank you for signing up for PowerDing.com!  To access your account, you must first verify your email address by clicking 
       <a href='${CLIENT_ORIGIN}/email/confirm/${id}'>
         this link
       </a>.
@@ -18,8 +18,8 @@ module.exports = {
     text: `Copy and paste this link: ${CLIENT_ORIGIN}/email/confirm/${id}`,
     attachments: [
       {
-        filename: "amfmfx.com text logo.png",
-        path: "./server/email/amfmfx.com text logo.png",
+        filename: "powerding.png",
+        path: "./server/email/powerding.png",
         cid: "bruce@brucethecat.ee",
       },
     ],
