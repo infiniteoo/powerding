@@ -33,7 +33,7 @@ const PayButton = ({ donationAmount }) => {
           ],
           merchantInfo: {
             merchantId: process.env.REACT_APP_MERCHANT_ID,
-            merchantName: "Demo Merchant",
+            merchantName: "PowerDing",
           },
           transactionInfo: {
             totalPriceStatus: "FINAL",

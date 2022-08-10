@@ -14,7 +14,7 @@ const TTS_Submission_Form = ({ streamer }) => {
   const [text, setText] = useState("");
   const [voiceIndex, setVoiceIndex] = useState(null);
   const [charsRemaining, setCharsRemaining] = useState(250);
-  const [donationAmount, setDonationAmount] = useState("");
+  const [donationAmount, setDonationAmount] = useState("0.00");
   const [isAnonymous, setIsAnonymous] = useState(true);
   const [donatorName, setDonatorName] = useState("");
   const [mediaLink, setMediaLink] = useState("");
