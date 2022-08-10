@@ -1,6 +1,6 @@
 import React from "react";
-import TTS_Submission_Form from "./TTS_Sumission_Form";
-import { GlobalStyles } from "./shared";
+import TTS_Submission_Form from "./Donation_Form/TTS_Sumission_Form";
+import { GlobalStyles } from "./Donation_Form/shared";
 import amfmfxLogo from "../assets/amfmfx.com text logo.png";
 import axios from "axios";
 

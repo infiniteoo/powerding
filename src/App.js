@@ -128,7 +128,8 @@ class App extends Component {
             render={() => <LoginForm updateUser={this.updateUser} />}
           />
           <Route path="/signup" render={() => <SignUp />} />
-          <Route path="/:streamer" component={Home} />
+
+          <Route path="/u/:streamer" component={Home} />
         </div>
       </React.Fragment>
     );
