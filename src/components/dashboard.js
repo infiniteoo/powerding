@@ -19,10 +19,10 @@ const Dashboard = (props) => {
         <div className="homeSplash">
           <div>
             <h1>account information</h1>
-
-            <h5 style={{ color: "#EA39B8" }}>Access Level:&nbsp;</h5>
-            <p style={{ color: "white" }}>{accessLevel}</p>
-
+            <h5 style={{ color: "#EA39B8" }}>
+              Username:&nbsp;
+              <p style={{ color: "white" }}>{username}</p>
+            </h5>
             <h5 style={{ color: "#EA39B8" }}>
               Email Address:&nbsp;
               <p style={{ color: "white" }}>{email}</p>
@@ -31,10 +31,12 @@ const Dashboard = (props) => {
               Last Login: &nbsp;
               <p style={{ color: "white" }}>{formattedDate}</p>
             </h5>
+
             <h5 style={{ color: "#EA39B8" }}>
-              Username:&nbsp;
-              <p style={{ color: "white" }}>{username}</p>
+              Access Level:&nbsp;
+              <p style={{ color: "white" }}>{accessLevel}</p>
             </h5>
+
             <h5 style={{ color: "#EA39B8" }}>
               Confirmed:&nbsp;
               <p style={{ color: "white" }}>{String(confirmed)}</p>
