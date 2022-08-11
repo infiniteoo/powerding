@@ -5,12 +5,10 @@ import Typography from "@mui/material/Typography";
 import { Link } from "react-router-dom";
 
 export default function PopOver(props) {
-  
   const [anchorEl, setAnchorEl] = React.useState(null);
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
-    
   };
 
   const handleClose = () => {
@@ -41,11 +39,11 @@ export default function PopOver(props) {
             ? "Not logged in"
             : `Username: ${props.userInfo.username}`}
         </Typography>
-        <Typography sx={{ p: 2 }}>
+        {/*  <Typography sx={{ p: 2 }}>
           {props.userInfo.downloadsRemaining === null
             ? ""
             : `Downloads Remaining: ${props.userInfo.downloadsRemaining}`}
-        </Typography>
+        </Typography> */}
         <div className="logout-button-div">
           <button
             onClick={props.logout}
