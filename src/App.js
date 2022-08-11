@@ -54,6 +54,7 @@ class App extends Component {
           lastLogin: response.data.user.lastLogin,
           email: response.data.user.email,
           confirmed: response.data.user.confirmed,
+          streamer: response.data.user.streamer,
         });
       } else {
         console.log("Get user: no user");
@@ -66,6 +67,7 @@ class App extends Component {
           lastLogin: null,
           email: null,
           confirmed: false,
+          streamer: false,
         });
       }
     });
@@ -92,7 +94,7 @@ class App extends Component {
             exact
             path="/"
             render={
-              this.state.loggedIn && this.state.confirmed
+              this.state.loggedIn
                 ? () => (
                     <Dashboard
                       updateUser={this.updateUser}
@@ -102,6 +104,21 @@ class App extends Component {
                 : () => <SplashPage />
             }
           />
+          <Route
+            exact
+            path="/dashboard"
+            render={
+              this.state.loggedIn
+                ? () => (
+                    <Dashboard
+                      updateUser={this.updateUser}
+                      state={this.state}
+                    />
+                  )
+                : () => <SplashPage />
+            }
+          />
+
           <Route
             exact
             path="/admin"

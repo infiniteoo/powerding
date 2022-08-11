@@ -4,7 +4,8 @@ import axios from "axios";
 
 const Dashboard = (props) => {
   console.log("dashboard props", props);
-  const { email, accessLevel, username, lastLogin, confirmed } = props.state;
+  const { email, accessLevel, username, lastLogin, confirmed, streamer } =
+    props.state;
   let dateToConvert = new Date(lastLogin);
   let formattedDate =
     parseInt(dateToConvert.getMonth() + 1) +
@@ -38,7 +39,13 @@ const Dashboard = (props) => {
               Confirmed:&nbsp;
               <p style={{ color: "white" }}>{String(confirmed)}</p>
             </h5>
+            <h5 style={{ color: "#EA39B8" }}>
+              Streamer Account:&nbsp;
+              <p style={{ color: "white" }}>{String(streamer)}</p>
+            </h5>
           </div>
+
+          <button>Change Password</button>
         </div>
       </div>
     </div>
