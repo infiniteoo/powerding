@@ -48,9 +48,9 @@ const Dashboard = (props) => {
             <h5 style={{ color: "#EA39B8" }}>
               Change Password:&nbsp;
               <p style={{ color: "white" }}>Current Password:</p>
-              <input type="text" />
+              <input type="password" id="currentPassword" />
               <p style={{ color: "white" }}>New Password:</p>
-              <input type="text" />
+              <input type="password" id="newPassword" />
             </h5>
           </div>
 
