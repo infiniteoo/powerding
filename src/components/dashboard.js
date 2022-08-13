@@ -45,6 +45,13 @@ const Dashboard = (props) => {
               Streamer Account:&nbsp;
               <p style={{ color: "white" }}>{String(streamer)}</p>
             </h5>
+            <h5 style={{ color: "#EA39B8" }}>
+              Change Password:&nbsp;
+              <p style={{ color: "white" }}>Current Password:</p>
+              <input type="text" />
+              <p style={{ color: "white" }}>New Password:</p>
+              <input type="text" />
+            </h5>
           </div>
 
           <button>Change Password</button>
