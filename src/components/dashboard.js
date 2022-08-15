@@ -1,8 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 
 import axios from "axios";
 
 const Dashboard = (props) => {
+  const [submittedPassword, setSubmittedPassword] = useState("");
+  const [submittedNewPassword, setSubmittedNewPassword] = useState("");
+  const [submittedConfirmPassword, setSubmittedConfirmPassword] = useState("");
+
   console.log("dashboard props", props);
   const { email, accessLevel, username, lastLogin, confirmed, streamer } =
     props.state;
@@ -48,13 +52,51 @@ const Dashboard = (props) => {
             <h5 style={{ color: "#EA39B8" }}>
               Change Password:&nbsp;
               <p style={{ color: "white" }}>Current Password:</p>
-              <input type="password" id="currentPassword" />
+              <input
+                type="password"
+                id="currentPassword"
+                value={submittedPassword}
+                onChange={(e) => setSubmittedPassword(e.target.value)}
+              />
               <p style={{ color: "white" }}>New Password:</p>
-              <input type="password" id="newPassword" />
+              <input
+                type="password"
+                id="newPassword"
+                value={submittedNewPassword}
+                onChange={(e) => setSubmittedNewPassword(e.target.value)}
+              />
+              <p style={{ color: "white" }}>Confirm New Password:</p>
+              <input
+                type="password"
+                id="confirmedNewPassword"
+                value={submittedConfirmPassword}
+                onChange={(e) => setSubmittedConfirmPassword(e.target.value)}
+              />
             </h5>
           </div>
 
-          <button>Change Password</button>
+          <button
+            onClick={() => {
+              console.log("submittedPassword", submittedPassword);
+              console.log("submittedNewPassword", submittedNewPassword);
+              console.log("submittedConfirmPassword", submittedConfirmPassword);
+
+              axios
+                .post("/user/changePassword", {
+                  submittedPassword,
+                  submittedNewPassword,
+                  submittedConfirmPassword,
+                })
+                .then((res) => {
+                  console.log(res);
+                })
+                .catch((err) => {
+                  console.log(err);
+                });
+            }}
+          >
+            Change Password
+          </button>
         </div>
       </div>
     </div>
