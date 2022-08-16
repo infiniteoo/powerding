@@ -75,19 +75,25 @@ const Dashboard = (props) => {
               console.log("submittedNewPassword", submittedNewPassword);
               console.log("submittedConfirmPassword", submittedConfirmPassword);
 
-              axios
-                .post("/user/change-password", {
-                  password: submittedPassword,
-                  submittedNewPassword,
-                  submittedConfirmPassword,
-                  email,
-                })
-                .then((res) => {
-                  console.log(res);
-                })
-                .catch((err) => {
-                  console.log(err);
-                });
+              if (submittedNewPassword === submittedConfirmPassword) {
+                axios
+                  .post("/user/change-password", {
+                    password: submittedPassword,
+                    submittedNewPassword,
+                    submittedConfirmPassword,
+                    email,
+                  })
+                  .then((res) => {
+                    console.log(res);
+                  })
+                  .catch((err) => {
+                    // change to snackbar msg
+                    console.log("current password not correct");
+                  });
+              } else {
+                // change to snackbar msg
+                alert("new passwords do not match");
+              }
             }}
           >
             Change Password
