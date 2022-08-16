@@ -76,10 +76,11 @@ const Dashboard = (props) => {
               console.log("submittedConfirmPassword", submittedConfirmPassword);
 
               axios
-                .post("/user/changePassword", {
-                  submittedPassword,
+                .post("/user/change-password", {
+                  password: submittedPassword,
                   submittedNewPassword,
                   submittedConfirmPassword,
+                  email,
                 })
                 .then((res) => {
                   console.log(res);

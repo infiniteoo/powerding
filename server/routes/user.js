@@ -189,4 +189,83 @@ router.post("/logout", (req, res) => {
   }
 });
 
+// change password route
+
+/* User.findOne(
+  { email: req.body.email },
+
+  (err, user) => {
+    if (err) {
+      console.log(err);
+      res.json(err);
+    } else {
+      console.log("user: ", user);
+
+      if (user.password === req.body.submittedPassword) {
+        User.findOneAndUpdate(
+          { _id: req.body.userId },
+          { $set: { password: req.body.submittedNewPassword } },
+          { new: true },
+          function (err, user) {
+            if (err) {
+              console.log(err);
+            } else {
+              console.log("password changed");
+              res.json(user);
+            }
+          }
+        );
+      } else {
+        console.log("old password does not match");
+        res.json({ msg: "old password does not match" });
+      }
+    }
+  }
+).catch((err) => console.log(err)); */
+
+router.post(
+  "/change-password",
+  function (req, res, next) {
+    console.log("routes/user.js, change-password, req.body: ");
+    /* console.log(req.body); */
+    next();
+  },
+  passport.authenticate("local"),
+  (req, res) => {
+    // update lastLogin date in database
+    console.log("req", req.body);
+    User.findOne(
+      { email: req.body.email },
+
+      (err, user) => {
+        if (err) {
+          console.log(err);
+          res.json(err);
+        } else {
+          console.log("user: ", user);
+
+          if (user) {
+            User.findOneAndUpdate(
+              { _id: user._id },
+              { $set: { password: req.body.submittedNewPassword } },
+              { new: true },
+              function (err, user) {
+                if (err) {
+                  console.log(err);
+                } else {
+                  console.log("password changed");
+                  res.json(user);
+                }
+              }
+            );
+          } else {
+            console.log("old password does not match");
+            res.json({ msg: "old password does not match" });
+          }
+        }
+      }
+    ).catch((err) => console.log(err));
+  }
+);
+
 module.exports = router;
