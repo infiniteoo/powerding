@@ -24,6 +24,7 @@ class Navbar extends Component {
             username: null,
             downloadsRemainng: null,
             accessLevel: null,
+            confirmed: null,
           });
         }
       })

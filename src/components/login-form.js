@@ -50,6 +50,7 @@ class LoginForm extends Component {
             lastLogin: response.data.lastLogin,
             previousLogin: response.data.previousLogin,
             email: response.data.email,
+            confirmed: response.data.confirmed,
           });
 
           // update the state to redirect to home

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import { Label, Paragraph } from "./Dashboard.styled";
+import { AccountLabel, AccountInfo } from "./Dashboard.styled";
 
 import axios from "axios";
 
@@ -25,56 +25,48 @@ const Dashboard = (props) => {
         <div className="homeSplash">
           <div>
             <h1>account information</h1>
-            <Label>
-              Username:&nbsp;
-              <Paragraph>{username}</Paragraph>
-            </Label>
-            <Label>
-              Email Address:&nbsp;
-              <Paragraph>{email}</Paragraph>
-            </Label>
-            <Label>
-              Last Login: &nbsp;
-              <Paragraph>{formattedDate}</Paragraph>
-            </Label>
+            <AccountLabel>Username:</AccountLabel>
+            <AccountInfo> {username}</AccountInfo>
 
-            <Label>
-              Access Level:&nbsp;
-              <Paragraph>{accessLevel}</Paragraph>
-            </Label>
+            <AccountLabel>Email Address:</AccountLabel>
+            <AccountInfo>{email}</AccountInfo>
 
-            <Label>
-              Confirmed:&nbsp;
-              <Paragraph>{String(confirmed)}</Paragraph>
-            </Label>
-            <Label>
-              Streamer Account:&nbsp;
-              <Paragraph>{String(streamer)}</Paragraph>
-            </Label>
-            <Label>
-              Change Password:&nbsp;
-              <Paragraph>Current Password:</Paragraph>
+            <AccountLabel>Last Login:</AccountLabel>
+            <AccountInfo>{formattedDate}</AccountInfo>
+
+            <AccountLabel>Access Level:</AccountLabel>
+            <AccountInfo>{accessLevel}</AccountInfo>
+
+            <AccountLabel>Confirmed: </AccountLabel>
+            <AccountInfo>{String(confirmed)}</AccountInfo>
+
+            <AccountLabel>Streamer Account:</AccountLabel>
+            <AccountInfo>{String(streamer)}</AccountInfo>
+
+            <AccountLabel>
+              <h3>update password</h3>
+              <AccountInfo>Current Password:</AccountInfo>
               <input
                 type="password"
                 id="currentPassword"
                 value={submittedPassword}
                 onChange={(e) => setSubmittedPassword(e.target.value)}
               />
-              <Paragraph>New Password:</Paragraph>
+              <AccountInfo>New Password:</AccountInfo>
               <input
                 type="password"
                 id="newPassword"
                 value={submittedNewPassword}
                 onChange={(e) => setSubmittedNewPassword(e.target.value)}
               />
-              <Paragraph>Confirm New Password:</Paragraph>
+              <AccountInfo>Confirm New Password:</AccountInfo>
               <input
                 type="password"
                 id="confirmedNewPassword"
                 value={submittedConfirmPassword}
                 onChange={(e) => setSubmittedConfirmPassword(e.target.value)}
               />
-            </Label>
+            </AccountLabel>
           </div>
 
           <button
