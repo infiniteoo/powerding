@@ -38,43 +38,43 @@ const Dashboard = (props) => {
               <Paragraph>{formattedDate}</Paragraph>
             </Label>
 
-            <h5 style={{ color: "#EA39B8" }}>
+            <Label>
               Access Level:&nbsp;
-              <p style={{ color: "white" }}>{accessLevel}</p>
-            </h5>
+              <Paragraph>{accessLevel}</Paragraph>
+            </Label>
 
-            <h5 style={{ color: "#EA39B8" }}>
+            <Label>
               Confirmed:&nbsp;
-              <p style={{ color: "white" }}>{String(confirmed)}</p>
-            </h5>
-            <h5 style={{ color: "#EA39B8" }}>
+              <Paragraph>{String(confirmed)}</Paragraph>
+            </Label>
+            <Label>
               Streamer Account:&nbsp;
-              <p style={{ color: "white" }}>{String(streamer)}</p>
-            </h5>
-            <h5 style={{ color: "#EA39B8" }}>
+              <Paragraph>{String(streamer)}</Paragraph>
+            </Label>
+            <Label>
               Change Password:&nbsp;
-              <p style={{ color: "white" }}>Current Password:</p>
+              <Paragraph>Current Password:</Paragraph>
               <input
                 type="password"
                 id="currentPassword"
                 value={submittedPassword}
                 onChange={(e) => setSubmittedPassword(e.target.value)}
               />
-              <p style={{ color: "white" }}>New Password:</p>
+              <Paragraph>New Password:</Paragraph>
               <input
                 type="password"
                 id="newPassword"
                 value={submittedNewPassword}
                 onChange={(e) => setSubmittedNewPassword(e.target.value)}
               />
-              <p style={{ color: "white" }}>Confirm New Password:</p>
+              <Paragraph>Confirm New Password:</Paragraph>
               <input
                 type="password"
                 id="confirmedNewPassword"
                 value={submittedConfirmPassword}
                 onChange={(e) => setSubmittedConfirmPassword(e.target.value)}
               />
-            </h5>
+            </Label>
           </div>
 
           <button
