@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 
+import { Label, Paragraph } from "./Dashboard.styled";
+
 import axios from "axios";
 
 const Dashboard = (props) => {
@@ -23,18 +25,18 @@ const Dashboard = (props) => {
         <div className="homeSplash">
           <div>
             <h1>account information</h1>
-            <h5 style={{ color: "#EA39B8" }}>
+            <Label>
               Username:&nbsp;
-              <p style={{ color: "white" }}>{username}</p>
-            </h5>
-            <h5 style={{ color: "#EA39B8" }}>
+              <Paragraph>{username}</Paragraph>
+            </Label>
+            <Label>
               Email Address:&nbsp;
-              <p style={{ color: "white" }}>{email}</p>
-            </h5>
-            <h5 style={{ color: "#EA39B8" }}>
+              <Paragraph>{email}</Paragraph>
+            </Label>
+            <Label>
               Last Login: &nbsp;
-              <p style={{ color: "white" }}>{formattedDate}</p>
-            </h5>
+              <Paragraph>{formattedDate}</Paragraph>
+            </Label>
 
             <h5 style={{ color: "#EA39B8" }}>
               Access Level:&nbsp;
