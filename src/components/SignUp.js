@@ -12,6 +12,8 @@ const SignUp = () => {
     successfulSignUp: "false",
     organization: "",
     applyForStreamer: false,
+    snackbarSeverity: "error",
+    alertMsg: "",
   });
 
   console.log(state);
@@ -22,8 +24,27 @@ const SignUp = () => {
     setState({ ...state, [event.target.name]: event.target.value });
   };
 
+  const isValidEmail = (email) => {
+    //return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    return /\S+@\S+\.\S+/.test(email);
+  };
+
   const handleSubmit = (event) => {
     event.preventDefault();
+
+    // ensure username is a correct email format
+    if (!isValidEmail(state.email)) {
+      console.log("invalid email format");
+      setState({ ...state, successfulSignUp: "false" });
+      setCloseSnackbar(true);
+      setState({
+        ...state,
+        alertMsg: "Please enter a valid email address",
+        snackbarSeverity: "error",
+      });
+
+      return;
+    }
 
     //request to server to add a new username/password
     axios
@@ -41,11 +62,18 @@ const SignUp = () => {
           setState({
             ...state,
             //redirect to login page
+
             successfulSignUp: "true",
           });
         } else {
           console.log("username already taken");
           // display error ErrorSnackbar
+          setState({
+            ...state,
+            successfulSignUp: "false",
+            alertMsg: "Email address already registered, please try again.",
+            snackbarSeverity: "error",
+          });
 
           setCloseSnackbar(true);
         }
@@ -161,7 +189,8 @@ const SignUp = () => {
       {closeSnackbar ? (
         <ErrorSnackbar
           closeSnackbar={setCloseSnackbar}
-          alertMsg="Email address already registered, please try again."
+          alertMsg={state.alertMsg}
+          severity={state.snackbarSeverity}
         />
       ) : null}
     </div>
