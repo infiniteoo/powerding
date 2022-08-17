@@ -1,6 +1,4 @@
 import * as React from "react";
-/* import Stack from "@mui/material/Stack"; */
-
 import Snackbar from "@mui/material/Snackbar";
 import MuiAlert from "@mui/material/Alert";
 
@@ -31,10 +29,13 @@ export default function CustomizedSnackbars(props) {
       onClose={handleClose}
       anchorOrigin={{ vertical, horizontal }}
     >
-      <Alert onClose={handleClose} severity="error" sx={{ width: "100%" }}>
+      <Alert
+        onClose={handleClose}
+        severity={props.severity || "error"}
+        sx={{ width: "100%" }}
+      >
         {props.alertMsg}
       </Alert>
     </Snackbar>
-    
   );
 }

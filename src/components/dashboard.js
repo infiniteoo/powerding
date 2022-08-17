@@ -1,13 +1,15 @@
 import React, { useState } from "react";
-
+import ErrorSnackbar from "./Snackbar";
 import { AccountLabel, AccountInfo } from "./Dashboard.styled";
-
 import axios from "axios";
 
 const Dashboard = (props) => {
   const [submittedPassword, setSubmittedPassword] = useState("");
   const [submittedNewPassword, setSubmittedNewPassword] = useState("");
   const [submittedConfirmPassword, setSubmittedConfirmPassword] = useState("");
+  const [snackbarClose, setSnackbarClose] = useState(false);
+  const [alertMsg, setAlertMsg] = useState("");
+  const [snackbarSeverity, setSnackbarSeverity] = useState("error");
 
   console.log("dashboard props", props);
   const { email, accessLevel, username, lastLogin, confirmed, streamer } =
@@ -19,6 +21,10 @@ const Dashboard = (props) => {
     dateToConvert.getDate() +
     "/" +
     dateToConvert.getFullYear();
+
+  const handleSnackbarClose = () => {
+    setSnackbarClose(false);
+  };
   return (
     <div>
       <div className="dashboard_container">
@@ -85,19 +91,35 @@ const Dashboard = (props) => {
                   })
                   .then((res) => {
                     console.log(res);
+                    setSnackbarSeverity("success");
+                    setAlertMsg("Password updated successfully.");
+                    setSnackbarClose(true);
                   })
                   .catch((err) => {
-                    // change to snackbar msg
-                    console.log("current password not correct");
+                    setSnackbarSeverity("error");
+                    setAlertMsg("Current password not correct.");
+                    setSnackbarClose(true);
                   });
               } else {
-                // change to snackbar msg
-                alert("new passwords do not match");
+                setSnackbarSeverity("error");
+                setAlertMsg("New passwords do not match.");
+                setSnackbarClose(true);
               }
+
+              setSubmittedPassword("");
+              setSubmittedNewPassword("");
+              setSubmittedConfirmPassword("");
             }}
           >
             Change Password
           </button>
+          {snackbarClose ? (
+            <ErrorSnackbar
+              severity={snackbarSeverity}
+              closeSnackbar={handleSnackbarClose}
+              alertMsg={alertMsg}
+            />
+          ) : null}
         </div>
       </div>
     </div>
