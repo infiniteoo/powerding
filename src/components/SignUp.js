@@ -25,8 +25,8 @@ const SignUp = () => {
   };
 
   const isValidEmail = (email) => {
-    //return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-    return /\S+@\S+\.\S+/.test(email);
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    // return /\S+@\S+\.\S+/.test(email);
   };
 
   const handleSubmit = (event) => {

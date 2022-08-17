@@ -11,6 +11,7 @@ import SplashPage from "./components/SplashPage";
 import StreamerHomePage from "./components/StreamerHomePage";
 import Dashboard from "./components/dashboard";
 import Admin from "./components/admin";
+import StreamerAdmin from "./components/StreamerAdmin/StreamerAdmin";
 
 class App extends Component {
   constructor() {
@@ -25,6 +26,7 @@ class App extends Component {
       previousLogin: null,
       confirmed: false,
       streamerName: null,
+      streamer: null,
     };
 
     this.getUser = this.getUser.bind(this);
@@ -123,11 +125,12 @@ class App extends Component {
             exact
             path="/admin"
             render={
-              this.state.loggedIn &&
-              this.state.accessLevel > 4 &&
-              this.state.confirmed
+              this.state.loggedIn && this.state.streamer && this.state.confirmed
                 ? () => (
-                    <Admin updateUser={this.updateUser} state={this.state} />
+                    <StreamerAdmin
+                      updateUser={this.updateUser}
+                      state={this.state}
+                    />
                   )
                 : this.state.loggedIn &&
                   this.state.accessLevel < 4 &&
