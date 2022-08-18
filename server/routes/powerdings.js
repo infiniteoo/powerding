@@ -4,7 +4,8 @@ const PowerDings = require("../database/models/powerdings");
 
 router.get("/", (req, res) => {
   console.log("powerding route hit");
-  PowerDings.find({ streamer: req.params.streamer })
+  console.log(req.query.streamerName);
+  PowerDings.find({ streamer: req.query.streamerName })
     .sort({ date: -1 })
     .then((powerdings) => res.json(powerdings));
 });
