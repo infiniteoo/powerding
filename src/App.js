@@ -23,9 +23,7 @@ class App extends Component {
       downloadsRemaining: null,
       userId: null,
       lastLogin: null,
-      previousLogin: null,
       confirmed: false,
-      streamerName: null,
       streamer: null,
     };
 
@@ -45,7 +43,10 @@ class App extends Component {
   getUser() {
     axios.get("/user/").then((response) => {
       if (response.data.user) {
-        console.log("Get User: There is a user saved in the server session: ");
+        console.log(
+          "Get User: There is a user saved in the server session: ",
+          response.data.user
+        );
 
         this.setState({
           loggedIn: true,
@@ -59,7 +60,7 @@ class App extends Component {
           streamer: response.data.user.streamer,
         });
       } else {
-        console.log("Get user: no user");
+        console.log("Get user: no user, state", this.state);
         this.setState({
           loggedIn: false,
           username: null,
@@ -129,7 +130,7 @@ class App extends Component {
                 ? () => (
                     <StreamerAdmin
                       updateUser={this.updateUser}
-                      state={this.state}
+                      userInfo={this.state}
                     />
                   )
                 : this.state.loggedIn &&

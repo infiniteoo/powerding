@@ -4,7 +4,7 @@ import amfmfxLogo from "../assets/amfmfx.com text logo.png";
 import axios from "axios";
 
 const Home = (props) => {
-  console.log("home props", props);
+  /* console.log("home props", props); */
   let streamer;
 
   props.match
@@ -22,7 +22,7 @@ const Home = (props) => {
       console.log("res.data", res.data);
       return <TTS_Submission_Form />;
     } */
-    console.log("res.data", res.data);
+    /* console.log("res.data", res.data); */
   });
 
   return (

@@ -51,6 +51,7 @@ class LoginForm extends Component {
             previousLogin: response.data.previousLogin,
             email: response.data.email,
             confirmed: response.data.confirmed,
+            streamer: response.data.streamer,
           });
 
           // update the state to redirect to home

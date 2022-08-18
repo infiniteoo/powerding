@@ -22,9 +22,10 @@ class Navbar extends Component {
           this.props.updateUser({
             loggedIn: false,
             username: null,
-            downloadsRemainng: null,
+            downloadsRemaining: null,
             accessLevel: null,
             confirmed: null,
+            streamer: null,
           });
         }
       })
