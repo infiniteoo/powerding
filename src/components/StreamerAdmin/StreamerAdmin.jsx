@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { useSpeechSynthesis } from ".";
 
 const StreamerAdmin = ({ userInfo, updateUser, loggedIn }) => {
   useEffect(() => {
     getPowerdings();
   }, []);
+
+
 
   console.log("in streamer admin", userInfo);
 
@@ -12,6 +15,23 @@ const StreamerAdmin = ({ userInfo, updateUser, loggedIn }) => {
 
   const [powerdings, setPowerdings] = useState([]);
   const [streamerName, setStreamerName] = useState("");
+
+  const [text, setText] = useState("");
+  const [voiceIndex, setVoiceIndex] = useState(null);
+  const [charsRemaining, setCharsRemaining] = useState(250);
+  const [donationAmount, setDonationAmount] = useState("0.00");
+  const [isAnonymous, setIsAnonymous] = useState(true);
+  const [donatorName, setDonatorName] = useState("");
+  const [mediaLink, setMediaLink] = useState("");
+
+  const onEnd = () => {
+    // You could do something here after speaking has finished
+  };
+  const { speak, cancel, speaking, supported, voices } = useSpeechSynthesis({
+    onEnd,
+  });
+
+  const voice = voices[voiceIndex] || null;
 
   const getPowerdings = async () => {
     const res = await axios.get("/powerding", {
