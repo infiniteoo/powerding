@@ -46,24 +46,6 @@ router.post("/", (req, res) => {
   });
 });
 
-router.post("/deduct-dl", function (req, res) {
-  console.log("deduct-dl route hit");
-  /*  console.log("deduct-dl req.body: ", req.body); */
-  User.findOneAndUpdate(
-    { _id: req.body.userId },
-    { $inc: { downloadsRemaining: -1 } },
-    { new: true },
-    function (err, user) {
-      if (err) {
-        console.log(err);
-      } else {
-        res.json(user);
-      }
-    }
-  );
-  /* res.send("deduct-dl response"); */
-});
-
 router.post(
   "/login",
   function (req, res, next) {
@@ -98,43 +80,6 @@ router.post(
               }
             }
           );
-
-          // if user.lastLogin is greater than user.fifteenDayReset, reset downloadsRemaining to 5
-          if (user.lastLogin > user.fifteenDayReset) {
-            User.findOneAndUpdate(
-              { _id: req.user._id },
-              {
-                $set: {
-                  downloadsRemaining: user.downloadsRemaining + 5,
-                  fifteenDayReset: Date.now() + 1000 * 60 * 60 * 24 * 15,
-                },
-              },
-              { new: true },
-              function (err, user) {
-                if (err) {
-                  console.log(err);
-                } else {
-                  console.log("bi-monthly reset.  5 downloads added.");
-                }
-                /*  console.log("logged in ooga", req.user); */
-                var userInfo = {
-                  username: user.username,
-                  password: user.password,
-                  accessLevel: user.accessLevel,
-                  downloadsRemaining: user.downloadsRemaining,
-                  lastLogin: user.lastLogin,
-                  previousLogin: user.previousLogin,
-                  userId: user._id,
-                  email: user.email,
-                  confirmed: user.confirmed,
-                  streamer: user.streamer,
-                };
-                res.send(userInfo);
-              }
-            );
-          } else {
-            console.log("todays date is less than five day reset date");
-          }
         }
         console.log("logged in ooga", req.user);
         var userInfo = {
