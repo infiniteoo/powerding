@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { useSpeechSynthesis } from ".";
+/* import { useSpeechSynthesis } from "../."; */
 
 const StreamerAdmin = ({ userInfo, updateUser, loggedIn }) => {
   useEffect(() => {
     getPowerdings();
   }, []);
-
-
 
   console.log("in streamer admin", userInfo);
 
@@ -27,11 +25,11 @@ const StreamerAdmin = ({ userInfo, updateUser, loggedIn }) => {
   const onEnd = () => {
     // You could do something here after speaking has finished
   };
-  const { speak, cancel, speaking, supported, voices } = useSpeechSynthesis({
+  /* const { speak, cancel, speaking, supported, voices } = useSpeechSynthesis({
     onEnd,
-  });
+  }); */
 
-  const voice = voices[voiceIndex] || null;
+  /* const voice = voices[voiceIndex] || null; */
 
   const getPowerdings = async () => {
     const res = await axios.get("/powerding", {
@@ -47,9 +45,26 @@ const StreamerAdmin = ({ userInfo, updateUser, loggedIn }) => {
 
   return (
     <div className="dashboard_container">
-      <h1>STREAMER DASHBOARD</h1>
       <div className="homeSplash">
-        <h1>STREAMER DASHBOARD</h1>
+        {powerdings.map((powerding) => (
+          <div className="powerding">
+            <div className="powerding_header">
+              <div className="powerding_header_left">
+                <div className="powerding_header_left_name">
+                  {powerding.senderName}
+                  {powerding.message}
+                  {powerding.mediaLink}
+                  {powerding.dateEntered}
+                  {powerding.archived}
+                  {powerding.streamer}
+                  {powerding.ttsVoice}
+                  {powerding.amountPaid}
+                  {powerding.played}
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   );
