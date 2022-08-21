@@ -25,7 +25,7 @@ class Navbar extends Component {
             downloadsRemaining: null,
             accessLevel: null,
             confirmed: null,
-            streamer: null,
+            
           });
         }
       })

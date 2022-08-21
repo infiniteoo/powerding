@@ -11,7 +11,7 @@ const SignUp = () => {
     email: "",
     successfulSignUp: "false",
     organization: "",
-    applyForStreamer: false,
+    
     snackbarSeverity: "error",
     alertMsg: "",
   });
@@ -53,7 +53,6 @@ const SignUp = () => {
         password: state.password,
         email: state.email,
         organization: state.organization,
-        streamer: state.applyForStreamer,
       })
       .then((response) => {
         console.log(response.data.errmsg);
@@ -150,25 +149,6 @@ const SignUp = () => {
                 value={state.organization}
                 onChange={handleChange}
               />
-              <br></br>
-              <input
-                type="checkbox"
-                id="streamer"
-                name="streamer"
-                /* value={state.applyForStreamer} */
-                onChange={() => {
-                  setState({
-                    ...state,
-                    applyForStreamer: !state.applyForStreamer,
-                  });
-                  console.log(state.applyForStreamer);
-                }}
-              ></input>
-
-              <label for="streamer" style={{ marginLeft: "3px" }}>
-                {" "}
-                Sign Up as Streamer
-              </label>
               <br></br>
             </div>
 

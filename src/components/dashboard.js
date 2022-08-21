@@ -12,8 +12,7 @@ const Dashboard = (props) => {
   const [snackbarSeverity, setSnackbarSeverity] = useState("error");
 
   console.log("dashboard props", props);
-  const { email, accessLevel, username, lastLogin, confirmed, streamer } =
-    props.state;
+  const { email, accessLevel, username, lastLogin, confirmed } = props.state;
   let dateToConvert = new Date(lastLogin);
   let formattedDate =
     parseInt(dateToConvert.getMonth() + 1) +
@@ -45,9 +44,6 @@ const Dashboard = (props) => {
 
             <AccountLabel>Confirmed: </AccountLabel>
             <AccountInfo>{String(confirmed)}</AccountInfo>
-
-            <AccountLabel>Streamer Account:</AccountLabel>
-            <AccountInfo>{String(streamer)}</AccountInfo>
 
             <AccountLabel>
               <h3>update password</h3>

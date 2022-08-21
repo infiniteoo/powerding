@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const User = require("../database/models/user");
 const passport = require("../passport");
-const emailController = require("../email/email.controller");
+
 const sendEmail = require("../email/email.send");
 const templates = require("../email/email.templates");
 const emailMsgs = require("../email/email.msgs");
@@ -27,7 +27,7 @@ router.post("/", (req, res) => {
         password: password,
         accessLevel: 0,
         organization: organization,
-        streamer: streamer,
+       
         confirmed: false,
         downloadsRemaining: 5,
         lastLogin: Date.now(),
@@ -92,7 +92,7 @@ router.post(
           previousLogin: user.previousLogin,
           email: user.email,
           confirmed: user.confirmed,
-          streamer: user.streamer,
+       
         };
         res.send(userInfo);
       }

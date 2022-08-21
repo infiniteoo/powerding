@@ -13,7 +13,7 @@ const userSchema = new Schema({
   previousLogin: { type: Date, unique: false, required: false },
   fifteenDayReset: { type: Date, unique: false, required: false },
   confirmed: { type: Boolean, unique: false, required: false },
-  streamer: { type: Boolean, unique: false, required: false },
+
   email: { type: String, unique: true, required: false },
   organization: { type: String, unique: false, required: false },
 });

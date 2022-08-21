@@ -10,7 +10,6 @@ import Navbar from "./components/navbar";
 import SplashPage from "./components/SplashPage";
 import StreamerHomePage from "./components/StreamerHomePage";
 import Dashboard from "./components/dashboard";
-import Admin from "./components/admin";
 import StreamerAdmin from "./components/StreamerAdmin/StreamerAdmin";
 
 class App extends Component {
@@ -24,7 +23,7 @@ class App extends Component {
       userId: null,
       lastLogin: null,
       confirmed: false,
-      streamer: null,
+     
     };
 
     this.getUser = this.getUser.bind(this);
@@ -57,7 +56,7 @@ class App extends Component {
           lastLogin: response.data.user.lastLogin,
           email: response.data.user.email,
           confirmed: response.data.user.confirmed,
-          streamer: response.data.user.streamer,
+          
         });
       } else {
         console.log("Get user: no user, state", this.state);
@@ -70,7 +69,7 @@ class App extends Component {
           lastLogin: null,
           email: null,
           confirmed: false,
-          streamer: false,
+         
         });
       }
     });
@@ -126,7 +125,7 @@ class App extends Component {
             exact
             path="/admin"
             render={
-              this.state.loggedIn && this.state.streamer && this.state.confirmed
+              this.state.loggedIn && this.state.confirmed
                 ? () => (
                     <StreamerAdmin
                       updateUser={this.updateUser}
