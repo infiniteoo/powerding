@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { PowerDingContainer } from "./StreamerAdmin.styled";
 /* import { useSpeechSynthesis } from "../."; */
 
 const StreamerAdmin = ({ userInfo, updateUser, loggedIn }) => {
@@ -21,6 +22,33 @@ const StreamerAdmin = ({ userInfo, updateUser, loggedIn }) => {
   const [isAnonymous, setIsAnonymous] = useState(true);
   const [donatorName, setDonatorName] = useState("");
   const [mediaLink, setMediaLink] = useState("");
+
+  const convertDate = (dateCreated) => {
+    let dateToConvert = new Date(dateCreated);
+    let date =
+      parseInt(dateToConvert.getMonth() + 1) +
+      "/" +
+      dateToConvert.getDate() +
+      "/" +
+      dateToConvert.getFullYear();
+
+    return date;
+  };
+
+  const convertTime = (timeCreated) => {
+    let timeToConvert = new Date(timeCreated);
+    let amPm = timeToConvert.getHours() >= 12 ? "PM" : "AM";
+    let time =
+      timeToConvert.getHours() +
+      ":" +
+      timeToConvert.getMinutes() +
+      ":" +
+      timeToConvert.getSeconds() +
+      " " +
+      amPm;
+
+    return time;
+  };
 
   const onEnd = () => {
     // You could do something here after speaking has finished
@@ -47,23 +75,33 @@ const StreamerAdmin = ({ userInfo, updateUser, loggedIn }) => {
     <div className="dashboard_container">
       <div className="homeSplash">
         {powerdings.map((powerding) => (
-          <div className="powerding">
+          <PowerDingContainer key={powerding._id}>
             <div className="powerding_header">
               <div className="powerding_header_left">
                 <div className="powerding_header_left_name">
-                  {powerding.senderName}
-                  {powerding.message}
-                  {powerding.mediaLink}
-                  {powerding.dateEntered}
-                  {powerding.archived}
-                  {powerding.streamer}
-                  {powerding.ttsVoice}
-                  {powerding.amountPaid}
-                  {powerding.played}
+                  Submitter: {powerding.senderName}
+                  <br></br>
+                  Amount Paid: {powerding.amountPaid}
+                  <br></br>
+                  Message: {powerding.message}
+                  <br></br>
+                  Media Link: {powerding.mediaLink}
+                  <br></br>
+                  Date Sent: {convertDate(powerding.dateEntered)} @{" "}
+                  {convertTime(powerding.dateEntered)}
+                  <br></br>
+                  Archived? {String(powerding.archived)}
+                  <br></br>
+                  Streamer: {powerding.streamer}
+                  <br></br>
+                  TTS Voice: {powerding.ttsVoice}
+                  <br></br>
+                  Played? {String(powerding.played)}
+                  <br></br>
                 </div>
               </div>
             </div>
-          </div>
+          </PowerDingContainer>
         ))}
       </div>
     </div>
