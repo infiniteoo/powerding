@@ -13,6 +13,7 @@ router.get("/", (req, res) => {
 router.post("/", (req, res) => {
   // get all powerdings with streamer name
   console.log("powerding POST route hit");
+  req.body.isAnonymous ? (req.body.donatorName = "Anonymous") : null;
   const newPowerDing = new PowerDings({
     streamer: req.body.streamer,
     ttsVoice: req.body.voice,

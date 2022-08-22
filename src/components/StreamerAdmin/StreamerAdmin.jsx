@@ -1,6 +1,13 @@
 import React, { useState, useEffect } from "react";
+import Box from "@mui/material/Box";
+import LinearProgress from "@mui/material/LinearProgress";
 import axios from "axios";
-import { PowerDingContainer } from "./StreamerAdmin.styled";
+import {
+  PowerDing,
+  PowerDingContainer,
+  Playback,
+  DonationBar,
+} from "./StreamerAdmin.styled";
 /* import { useSpeechSynthesis } from "../."; */
 
 const StreamerAdmin = ({ userInfo, updateUser, loggedIn }) => {
@@ -22,7 +29,7 @@ const StreamerAdmin = ({ userInfo, updateUser, loggedIn }) => {
   const [isAnonymous, setIsAnonymous] = useState(true);
   const [donatorName, setDonatorName] = useState("");
   const [mediaLink, setMediaLink] = useState("");
-
+  const now = 60;
   const convertDate = (dateCreated) => {
     let dateToConvert = new Date(dateCreated);
     let date =
@@ -50,6 +57,16 @@ const StreamerAdmin = ({ userInfo, updateUser, loggedIn }) => {
     return time;
   };
 
+  const powerDingToSpeak = (powerDing) => {
+    return (
+      powerDing.donatorName +
+      " sent " +
+      powerDing.donationAmount +
+      "dollars. " +
+      powerDing.text
+    );
+  };
+
   const onEnd = () => {
     // You could do something here after speaking has finished
   };
@@ -74,35 +91,40 @@ const StreamerAdmin = ({ userInfo, updateUser, loggedIn }) => {
   return (
     <div className="dashboard_container">
       <div className="homeSplash">
-        {powerdings.map((powerding) => (
-          <PowerDingContainer key={powerding._id}>
-            <div className="powerding_header">
-              <div className="powerding_header_left">
-                <div className="powerding_header_left_name">
-                  Submitter: {powerding.senderName}
-                  <br></br>
-                  Amount Paid: {powerding.amountPaid}
-                  <br></br>
-                  Message: {powerding.message}
-                  <br></br>
-                  Media Link: {powerding.mediaLink}
-                  <br></br>
-                  Date Sent: {convertDate(powerding.dateEntered)} @{" "}
-                  {convertTime(powerding.dateEntered)}
-                  <br></br>
-                  Archived? {String(powerding.archived)}
-                  <br></br>
-                  Streamer: {powerding.streamer}
-                  <br></br>
-                  TTS Voice: {powerding.ttsVoice}
-                  <br></br>
-                  Played? {String(powerding.played)}
-                  <br></br>
-                </div>
-              </div>
-            </div>
-          </PowerDingContainer>
-        ))}
+        <PowerDingContainer>
+          {powerdings.map((powerding) => (
+            <PowerDing key={powerding._id}>
+              Submitter: {powerding.senderName}
+              <br></br>
+              Amount Paid: {powerding.amountPaid}
+              <br></br>
+              Message: {powerding.message}
+              <br></br>
+              Media Link: {powerding.mediaLink}
+              <br></br>
+              Date Sent: {convertDate(powerding.dateEntered)} @{" "}
+              {convertTime(powerding.dateEntered)}
+              <br></br>
+              Archived? {String(powerding.archived)}
+              <br></br>
+              Streamer: {powerding.streamer}
+              <br></br>
+              TTS Voice: {powerding.ttsVoice}
+              <br></br>
+              Played? {String(powerding.played)}
+              <br></br>
+            </PowerDing>
+          ))}
+        </PowerDingContainer>
+        <DonationBar>
+          <Box sx={{ width: "100%" }}>
+            <LinearProgress
+              variant="determinate"
+              value={now}
+              style={{ height: "50px" }}
+            />
+          </Box>
+        </DonationBar>
       </div>
     </div>
   );
