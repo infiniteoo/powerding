@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const PowerDings = require("../database/models/powerdings");
+const axios = require("axios");
 
 router.get("/", (req, res) => {
   console.log("powerding route hit");
@@ -27,6 +28,24 @@ router.post("/", (req, res) => {
   });
 
   newPowerDing.save().then((powerding) => res.json(powerding));
+});
+
+router.post("/recaptcha", async (req, res) => {
+  console.log("recaptcha POST route hit");
+  //Destructuring response token from request body
+  const { token } = req.body;
+
+  //sends secret key and response token to google
+  await axios.post(
+    `https://www.google.com/recaptcha/api/siteverify?secret=${process.env.SECRET_KEY}&response=${token}`
+  );
+
+  //check response status and send back to the client-side
+  if (res.status(200)) {
+    res.send("Human 👨 👩");
+  } else {
+    res.send("Robot 🤖");
+  }
 });
 
 module.exports = router;

@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import axios from "axios";
 import amfmfxLogo from "../assets/amfmfx.com text logo.png";
 import ErrorSnackbar from "./Snackbar";
+import RECAPTCHA from "react-google-recaptcha";
 
 const SignUp = () => {
   const [state, setState] = useState({
@@ -11,12 +12,13 @@ const SignUp = () => {
     email: "",
     successfulSignUp: "false",
     organization: "",
-    
+
     snackbarSeverity: "error",
     alertMsg: "",
   });
 
   console.log(state);
+  const captchaRef = useRef(null);
 
   const [closeSnackbar, setCloseSnackbar] = useState(false);
 
@@ -31,54 +33,72 @@ const SignUp = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    const token = captchaRef.current.getValue();
+    captchaRef.current.reset();
+    console.log(token);
 
-    // ensure username is a correct email format
-    if (!isValidEmail(state.email)) {
-      console.log("invalid email format");
-      setState({ ...state, successfulSignUp: "false" });
-      setCloseSnackbar(true);
-      setState({
-        ...state,
-        alertMsg: "Please enter a valid email address",
-        snackbarSeverity: "error",
-      });
-
-      return;
-    }
-
-    //request to server to add a new username/password
     axios
-      .post("/user/", {
-        username: state.username,
-        password: state.password,
-        email: state.email,
-        organization: state.organization,
-      })
-      .then((response) => {
-        console.log(response.data.errmsg);
-        if (!response.data.errmsg) {
-          console.log("successful signup");
-          setState({
-            ...state,
-            //redirect to login page
+      .post(process.env.REACT_APP_API_URL, { token })
+      .then((res) => {
+        console.log(res);
+        if (res.data === "Human 👨 👩") {
+          console.log("intiate signup");
 
-            successfulSignUp: "true",
-          });
+          // ensure username is a correct email format
+          if (!isValidEmail(state.email)) {
+            console.log("invalid email format");
+            setState({ ...state, successfulSignUp: "false" });
+            setCloseSnackbar(true);
+            setState({
+              ...state,
+              alertMsg: "Please enter a valid email address",
+              snackbarSeverity: "error",
+            });
+
+            return;
+          }
+
+          //request to server to add a new username/password
+          axios
+            .post("/user/", {
+              username: state.username,
+              password: state.password,
+              email: state.email,
+              organization: state.organization,
+            })
+            .then((response) => {
+              console.log(response.data.errmsg);
+              if (!response.data.errmsg) {
+                console.log("successful signup");
+                setState({
+                  ...state,
+                  //redirect to login page
+
+                  successfulSignUp: "true",
+                });
+              } else {
+                console.log("username already taken");
+                // display error ErrorSnackbar
+                setState({
+                  ...state,
+                  successfulSignUp: "false",
+                  alertMsg:
+                    "Email address already registered, please try again.",
+                  snackbarSeverity: "error",
+                });
+
+                setCloseSnackbar(true);
+              }
+            })
+            .catch((error) => {
+              console.log("signup error: ");
+              console.log(error);
+            });
         } else {
-          console.log("username already taken");
-          // display error ErrorSnackbar
-          setState({
-            ...state,
-            successfulSignUp: "false",
-            alertMsg: "Email address already registered, please try again.",
-            snackbarSeverity: "error",
-          });
-
-          setCloseSnackbar(true);
+          console.log("captcha failed");
         }
       })
       .catch((error) => {
-        console.log("signup error: ");
         console.log(error);
       });
   };
@@ -151,7 +171,10 @@ const SignUp = () => {
               />
               <br></br>
             </div>
-
+            <RECAPTCHA
+              sitekey={process.env.REACT_APP_SITE_KEY}
+              ref={captchaRef}
+            />
             <button
               className="btn btn-primary btn-block mt-4"
               onClick={handleSubmit}
