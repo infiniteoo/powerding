@@ -91,28 +91,32 @@ const StreamerAdmin = ({ userInfo, updateUser, loggedIn }) => {
   return (
     <div className="dashboard_container">
       <div className="homeSplash">
+        <div>
+          <h1 style={{ marginTop: "9%" }}>powerding dashboard</h1>
+        </div>
         <PowerDingContainer>
           {powerdings.map((powerding) => (
             <PowerDing key={powerding._id}>
-              Submitter: {powerding.senderName}
-              <br></br>
-              Amount Paid: {powerding.amountPaid}
-              <br></br>
-              Message: {powerding.message}
-              <br></br>
-              Media Link: {powerding.mediaLink}
-              <br></br>
-              Date Sent: {convertDate(powerding.dateEntered)} @{" "}
-              {convertTime(powerding.dateEntered)}
-              <br></br>
-              Archived? {String(powerding.archived)}
-              <br></br>
+              <div style={{ justifyContent: "space-between", display: "flex" }}>
+                <div>Submitter: {powerding.senderName}</div>
+                <div>Amount Paid: {powerding.amountPaid}</div>
+              </div>
+              <div style={{ justifyContent: "space-between", display: "flex" }}>
+                <div style={{ justifyContent: "space-between" }}>
+                  Message: {powerding.message}
+                </div>
+                <div>
+                  Date Sent: {convertDate(powerding.dateEntered)} @{" "}
+                  {convertTime(powerding.dateEntered)}
+                </div>
+              </div>
+              <div style={{ justifyContent: "space-between" }}>
+                Media Link: {powerding.mediaLink}
+              </div>
+              {/*  Archived? {String(powerding.archived)}
               Streamer: {powerding.streamer}
-              <br></br>
-              TTS Voice: {powerding.ttsVoice}
-              <br></br>
-              Played? {String(powerding.played)}
-              <br></br>
+                TTS Voice: {powerding.ttsVoice}
+              Played? {String(powerding.played)} */}
             </PowerDing>
           ))}
         </PowerDingContainer>
@@ -125,6 +129,7 @@ const StreamerAdmin = ({ userInfo, updateUser, loggedIn }) => {
             />
           </Box>
         </DonationBar>
+        <div>{now}%</div>
       </div>
     </div>
   );
