@@ -68,6 +68,19 @@ const PowerDings = ({
     );
   };
 
+  var stopVideo = function () {
+    var stopAllYouTubeVideos = () => {
+      var iframes = document.querySelectorAll("iframe");
+      Array.prototype.forEach.call(iframes, (iframe) => {
+        iframe.contentWindow.postMessage(
+          JSON.stringify({ event: "command", func: "stopVideo" }),
+          "*"
+        );
+      });
+    };
+    stopAllYouTubeVideos();
+  };
+
   return (
     <PowerDingContainer>
       {powerdings.length < 1 && (
@@ -106,6 +119,7 @@ const PowerDings = ({
               style={{ padding: "3px" }}
               onClick={() => {
                 speaking && cancel();
+                stopVideo();
                 moneySoundEffect.play();
                 let text = powerDingToSpeak(powerding);
                 let voice = voices[powerding.ttsVoice];
