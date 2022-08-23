@@ -29,6 +29,13 @@ router.post("/", (req, res) => {
 
   newPowerDing.save().then((powerding) => res.json(powerding));
 });
+router.post("/played", (req, res) => {
+  console.log("powerding played route hit");
+  console.log(req.body._id);
+  PowerDings.findByIdAndUpdate(req.body._id, { played: true }).then(
+    (powerding) => res.json(powerding)
+  );
+});
 
 router.post("/recaptcha", async (req, res) => {
   console.log("recaptcha POST route hit");

@@ -13,12 +13,13 @@ export const PowerDing = styled.div`
   display: flex;
   flex-direction: column;
   align-items: space-between;
-  /* justify-content: space-between; */
+
   height: 100%;
   width: 100%;
   background: transparent;
   border: 1px solid #fff;
   padding: 3px;
+  font-size: 1.2rem;
   :hover {
     color: #fff;
   }
