@@ -20,9 +20,6 @@ export const PowerDing = styled.div`
   border: 1px solid #fff;
   padding: 3px;
   font-size: 1.2rem;
-  :hover {
-    color: #fff;
-  }
 `;
 
 export const Playback = styled.div``;
@@ -36,4 +33,10 @@ export const DonationBarContainer = styled.div`
   width: 100%;
   background: transparent;
   border: 5px solid #fff;
+`;
+
+export const PowerDingText = styled.div`
+  :hover {
+    color: #fff;
+  }
 `;

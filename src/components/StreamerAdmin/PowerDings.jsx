@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { convertDate, convertTime } from "../../utils/timeAndDates";
-import { PowerDing, PowerDingContainer } from "./StreamerAdmin.styled";
+import { PowerDing, PowerDingContainer, PowerDingText } from "./StreamerAdmin.styled";
 import { useSpeechSynthesis } from "../Donation_Form/index.js";
+import CancelIcon from "@mui/icons-material/Cancel";
 import axios from "axios";
 
 const PowerDings = ({ powerdings, setPowerdings }) => {
@@ -53,40 +54,53 @@ const PowerDings = ({ powerdings, setPowerdings }) => {
   return (
     <PowerDingContainer>
       {powerdings.map((powerding) => (
-        <PowerDing
-         cssProps={powerding.played}
-          key={powerding._id}
-          onClick={() => {
-            let text = powerDingToSpeak(powerding);
-            let voice = voices[powerding.ttsVoice];
-            speak({ text, voice, rate, pitch });
-            dingPlayed = powerding;
-          }}
-        >
+        <PowerDing cssProps={powerding.played} key={powerding._id}>
           {!powerding.archived && (
-            
             <div>
               <div style={{ justifyContent: "space-between", display: "flex" }}>
-                <div>Submitter: {powerding.senderName}</div>
-                <div>Amount Paid: {powerding.amountPaid}</div>
-              </div>
-              <div style={{ justifyContent: "space-between", display: "flex" }}>
-                <div style={{ justifyContent: "space-between" }}>
-                  Message: {powerding.message}
-                </div>
                 <div>
-                  Date Sent: {convertDate(powerding.dateEntered)} @{" "}
-                  {convertTime(powerding.dateEntered)}
+                  <CancelIcon
+                    style={{ color: "white", paddingBottom: "5px" }}
+                  />
                 </div>
+                <div></div>
               </div>
-              <div style={{ justifyContent: "space-between", display: "flex" }}>
-                <div>Media Link: {powerding.mediaLink}</div>
-                <div>Played? {powerding.played ? "Yes" : "No"}</div>
-              </div>
+              <PowerDingText
+                style={{ padding: "3px" }}
+                
+                onClick={() => {
+                  let text = powerDingToSpeak(powerding);
+                  let voice = voices[powerding.ttsVoice];
+                  speak({ text, voice, rate, pitch });
+                  dingPlayed = powerding;
+                }}
+              >
+                <div
+                  style={{ justifyContent: "space-between", display: "flex" }}
+                >
+                  <div>Submitter: {powerding.senderName}</div>
+                  <div>Amount Paid: {powerding.amountPaid}</div>
+                </div>
+                <div
+                  style={{ justifyContent: "space-between", display: "flex" }}
+                >
+                  <div style={{ justifyContent: "space-between" }}>
+                    Message: {powerding.message}
+                  </div>
+                  <div>
+                    Date Sent: {convertDate(powerding.dateEntered)} @{" "}
+                    {convertTime(powerding.dateEntered)}
+                  </div>
+                </div>
+                <div
+                  style={{ justifyContent: "space-between", display: "flex" }}
+                >
+                  <div>Media Link: {powerding.mediaLink}</div>
+                  <div>Played? {powerding.played ? "Yes" : "No"}</div>
+                </div>
+              </PowerDingText>
             </div>
-          )
-          
-          }
+          )}
         </PowerDing>
       ))}
     </PowerDingContainer>
