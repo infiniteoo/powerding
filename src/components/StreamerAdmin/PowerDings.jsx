@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { extractVideoID, extractVideoTimeStamp } from "../../utils/youTube";
 import { convertDate, convertTime } from "../../utils/timeAndDates";
 import {
   PowerDing,
@@ -10,7 +11,12 @@ import { useSpeechSynthesis } from "../Donation_Form/index.js";
 import CancelIcon from "@mui/icons-material/Cancel";
 import axios from "axios";
 
-const PowerDings = ({ powerdings, setPowerdings }) => {
+const PowerDings = ({
+  powerdings,
+  setPowerdings,
+  setYoutubeVideoID,
+  youtubeVideoID,
+}) => {
   useEffect(() => {
     getPowerdings();
   }, []);
@@ -24,10 +30,8 @@ const PowerDings = ({ powerdings, setPowerdings }) => {
       },
     });
     const filteredPowerdings = res.data.filter((powerding) => {
-     
       return powerding.archived === false;
     });
-   
 
     setPowerdings(filteredPowerdings);
   };
@@ -96,10 +100,13 @@ const PowerDings = ({ powerdings, setPowerdings }) => {
             <PowerDingText
               style={{ padding: "3px" }}
               onClick={() => {
+                speaking && cancel();
                 let text = powerDingToSpeak(powerding);
                 let voice = voices[powerding.ttsVoice];
                 speak({ text, voice });
                 dingPlayed = powerding;
+                setYoutubeVideoID(extractVideoID(powerding.mediaLink));
+                console.log(youtubeVideoID);
               }}
             >
               <div style={{ justifyContent: "space-between", display: "flex" }}>

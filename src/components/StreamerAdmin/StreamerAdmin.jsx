@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import YouTube, { YouTubeProps } from "react-youtube";
-
+import { extractVideoID, extractVideoTimeStamp } from "../../utils/youTube";
 import Header from "./Header";
 import DonationBar from "./DonationBar";
 import PowerDings from "./PowerDings";
@@ -27,26 +27,6 @@ const StreamerAdmin = ({ userInfo, updateUser, loggedIn }) => {
       modestbranding: 1,
     },
   };
-  const extractVideoID = (url) => {
-    var regExp =
-      /^.*(youtu\.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
-    var match = url.match(regExp);
-    if (match && match[2].length == 11) {
-      return match[2];
-    } else {
-      //error
-    }
-  };
-
-  const extractVideoTimeStamp = (url) => {
-    let regExp =
-      /^.*?(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*)(?:(\?t|&start)=(\d+))?.*/;
-
-    let match = url.match(regExp);
-    if (match) {
-      return match[4];
-    }
-  };
 
   console.log(
     "extracted video id",
@@ -60,7 +40,12 @@ const StreamerAdmin = ({ userInfo, updateUser, loggedIn }) => {
     <div className="dashboard_container">
       <div className="homeSplash">
         <Header />
-        <PowerDings powerdings={powerdings} setPowerdings={setPowerdings} />
+        <PowerDings
+          powerdings={powerdings}
+          setPowerdings={setPowerdings}
+          setYoutubeVideoID={setYoutubeVideoID}
+          youtubeVideoID={youtubeVideoID}
+        />
         <YouTube videoId={youtubeVideoID} opts={opts} />
         <DonationBar />
         <div>{now}%</div>
