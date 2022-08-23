@@ -54,6 +54,7 @@ const PowerDings = ({ powerdings, setPowerdings }) => {
     <PowerDingContainer>
       {powerdings.map((powerding) => (
         <PowerDing
+         cssProps={powerding.played}
           key={powerding._id}
           onClick={() => {
             let text = powerDingToSpeak(powerding);
@@ -63,6 +64,7 @@ const PowerDings = ({ powerdings, setPowerdings }) => {
           }}
         >
           {!powerding.archived && (
+            
             <div>
               <div style={{ justifyContent: "space-between", display: "flex" }}>
                 <div>Submitter: {powerding.senderName}</div>
@@ -82,7 +84,9 @@ const PowerDings = ({ powerdings, setPowerdings }) => {
                 <div>Played? {powerding.played ? "Yes" : "No"}</div>
               </div>
             </div>
-          )}
+          )
+          
+          }
         </PowerDing>
       ))}
     </PowerDingContainer>

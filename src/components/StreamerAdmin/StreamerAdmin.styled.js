@@ -13,7 +13,7 @@ export const PowerDing = styled.div`
   display: flex;
   flex-direction: column;
   align-items: space-between;
-
+  color: ${(props) => (props.cssProps ? "grey" : null)};
   height: 100%;
   width: 100%;
   background: transparent;
