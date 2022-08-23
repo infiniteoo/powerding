@@ -26,7 +26,7 @@ export const PowerDing = styled.div`
 
 export const Playback = styled.div``;
 
-export const DonationBar = styled.div`
+export const DonationBarContainer = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
