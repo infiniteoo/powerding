@@ -37,6 +37,14 @@ router.post("/played", (req, res) => {
   );
 });
 
+router.post("/archive", (req, res) => {
+  console.log("powerding archive route hit");
+  console.log(req.body._id);
+  PowerDings.findByIdAndUpdate(req.body._id, { archived: true }).then(
+    (powerding) => res.json(powerding)
+  );
+});
+
 router.post("/recaptcha", async (req, res) => {
   console.log("recaptcha POST route hit");
   //Destructuring response token from request body

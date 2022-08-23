@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
-import { useSpeechSynthesis } from "../Donation_Form/index.js";
 
 import Header from "./Header";
 import DonationBar from "./DonationBar";

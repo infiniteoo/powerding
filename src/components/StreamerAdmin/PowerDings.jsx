@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { convertDate, convertTime } from "../../utils/timeAndDates";
-import { PowerDing, PowerDingContainer, PowerDingText } from "./StreamerAdmin.styled";
+import {
+  PowerDing,
+  PowerDingContainer,
+  PowerDingText,
+} from "./StreamerAdmin.styled";
 import { useSpeechSynthesis } from "../Donation_Form/index.js";
 import CancelIcon from "@mui/icons-material/Cancel";
 import axios from "axios";
@@ -60,14 +64,28 @@ const PowerDings = ({ powerdings, setPowerdings }) => {
               <div style={{ justifyContent: "space-between", display: "flex" }}>
                 <div>
                   <CancelIcon
-                    style={{ color: "white", paddingBottom: "5px" }}
+                    style={{
+                      color: "white",
+                      paddingBottom: "5px",
+                      fontSize: "1.7rem",
+                      paddingTop: "1px",
+                    }}
+                    onClick={() => {
+                      axios
+                        .post("/powerding/archive", powerding)
+                        .then(() => {
+                          getPowerdings();
+                        })
+                        .catch((err) => {
+                          console.log(err);
+                        });
+                    }}
                   />
                 </div>
                 <div></div>
               </div>
               <PowerDingText
                 style={{ padding: "3px" }}
-                
                 onClick={() => {
                   let text = powerDingToSpeak(powerding);
                   let voice = voices[powerding.ttsVoice];
