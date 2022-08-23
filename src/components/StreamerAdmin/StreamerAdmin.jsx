@@ -44,7 +44,8 @@ const StreamerAdmin = ({ userInfo, updateUser, loggedIn }) => {
           powerdings={powerdings}
           setPowerdings={setPowerdings}
           setYoutubeVideoID={setYoutubeVideoID}
-          youtubeVideoID={youtubeVideoID}
+          setYoutubeStartTime={setYoutubeStartTime}
+       
         />
         <YouTube videoId={youtubeVideoID} opts={opts} />
         <DonationBar />
