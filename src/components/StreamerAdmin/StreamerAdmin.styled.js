@@ -40,3 +40,11 @@ export const PowerDingText = styled.div`
     color: #fff;
   }
 `;
+
+export const NoPowerDingsToDisplay = styled.div`
+  display: flex;
+  justify-content: center;
+
+  color: grey;
+  padding: 20px;
+`;
