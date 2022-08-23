@@ -1,9 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 
-const DonationInputs = () => {
+const DonationInputs = ({
+  setDonationTitle,
+  setDonationGoal,
+  setDonationsCollected,
+}) => {
+  const [title, setTitle] = useState("");
+  const [goal, setGoal] = useState("");
+  const [collected, setCollected] = useState("");
+
   return (
     <Box
       component="form"
@@ -12,6 +20,8 @@ const DonationInputs = () => {
         display: "flex",
         flexDirection: "column",
         justifyContent: "space-between",
+        /* borderLeft: "4px solid #e0e0e0", */
+        borderRight: "4px solid #e0e0e0",
       }}
       noValidate
       autoComplete="off"
@@ -24,6 +34,11 @@ const DonationInputs = () => {
         InputLabelProps={{
           style: { color: "#fff" },
         }}
+        value={title}
+        onChange={(e) => {
+          setTitle(e.target.value);
+        }}
+        InputProps={{ style: { color: "#fff" } }}
       />
       <TextField
         id="donationsCollected"
@@ -33,17 +48,39 @@ const DonationInputs = () => {
         InputLabelProps={{
           style: { color: "#fff" },
         }}
+        value={collected}
+        InputProps={{ style: { color: "#fff" } }}
+        onChange={(e) => {
+          setCollected(e.target.value);
+        }}
       />
       <TextField
-        id="outlined-basic"
+        id="donationGoal"
         label="Donation Goal"
         variant="outlined"
         color="secondary"
         InputLabelProps={{
           style: { color: "#fff" },
         }}
+        value={goal}
+        InputProps={{ style: { color: "#fff" } }}
+        onChange={(e) => {
+          setGoal(e.target.value);
+        }}
       />
-      <Button variant="contained" color="secondary">
+      <Button
+        variant="contained"
+        color="secondary"
+        onClick={(e) => {
+          e.preventDefault();
+          setDonationTitle(title);
+          setDonationGoal(goal);
+          setDonationsCollected(collected);
+          /* setTitle("");
+          setGoal("");
+          setCollected(""); */
+        }}
+      >
         Update
       </Button>
     </Box>

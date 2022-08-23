@@ -15,8 +15,15 @@ const StreamerAdmin = ({ userInfo, updateUser, loggedIn }) => {
   const [youtubeStartTime, setYoutubeStartTime] = useState("0");
   const [youtubeVideoID, setYoutubeVideoID] = useState("");
   const [powerdings, setPowerdings] = useState([]);
+  const [donationTitle, setDonationTitle] = useState("");
+  const [donationsCollected, setDonationsCollected] = useState(0);
+  const [donationGoal, setDonationGoal] = useState(0);
+  const [goalPercentage, setGoalPercentage] = useState(null);
 
-  const now = 60;
+  useEffect(() => {
+    setGoalPercentage((donationsCollected / donationGoal) * 100);
+    console.log(goalPercentage);
+  }, [donationsCollected]);
 
   const opts = {
     height: "240",
@@ -39,12 +46,46 @@ const StreamerAdmin = ({ userInfo, updateUser, loggedIn }) => {
           setYoutubeVideoID={setYoutubeVideoID}
           setYoutubeStartTime={setYoutubeStartTime}
         />
-        <div style={{ display: "flex", justifyContent: "space-between" }}>
-          <DonationInputs />
-          <YouTube videoId={youtubeVideoID} opts={opts} />
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            width: "100%",
+          }}
+        >
+          <DonationInputs
+            setDonationGoal={setDonationGoal}
+            setDonationTitle={setDonationTitle}
+            setDonationsCollected={setDonationsCollected}
+          />
+          <YouTube
+            videoId={youtubeVideoID}
+            opts={opts}
+           
+          />
         </div>
-        <DonationBar />
-        <div>{now}%</div>
+        <DonationBar
+          donationGoal={donationGoal}
+          donationTitle={donationTitle}
+          donationsCollected={donationsCollected}
+          goalPercentage={goalPercentage}
+        />
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            width: "100%",
+          }}
+        >
+          <div>{donationTitle}</div>
+          {donationsCollected !== "" ? (
+            <div>
+              ${donationsCollected}/${donationGoal}
+            </div>
+          ) : null}
+
+          {goalPercentage > 0 && <div>{goalPercentage}%</div>}
+        </div>
       </div>
     </div>
   );

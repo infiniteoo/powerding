@@ -3,15 +3,14 @@ import { DonationBarContainer } from "./StreamerAdmin.styled";
 import Box from "@mui/material/Box";
 import LinearProgress from "@mui/material/LinearProgress";
 
-const DonationBar = () => {
-  const now = 60;
+const DonationBar = ({ goalPercentage }) => {
   return (
     <DonationBarContainer>
       <Box sx={{ width: "100%" }}>
         <LinearProgress
           variant="determinate"
-          value={now}
-          style={{ height: "50px" }}
+          value={goalPercentage}
+          style={{ height: "40px" }}
         />
       </Box>
     </DonationBarContainer>

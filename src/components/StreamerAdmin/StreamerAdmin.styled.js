@@ -7,7 +7,7 @@ export const PowerDingContainer = styled.div`
   overflow-x: auto;
 
   width: 100%;
-  border: 5px solid #fff;
+  border: 3px solid #fff;
 `;
 export const PowerDing = styled.div`
   display: flex;
@@ -29,10 +29,9 @@ export const DonationBarContainer = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  height: 60px;
+  height: 40px;
   width: 100%;
   background: transparent;
-  border: 5px solid #fff;
 `;
 
 export const PowerDingText = styled.div`
