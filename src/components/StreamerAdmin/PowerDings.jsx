@@ -1,16 +1,53 @@
-import React from "react";
+import React, { useState } from "react";
 import { convertDate, convertTime } from "../../utils/timeAndDates";
-import {
-  PowerDing,
-  PowerDingContainer,
-  Playback,
-} from "./StreamerAdmin.styled";
+import { PowerDing, PowerDingContainer } from "./StreamerAdmin.styled";
+import { useSpeechSynthesis } from "../Donation_Form/index.js";
 
 const PowerDings = ({ powerdings }) => {
+  const [text, setText] = useState("");
+  const [voiceIndex, setVoiceIndex] = useState(null);
+  const [rate, setRate] = useState(1);
+  const [pitch, setPitch] = useState(1);
+
+  const onEnd = () => {
+    // You could do something here after speaking has finished
+    console.log("triggers upon completion");
+  };
+
+  const { speak, cancel, speaking, supported, voices } = useSpeechSynthesis({
+    onEnd,
+  });
+  let voice = voices[voiceIndex] || null;
+
+  const powerDingToSpeak = (powerDing) => {
+    return (
+      powerDing.senderName +
+      " sent " +
+      powerDing.amountPaid +
+      " dollars. " +
+      powerDing.message
+    );
+  };
+
   return (
     <PowerDingContainer>
       {powerdings.map((powerding) => (
-        <PowerDing key={powerding._id}>
+        <PowerDing
+          key={powerding._id}
+          onClick={() => {
+            let text =
+              powerding.senderName +
+              " sent " +
+              powerding.amountPaid +
+              " dollars. " +
+              powerding.message;
+            let voice = voices[powerding.ttsVoice]
+            /* setText(powerDingToSpeak(powerding)); */
+            /* setVoiceIndex(powerding.ttsVoice); */
+            console.log(text, voice, rate, pitch);
+            speak({ text, voice, rate, pitch });
+          }}
+        >
           <div style={{ justifyContent: "space-between", display: "flex" }}>
             <div>Submitter: {powerding.senderName}</div>
             <div>Amount Paid: {powerding.amountPaid}</div>
@@ -28,8 +65,8 @@ const PowerDings = ({ powerdings }) => {
             Media Link: {powerding.mediaLink}
           </div>
           {/*  Archived? {String(powerding.archived)}
-              Streamer: {powerding.streamer}
-                TTS Voice: {powerding.ttsVoice}
+              
+                
               Played? {String(powerding.played)} */}
         </PowerDing>
       ))}
