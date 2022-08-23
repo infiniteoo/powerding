@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import YouTube, { YouTubeProps } from "react-youtube";
-import { extractVideoID, extractVideoTimeStamp } from "../../utils/youTube";
+
+import DonationInputs from "./DonationInputs";
 import Header from "./Header";
 import DonationBar from "./DonationBar";
 import PowerDings from "./PowerDings";
@@ -28,14 +29,6 @@ const StreamerAdmin = ({ userInfo, updateUser, loggedIn }) => {
     },
   };
 
-  console.log(
-    "extracted video id",
-    extractVideoID("https://www.youtube.com/watch?v=dQw4w9WgXcQ")
-  );
-  console.log(
-    "extracted video id time stamp",
-    extractVideoTimeStamp("https://youtu.be/dQw4w9WgXcQ?t=143")
-  );
   return (
     <div className="dashboard_container">
       <div className="homeSplash">
@@ -46,7 +39,10 @@ const StreamerAdmin = ({ userInfo, updateUser, loggedIn }) => {
           setYoutubeVideoID={setYoutubeVideoID}
           setYoutubeStartTime={setYoutubeStartTime}
         />
-        <YouTube videoId={youtubeVideoID} opts={opts} />
+        <div style={{ display: "flex", justifyContent: "space-between" }}>
+          <DonationInputs />
+          <YouTube videoId={youtubeVideoID} opts={opts} />
+        </div>
         <DonationBar />
         <div>{now}%</div>
       </div>
