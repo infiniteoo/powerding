@@ -7,9 +7,7 @@ import DonationBar from "./DonationBar";
 import PowerDings from "./PowerDings";
 
 const StreamerAdmin = ({ userInfo, updateUser, loggedIn }) => {
-  useEffect(() => {
-    getPowerdings();
-  }, []);
+  
 
   console.log("in streamer admin", userInfo);
 
@@ -19,7 +17,7 @@ const StreamerAdmin = ({ userInfo, updateUser, loggedIn }) => {
   const [streamerName, setStreamerName] = useState("");
 
   const [text, setText] = useState("");
-  
+
   const [charsRemaining, setCharsRemaining] = useState(250);
   const [donationAmount, setDonationAmount] = useState("0.00");
   const [isAnonymous, setIsAnonymous] = useState(true);
@@ -29,21 +27,11 @@ const StreamerAdmin = ({ userInfo, updateUser, loggedIn }) => {
 
   
 
-  const getPowerdings = async () => {
-    const res = await axios.get("/powerding", {
-      params: {
-        streamerName: "killstream",
-      },
-    });
-
-    setPowerdings(res.data);
-  };
-
   return (
     <div className="dashboard_container">
       <div className="homeSplash">
         <Header />
-        <PowerDings powerdings={powerdings} />
+        <PowerDings powerdings={powerdings} setPowerdings={setPowerdings} />
         <DonationBar />
         <div>{now}%</div>
       </div>

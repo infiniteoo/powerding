@@ -1,23 +1,35 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { convertDate, convertTime } from "../../utils/timeAndDates";
 import { PowerDing, PowerDingContainer } from "./StreamerAdmin.styled";
 import { useSpeechSynthesis } from "../Donation_Form/index.js";
 import axios from "axios";
 
-const PowerDings = ({ powerdings }) => {
+const PowerDings = ({ powerdings, setPowerdings }) => {
+  useEffect(() => {
+    getPowerdings();
+  }, []);
   const [rate, setRate] = useState(1);
   const [pitch, setPitch] = useState(1);
 
   let dingPlayed;
 
+  const getPowerdings = async () => {
+    const res = await axios.get("/powerding", {
+      params: {
+        streamerName: "killstream",
+      },
+    });
+
+    setPowerdings(res.data);
+  };
+
   const onEnd = () => {
     // update DB to say that powerding has been played
-    // turn powerding text grey
     console.log("triggers upon completion");
     axios
       .post("/powerding/played", dingPlayed)
-      .then((res) => {
-        console.log(res);
+      .then(() => {
+        getPowerdings();
       })
       .catch((err) => {
         console.log(err);
