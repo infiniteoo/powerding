@@ -12,7 +12,7 @@ const StreamerAdmin = ({ userInfo, updateUser, loggedIn }) => {
 
   const [youtubePlayLength, setYoutubePlayLength] = useState("180");
   const [youtubeStartTime, setYoutubeStartTime] = useState("0");
-  const [youtubeVideoID, setYoutubeVideoID] = useState("dQw4w9WgXcQ");
+  const [youtubeVideoID, setYoutubeVideoID] = useState("");
   const [powerdings, setPowerdings] = useState([]);
 
   const now = 60;
@@ -45,7 +45,6 @@ const StreamerAdmin = ({ userInfo, updateUser, loggedIn }) => {
           setPowerdings={setPowerdings}
           setYoutubeVideoID={setYoutubeVideoID}
           setYoutubeStartTime={setYoutubeStartTime}
-       
         />
         <YouTube videoId={youtubeVideoID} opts={opts} />
         <DonationBar />

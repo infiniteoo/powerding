@@ -10,6 +10,7 @@ import {
 import { useSpeechSynthesis } from "../Donation_Form/index.js";
 import CancelIcon from "@mui/icons-material/Cancel";
 import axios from "axios";
+import marioDing from "../../assets/mario.mp3";
 
 const PowerDings = ({
   powerdings,
@@ -21,7 +22,9 @@ const PowerDings = ({
     getPowerdings();
   }, []);
 
-  let dingPlayed;
+  let dingPlayed, videoID, startTime;
+
+  let moneySoundEffect = new Audio(marioDing);
 
   const getPowerdings = async () => {
     const res = await axios.get("/powerding", {
@@ -39,6 +42,8 @@ const PowerDings = ({
   const onEnd = () => {
     // update DB to say that powerding has been played
     console.log("triggers upon completion");
+    setYoutubeVideoID(videoID);
+    setYoutubeStartTime(startTime);
     axios
       .post("/powerding/played", dingPlayed)
       .then(() => {
@@ -101,12 +106,13 @@ const PowerDings = ({
               style={{ padding: "3px" }}
               onClick={() => {
                 speaking && cancel();
+                moneySoundEffect.play();
                 let text = powerDingToSpeak(powerding);
                 let voice = voices[powerding.ttsVoice];
                 speak({ text, voice });
                 dingPlayed = powerding;
-                setYoutubeVideoID(extractVideoID(powerding.mediaLink));
-                setYoutubeStartTime(extractVideoTimeStamp(powerding.mediaLink));
+                videoID = extractVideoID(powerding.mediaLink);
+                startTime = extractVideoTimeStamp(powerding.mediaLink);
               }}
             >
               <div style={{ justifyContent: "space-between", display: "flex" }}>
