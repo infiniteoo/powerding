@@ -44,7 +44,6 @@ export const PowerDingText = styled.div`
 export const NoPowerDingsToDisplay = styled.div`
   display: flex;
   justify-content: center;
-
   color: grey;
   padding: 20px;
 `;

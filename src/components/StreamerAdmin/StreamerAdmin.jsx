@@ -1,35 +1,39 @@
 import React, { useState, useEffect } from "react";
+import YouTube, { YouTubeProps } from "react-youtube";
 
 import Header from "./Header";
 import DonationBar from "./DonationBar";
 import PowerDings from "./PowerDings";
 
 const StreamerAdmin = ({ userInfo, updateUser, loggedIn }) => {
-  
-
   console.log("in streamer admin", userInfo);
 
   // query database for powerdings with streamer name
 
+  const [youtubePlayLength, setYoutubePlayLength] = useState("180");
+  const [youtubeStartTime, setYoutubeStartTime] = useState("0");
+  const [youtubeVideoID, setYoutubeVideoID] = useState("dQw4w9WgXcQ");
   const [powerdings, setPowerdings] = useState([]);
-  const [streamerName, setStreamerName] = useState("");
 
-  const [text, setText] = useState("");
-
-  const [charsRemaining, setCharsRemaining] = useState(250);
-  const [donationAmount, setDonationAmount] = useState("0.00");
-  const [isAnonymous, setIsAnonymous] = useState(true);
-  const [donatorName, setDonatorName] = useState("");
-  const [mediaLink, setMediaLink] = useState("");
   const now = 60;
 
-  
+  const opts = {
+    height: "240",
+    width: "426",
+    playerVars: {
+      autoplay: 1,
+      end: youtubePlayLength,
+      start: youtubeStartTime,
+      modestbranding: 1,
+    },
+  };
 
   return (
     <div className="dashboard_container">
       <div className="homeSplash">
         <Header />
         <PowerDings powerdings={powerdings} setPowerdings={setPowerdings} />
+        <YouTube videoId={youtubeVideoID} opts={opts} />
         <DonationBar />
         <div>{now}%</div>
       </div>

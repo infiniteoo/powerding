@@ -24,10 +24,10 @@ const PowerDings = ({ powerdings, setPowerdings }) => {
       },
     });
     const filteredPowerdings = res.data.filter((powerding) => {
-      console.log("in filtered powerdings", powerding.archived);
+     
       return powerding.archived === false;
     });
-    console.log("filtered powerdings", filteredPowerdings);
+   
 
     setPowerdings(filteredPowerdings);
   };
