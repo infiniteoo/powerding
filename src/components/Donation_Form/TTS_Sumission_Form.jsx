@@ -110,6 +110,10 @@ const TTS_Submission_Form = ({ streamer }) => {
                     })
                     .then((response) => {
                       console.log(response);
+                      setDonatorName("");
+                      setMediaLink("");
+                      setDonationAmount("0.00");
+                      setText("");
                     })
                     .catch((error) => {
                       console.log(error);
