@@ -21,6 +21,8 @@ const Amount = ({ donationAmount, setDonationAmount }) => {
               type="text"
               style={{ width: "100%" }}
               placeholder={donationAmount}
+              value={donationAmount}
+              onChange={(e) => setDonationAmount(e.target.value)}
             />
             <Button onClick={() => setDonationAmount("3.00")}>$3</Button>
             <Button onClick={() => setDonationAmount("10.00")}>$10</Button>
