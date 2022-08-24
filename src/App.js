@@ -11,6 +11,7 @@ import SplashPage from "./components/SplashPage";
 import StreamerHomePage from "./components/StreamerHomePage";
 import Dashboard from "./components/dashboard";
 import StreamerAdmin from "./components/StreamerAdmin/StreamerAdmin";
+import Welcome from "./components/Welcome/Welcome";
 
 class App extends Component {
   constructor() {
@@ -23,7 +24,6 @@ class App extends Component {
       userId: null,
       lastLogin: null,
       confirmed: false,
-     
     };
 
     this.getUser = this.getUser.bind(this);
@@ -56,7 +56,6 @@ class App extends Component {
           lastLogin: response.data.user.lastLogin,
           email: response.data.user.email,
           confirmed: response.data.user.confirmed,
-          
         });
       } else {
         console.log("Get user: no user, state", this.state);
@@ -69,7 +68,6 @@ class App extends Component {
           lastLogin: null,
           email: null,
           confirmed: false,
-         
         });
       }
     });
@@ -149,6 +147,7 @@ class App extends Component {
             render={() => <LoginForm updateUser={this.updateUser} />}
           />
           <Route path="/signup" render={() => <SignUp />} />
+          <Route path="/welcome" render={() => <Welcome />} />
 
           <Route path="/u/:streamer" component={StreamerHomePage} />
         </div>

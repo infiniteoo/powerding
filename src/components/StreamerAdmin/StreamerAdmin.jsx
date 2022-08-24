@@ -11,7 +11,7 @@ const StreamerAdmin = ({ userInfo, updateUser, loggedIn }) => {
 
   // query database for powerdings with streamer name
 
-  const [youtubePlayLength, setYoutubePlayLength] = useState("180");
+  const [youtubePlayLength, setYoutubePlayLength] = useState(180);
   const [youtubeStartTime, setYoutubeStartTime] = useState("0");
   const [youtubeVideoID, setYoutubeVideoID] = useState("");
   const [powerdings, setPowerdings] = useState([]);
@@ -24,14 +24,18 @@ const StreamerAdmin = ({ userInfo, updateUser, loggedIn }) => {
     setGoalPercentage((donationsCollected / donationGoal) * 100);
     console.log(goalPercentage);
   }, [donationsCollected]);
+  useEffect(() => {
+    setGoalPercentage((donationsCollected / donationGoal) * 100);
+    console.log(goalPercentage);
+  }, [donationGoal]);
 
   const opts = {
     height: "240",
     width: "426",
     playerVars: {
       autoplay: 1,
-      end: youtubePlayLength,
       start: youtubeStartTime,
+      end: youtubePlayLength,
       modestbranding: 1,
     },
   };
@@ -58,11 +62,7 @@ const StreamerAdmin = ({ userInfo, updateUser, loggedIn }) => {
             setDonationTitle={setDonationTitle}
             setDonationsCollected={setDonationsCollected}
           />
-          <YouTube
-            videoId={youtubeVideoID}
-            opts={opts}
-           
-          />
+          <YouTube videoId={youtubeVideoID} opts={opts} />
         </div>
         <DonationBar
           donationGoal={donationGoal}

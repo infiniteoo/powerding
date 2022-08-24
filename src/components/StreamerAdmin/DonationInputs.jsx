@@ -76,6 +76,7 @@ const DonationInputs = ({
           setDonationTitle(title);
           setDonationGoal(goal);
           setDonationsCollected(collected);
+          console.log(title, goal, collected);
           /* setTitle("");
           setGoal("");
           setCollected(""); */
