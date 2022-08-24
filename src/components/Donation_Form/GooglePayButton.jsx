@@ -21,7 +21,13 @@ const PayButton = ({ donationAmount }) => {
               type: "CARD",
               parameters: {
                 allowedAuthMethods: ["PAN_ONLY", "CRYPTOGRAM_3DS"],
-                allowedCardNetworks: ["MASTERCARD", "VISA"],
+                allowedCardNetworks: [
+                  "AMEX",
+                  "DISCOVER",
+                  "JCB",
+                  "MASTERCARD",
+                  "VISA",
+                ],
               },
               tokenizationSpecification: {
                 type: "PAYMENT_GATEWAY",
