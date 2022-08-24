@@ -1,5 +1,6 @@
 import React from "react";
 import GooglePayButton from "@google-pay/button-react";
+import axios from "axios";
 
 const PayButton = ({ donationAmount }) => {
   return (
@@ -25,14 +26,14 @@ const PayButton = ({ donationAmount }) => {
               tokenizationSpecification: {
                 type: "PAYMENT_GATEWAY",
                 parameters: {
-                  gateway: "example",
-                  gatewayMerchantId: process.env.REACT_APP_MERCHANT_ID,
+                  gateway: "epicpay",
+                  gatewayMerchantId: process.env.REACT_APP_EPICPAY_MERCHANT_ID,
                 },
               },
             },
           ],
           merchantInfo: {
-            merchantId: process.env.REACT_APP_MERCHANT_ID,
+            merchantId: process.env.REACT_APP_EPICPAY_MERCHANT_ID,
             merchantName: "PowerDing",
           },
           transactionInfo: {
@@ -45,6 +46,15 @@ const PayButton = ({ donationAmount }) => {
         }}
         onLoadPaymentData={(paymentRequest) => {
           console.log("load payment data", paymentRequest);
+          axios
+            .post("/powerding/payment", { paymentRequest })
+
+            .then((response) => {
+              console.log(response);
+            })
+            .catch((error) => {
+              console.log(error);
+            });
         }}
       />
     </div>

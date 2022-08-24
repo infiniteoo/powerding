@@ -45,6 +45,71 @@ router.post("/archive", (req, res) => {
   );
 });
 
+router.post("/payment", (req, res) => {
+  /* console.log("payment route hit");
+  console.log(req.body);
+  console.log(
+    req.body.paymentRequest.paymentMethodData.tokenizationData.token
+  ); */
+  const token =
+    req.body.paymentRequest.paymentMethodData.tokenizationData.token;
+  // convert token to base64
+  const base64 = Buffer.from(token).toString("base64");
+  // split base64 into array
+  /*  console.log(base64); */
+  // create object with token and amount
+  const paymentObject = {
+    amount: "0.04",
+    currency: "USD",
+    method: "third_party_token",
+    transaction_type: "sale",
+    epic_token: {
+      token_type: "google_pay",
+      token_data: base64,
+      account_holder_name: "PowerDing.com",
+    },
+  };
+
+  // send payment object to epicpay
+  axios
+    .post(
+      process.env.REACT_APP_EPICPAY_SANDBOX_URL + "authorize",
+      {
+        amount: "1",
+        currency: "usd",
+        method: "third_party_token",
+        transaction_type: "sale",
+        epic_token: {
+          token_type: "google_pay",
+          token_data: base64,
+          account_holder_name: "PowerDing.com",
+        },
+      },
+      {
+        auth: {
+          username: process.env.REACT_APP_EPICPAY_API_KEY,
+          password: process.env.REACT_APP_EPICPAY_PASSWORD,
+        },
+      }
+    )
+    .then((response) => {
+      console.log(response);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+  /* axios
+    .post(process.env.REACT_APP_EPICPAY_SANDBOX_URL + "/authorize", paymentObject)
+    .then((response) => {
+      console.log(response.data);
+      res.json(response.data);
+    })
+    .catch((error) => {
+      console.log(error);
+      res.json(error);
+    }); */
+});
+
 router.post("/recaptcha", async (req, res) => {
   console.log("recaptcha POST route hit");
   //Destructuring response token from request body
