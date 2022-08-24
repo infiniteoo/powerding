@@ -46,11 +46,13 @@ router.post("/archive", (req, res) => {
 });
 
 router.post("/payment", (req, res) => {
+  console.log(req.body);
   /* console.log("payment route hit");
   console.log(req.body);
   console.log(
     req.body.paymentRequest.paymentMethodData.tokenizationData.token
   ); */
+  const donationAmount = req.body.donationAmount;
   const token =
     req.body.paymentRequest.paymentMethodData.tokenizationData.token;
   // convert token to base64
@@ -75,7 +77,7 @@ router.post("/payment", (req, res) => {
     .post(
       process.env.REACT_APP_EPICPAY_SANDBOX_URL + "authorize",
       {
-        amount: "1",
+        amount: donationAmount,
         currency: "usd",
         method: "third_party_token",
         transaction_type: "sale",
@@ -93,21 +95,11 @@ router.post("/payment", (req, res) => {
       }
     )
     .then((response) => {
-      console.log(response);
-    })
-    .catch((error) => {
-      console.log(error);
-    });
-  /* axios
-    .post(process.env.REACT_APP_EPICPAY_SANDBOX_URL + "/authorize", paymentObject)
-    .then((response) => {
-      console.log(response.data);
       res.json(response.data);
     })
     .catch((error) => {
       console.log(error);
-      res.json(error);
-    }); */
+    });
 });
 
 router.post("/recaptcha", async (req, res) => {

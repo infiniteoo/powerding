@@ -45,9 +45,9 @@ const PayButton = ({ donationAmount }) => {
           },
         }}
         onLoadPaymentData={(paymentRequest) => {
-          console.log("load payment data", paymentRequest);
+          console.log("load payment data", paymentRequest, donationAmount);
           axios
-            .post("/powerding/payment", { paymentRequest })
+            .post("/powerding/payment", { paymentRequest, donationAmount })
 
             .then((response) => {
               console.log(response);
