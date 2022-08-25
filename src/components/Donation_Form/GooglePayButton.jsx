@@ -2,7 +2,7 @@ import React from "react";
 import GooglePayButton from "@google-pay/button-react";
 import axios from "axios";
 
-const PayButton = ({ donationAmount }) => {
+const PayButton = ({ donationAmount, submitPowerDing }) => {
   return (
     <div>
       <GooglePayButton
@@ -56,7 +56,11 @@ const PayButton = ({ donationAmount }) => {
             .post("/powerding/payment", { paymentRequest, donationAmount })
 
             .then((response) => {
-              console.log(response);
+              console.log("response after successfull payment", response);
+              if (response.status === 200) {
+                console.log("status is 200");
+                submitPowerDing();
+              }
             })
             .catch((error) => {
               console.log(error);

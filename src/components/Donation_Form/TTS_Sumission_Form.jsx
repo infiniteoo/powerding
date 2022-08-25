@@ -28,6 +28,30 @@ const TTS_Submission_Form = ({ streamer }) => {
     onEnd,
   });
 
+  const submitPowerDing = (e) => {
+    console.log("submitting powerding");
+    axios
+      .post("/powerding", {
+        text,
+        voice: voiceIndex,
+        donationAmount,
+        isAnonymous,
+        streamer,
+        donatorName,
+        mediaLink,
+      })
+      .then((response) => {
+        console.log(response);
+        setDonatorName("");
+        setMediaLink("");
+        setDonationAmount("0.00");
+        setText("");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   const voice = voices[voiceIndex] || null;
 
   return (
@@ -91,9 +115,12 @@ const TTS_Submission_Form = ({ streamer }) => {
               <TransactionDisclosure />
             </Row>
             <Row>
-              <GooglePayButton donationAmount={donationAmount} />
+              <GooglePayButton
+                donationAmount={donationAmount}
+                submitPowerDing={submitPowerDing}
+              />
             </Row>
-            <Row>
+            {/* <Row>
               <button
                 type="button"
                 onClick={() => {
@@ -122,7 +149,7 @@ const TTS_Submission_Form = ({ streamer }) => {
               >
                 SUMBIT POWERDING
               </button>
-            </Row>
+            </Row> */}
             {/*   {speaking ? (
               <button type="button" onClick={cancel}>
                 Stop
