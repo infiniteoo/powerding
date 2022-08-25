@@ -28,7 +28,7 @@ const TTS_Submission_Form = ({ streamer }) => {
     onEnd,
   });
 
-  const submitPowerDing = (e) => {
+  const submitPowerDing = () => {
     console.log("submitting powerding");
     axios
       .post("/powerding", {

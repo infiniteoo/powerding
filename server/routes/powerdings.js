@@ -71,13 +71,16 @@ router.post("/payment", (req, res) => {
       account_holder_name: "PowerDing.com",
     },
   };
+  
+
+
 
   // send payment object to epicpay
   axios
     .post(
       process.env.REACT_APP_EPICPAY_SANDBOX_URL + "authorize",
       {
-        amount: donationAmount,
+        amount: donationAmount * 100,
         currency: "usd",
         method: "third_party_token",
         transaction_type: "sale",
