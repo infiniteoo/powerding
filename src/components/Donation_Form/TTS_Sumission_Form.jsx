@@ -120,48 +120,7 @@ const TTS_Submission_Form = ({ streamer }) => {
                 submitPowerDing={submitPowerDing}
               />
             </Row>
-            {/* <Row>
-              <button
-                type="button"
-                onClick={() => {
-                  // axios post to server with text, voice, and amount
-                  axios
-                    .post("/powerding", {
-                      text,
-                      voice: voiceIndex,
-                      donationAmount,
-                      isAnonymous,
-                      streamer,
-                      donatorName,
-                      mediaLink,
-                    })
-                    .then((response) => {
-                      console.log(response);
-                      setDonatorName("");
-                      setMediaLink("");
-                      setDonationAmount("0.00");
-                      setText("");
-                    })
-                    .catch((error) => {
-                      console.log(error);
-                    });
-                }}
-              >
-                SUMBIT POWERDING
-              </button>
-            </Row> */}
-            {/*   {speaking ? (
-              <button type="button" onClick={cancel}>
-                Stop
-              </button>
-            ) : (
-              <button
-                type="button"
-                onClick={() => speak({ text, voice, rate, pitch })}
-              >
-                Speak
-              </button>
-            )} */}
+            
           </React.Fragment>
         )}
       </form>

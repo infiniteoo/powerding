@@ -39,11 +39,7 @@ export default function PopOver(props) {
             ? "Not logged in"
             : `Username: ${props.userInfo.username}`}
         </Typography>
-        {/*  <Typography sx={{ p: 2 }}>
-          {props.userInfo.downloadsRemaining === null
-            ? ""
-            : `Downloads Remaining: ${props.userInfo.downloadsRemaining}`}
-        </Typography> */}
+        
         <div className="logout-button-div">
           <button
             onClick={props.logout}
