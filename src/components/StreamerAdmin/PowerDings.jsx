@@ -17,6 +17,8 @@ const PowerDings = ({
   setPowerdings,
   setYoutubeVideoID,
   setYoutubeStartTime,
+  dingPlaybackText,
+  setDingPlaybackText,
 }) => {
   useEffect(() => {
     getPowerdings();
@@ -127,6 +129,7 @@ const PowerDings = ({
                 dingPlayed = powerding;
                 videoID = extractVideoID(powerding.mediaLink);
                 startTime = extractVideoTimeStamp(powerding.mediaLink);
+                setDingPlaybackText(powerding.message);
               }}
             >
               <div style={{ justifyContent: "space-between", display: "flex" }}>

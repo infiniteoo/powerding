@@ -5,6 +5,7 @@ import DonationInputs from "./DonationInputs";
 import Header from "./Header";
 import DonationBar from "./DonationBar";
 import PowerDings from "./PowerDings";
+import DingPlayback from "./DingPlayback";
 
 const StreamerAdmin = ({ userInfo, updateUser, loggedIn }) => {
   console.log("in streamer admin", userInfo);
@@ -19,6 +20,7 @@ const StreamerAdmin = ({ userInfo, updateUser, loggedIn }) => {
   const [donationsCollected, setDonationsCollected] = useState(0);
   const [donationGoal, setDonationGoal] = useState(0);
   const [goalPercentage, setGoalPercentage] = useState(null);
+  const [dingPlaybackText, setDingPlaybackText] = useState("");
 
   useEffect(() => {
     setGoalPercentage((donationsCollected / donationGoal) * 100);
@@ -49,6 +51,7 @@ const StreamerAdmin = ({ userInfo, updateUser, loggedIn }) => {
           setPowerdings={setPowerdings}
           setYoutubeVideoID={setYoutubeVideoID}
           setYoutubeStartTime={setYoutubeStartTime}
+          setDingPlaybackText={setDingPlaybackText}
         />
         <div
           style={{
@@ -62,6 +65,7 @@ const StreamerAdmin = ({ userInfo, updateUser, loggedIn }) => {
             setDonationTitle={setDonationTitle}
             setDonationsCollected={setDonationsCollected}
           />
+          <DingPlayback dingPlaybackText={dingPlaybackText} />
           <YouTube videoId={youtubeVideoID} opts={opts} />
         </div>
         <DonationBar
