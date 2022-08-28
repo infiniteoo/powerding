@@ -19,6 +19,7 @@ const PowerDings = ({
   setYoutubeStartTime,
   dingPlaybackText,
   setDingPlaybackText,
+  setDingCurrentlyPlaying,
 }) => {
   useEffect(() => {
     getPowerdings();
@@ -54,6 +55,7 @@ const PowerDings = ({
       .catch((err) => {
         console.log(err);
       });
+    setDingCurrentlyPlaying(false);
   };
 
   const { speak, cancel, speaking, supported, voices } = useSpeechSynthesis({
@@ -129,6 +131,7 @@ const PowerDings = ({
                 dingPlayed = powerding;
                 videoID = extractVideoID(powerding.mediaLink);
                 startTime = extractVideoTimeStamp(powerding.mediaLink);
+                setDingCurrentlyPlaying(true);
                 setDingPlaybackText(powerding.message);
               }}
             >

@@ -21,6 +21,7 @@ const StreamerAdmin = ({ userInfo, updateUser, loggedIn }) => {
   const [donationGoal, setDonationGoal] = useState(0);
   const [goalPercentage, setGoalPercentage] = useState(null);
   const [dingPlaybackText, setDingPlaybackText] = useState("");
+  const [dingCurrentlyPlaying, setDingCurrentlyPlaying] = useState(false);
 
   useEffect(() => {
     setGoalPercentage((donationsCollected / donationGoal) * 100);
@@ -52,6 +53,7 @@ const StreamerAdmin = ({ userInfo, updateUser, loggedIn }) => {
           setYoutubeVideoID={setYoutubeVideoID}
           setYoutubeStartTime={setYoutubeStartTime}
           setDingPlaybackText={setDingPlaybackText}
+          setDingCurrentlyPlaying={setDingCurrentlyPlaying}
         />
         <div
           style={{
@@ -65,7 +67,10 @@ const StreamerAdmin = ({ userInfo, updateUser, loggedIn }) => {
             setDonationTitle={setDonationTitle}
             setDonationsCollected={setDonationsCollected}
           />
-          <DingPlayback dingPlaybackText={dingPlaybackText} />
+          {dingCurrentlyPlaying ? (
+            <DingPlayback dingPlaybackText={dingPlaybackText} />
+          ) : null}
+
           <YouTube videoId={youtubeVideoID} opts={opts} />
         </div>
         <DonationBar
