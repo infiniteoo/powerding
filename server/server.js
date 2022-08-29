@@ -38,7 +38,7 @@ app.use(passport.session()); // calls the deserializeUser
 
 // Routes
 app.use("/user", user);
-app.use("/api", sounds);
+/* app.use("/api", sounds); */
 app.use("/email", email);
 app.use("/powerding", powerdings);
 
