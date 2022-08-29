@@ -12,7 +12,7 @@ const PORT = process.env.PORT || 7777;
 
 // Route requires
 const user = require("./routes/user");
-const sounds = require("./routes/sounds");
+/* const sounds = require("./routes/sounds"); */
 const email = require("./routes/email");
 const powerdings = require("./routes/powerdings");
 
