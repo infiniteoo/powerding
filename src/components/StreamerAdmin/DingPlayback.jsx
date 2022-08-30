@@ -12,6 +12,7 @@ const DingPlayback = ({ dingPlaybackText }) => {
         frameBorder={0}
         className="giphy-embed"
         allowFullScreen
+        title="uniqueTitle"
       ></iframe>
 
       <p>

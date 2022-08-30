@@ -1,5 +1,5 @@
 import React from "react";
-import { GlobalStyles, Row } from "../Donation_Form/shared";
+import { GlobalStyles } from "../Donation_Form/shared";
 import amfmfxLogo from "../../assets/amfmfx.com text logo.png";
 
 const Welcome = () => {

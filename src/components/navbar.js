@@ -4,7 +4,7 @@ import axios from "axios";
 import "../App.css";
 import PopOver from "./accountpopover";
 import logo from "../assets/amfmfx.com text logo.png";
-import SearchBar from "./SearchBar";
+
 
 class Navbar extends Component {
   constructor() {

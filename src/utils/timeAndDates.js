@@ -1,7 +1,7 @@
 export const convertDate = (dateCreated) => {
   let dateToConvert = new Date(dateCreated);
   let date =
-    parseInt(dateToConvert.getMonth() + 1) +
+    parseInt(dateToConvert.getMonth() + 1, 10) +
     "/" +
     dateToConvert.getDate() +
     "/" +
