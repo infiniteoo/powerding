@@ -27,7 +27,7 @@ router.post("/", (req, res) => {
         password: password,
         accessLevel: 0,
         organization: organization,
-       
+
         confirmed: false,
         downloadsRemaining: 5,
         lastLogin: Date.now(),
@@ -40,7 +40,7 @@ router.post("/", (req, res) => {
         sendEmail(savedUser.email, templates.confirm(savedUser._id))
           .then(() => res.json({ msg: emailMsgs.confirm }))
           .catch((err) => console.log(err));
-        res.json(savedUser);
+        /* res.json(savedUser); */
       });
     }
   });
@@ -92,7 +92,6 @@ router.post(
           previousLogin: user.previousLogin,
           email: user.email,
           confirmed: user.confirmed,
-       
         };
         res.send(userInfo);
       }
