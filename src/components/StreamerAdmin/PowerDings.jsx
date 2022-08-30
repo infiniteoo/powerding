@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { extractVideoID, extractVideoTimeStamp } from "../../utils/youTube";
 import { convertDate, convertTime } from "../../utils/timeAndDates";
 import {
@@ -17,7 +17,7 @@ const PowerDings = ({
   setPowerdings,
   setYoutubeVideoID,
   setYoutubeStartTime,
-  dingPlaybackText,
+
   setDingPlaybackText,
   setDingCurrentlyPlaying,
 }) => {
@@ -58,9 +58,10 @@ const PowerDings = ({
     setDingCurrentlyPlaying(false);
   };
 
-  const { speak, cancel, speaking, supported, voices } = useSpeechSynthesis({
-    onEnd,
-  });
+  const { speak, cancel, speaking, /* supported, */ voices } =
+    useSpeechSynthesis({
+      onEnd,
+    });
 
   const powerDingToSpeak = (powerDing) => {
     return (

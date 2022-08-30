@@ -16,7 +16,9 @@ const DingPlayback = ({ dingPlaybackText }) => {
       ></iframe>
 
       <p>
-        <a href="https://giphy.com/gifs/mostexpensivest-viceland-most-expensivest-14SAx6S02Io1ThOlOY"></a>
+        <a href="https://giphy.com/gifs/mostexpensivest-viceland-most-expensivest-14SAx6S02Io1ThOlOY">
+          {" "}
+        </a>
       </p>
       <div style={{ width: "480px" }}>
         <h3>{dingPlaybackText}</h3>

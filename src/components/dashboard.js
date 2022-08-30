@@ -15,7 +15,7 @@ const Dashboard = (props) => {
   const { email, accessLevel, username, lastLogin, confirmed } = props.state;
   let dateToConvert = new Date(lastLogin);
   let formattedDate =
-    parseInt(dateToConvert.getMonth() + 1) +
+    parseInt(dateToConvert.getMonth() + 1, 10) +
     "/" +
     dateToConvert.getDate() +
     "/" +

@@ -24,7 +24,7 @@ const TTS_Submission_Form = ({ streamer }) => {
   const onEnd = () => {
     // You could do something here after speaking has finished
   };
-  const { speak, cancel, speaking, supported, voices } = useSpeechSynthesis({
+  const { /* speak, cancel, speaking, */ supported, voices } = useSpeechSynthesis({
     onEnd,
   });
 
@@ -52,7 +52,7 @@ const TTS_Submission_Form = ({ streamer }) => {
       });
   };
 
-  const voice = voices[voiceIndex] || null;
+  /* const voice = voices[voiceIndex] || null; */
 
   return (
     <Container>

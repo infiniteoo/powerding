@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import YouTube, { YouTubeProps } from "react-youtube";
+import YouTube from "react-youtube";
 
 import DonationInputs from "./DonationInputs";
 import Header from "./Header";
@@ -12,7 +12,7 @@ const StreamerAdmin = ({ userInfo, updateUser, loggedIn }) => {
 
   // query database for powerdings with streamer name
 
-  const [youtubePlayLength, setYoutubePlayLength] = useState(180);
+  const [youtubePlayLength] = useState(180);
   const [youtubeStartTime, setYoutubeStartTime] = useState("0");
   const [youtubeVideoID, setYoutubeVideoID] = useState("");
   const [powerdings, setPowerdings] = useState([]);

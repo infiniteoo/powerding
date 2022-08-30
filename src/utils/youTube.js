@@ -1,3 +1,5 @@
+/* eslint-disable no-useless-escape */
+
 export const extractVideoID = (url) => {
   var regExp =
     /^.*(youtu\.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
