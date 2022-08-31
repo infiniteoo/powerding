@@ -35,6 +35,13 @@ const Home = (props) => {
             neutral platform. no feds. secure & discreet data.
           </h5>
         </div>
+        <br />
+        <h3>
+          <em>
+            CURRENTLY IN DEMO MODE ONLY - DONATIONS ARE SIMULATED - YOU WILL NOT
+            BE CHARGED
+          </em>
+        </h3>
       </div>
 
       <div>

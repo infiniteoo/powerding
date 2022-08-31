@@ -187,6 +187,18 @@ body {
   overflow: hidden;
 }
 
+.nav-links {
+  display: flex;
+  flex-direction: row;
+  z-index: 100;
+  list-style-type: none;
+  align-items: center;
+  justify-content: space-between;
+  top: 0;
+  z-index: 100;
+  overflow: hidden;
+}
+
 .dashboard_container {
   display: grid;
   grid-template-columns: auto;

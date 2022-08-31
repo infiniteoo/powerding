@@ -24,9 +24,10 @@ const TTS_Submission_Form = ({ streamer }) => {
   const onEnd = () => {
     // You could do something here after speaking has finished
   };
-  const { /* speak, cancel, speaking, */ supported, voices } = useSpeechSynthesis({
-    onEnd,
-  });
+  const { /* speak, cancel, speaking, */ supported, voices } =
+    useSpeechSynthesis({
+      onEnd,
+    });
 
   const submitPowerDing = () => {
     console.log("submitting powerding");
@@ -120,7 +121,15 @@ const TTS_Submission_Form = ({ streamer }) => {
                 submitPowerDing={submitPowerDing}
               />
             </Row>
-            
+            <br />
+            <Row>
+              <h3>
+                <em>
+                  DEMO MODE - DONATIONS ARE SIMULATED - YOU
+                  WILL NOT BE CHARGED
+                </em>
+              </h3>
+            </Row>
           </React.Fragment>
         )}
       </form>

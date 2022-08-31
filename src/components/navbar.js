@@ -5,7 +5,6 @@ import "../App.css";
 import PopOver from "./accountpopover";
 import logo from "../assets/amfmfx.com text logo.png";
 
-
 class Navbar extends Component {
   constructor() {
     super();
@@ -25,7 +24,6 @@ class Navbar extends Component {
             downloadsRemaining: null,
             accessLevel: null,
             confirmed: null,
-            
           });
         }
       })
@@ -48,6 +46,21 @@ class Navbar extends Component {
                     <img src={logo} alt="" srcSet="" height="60px" />
                   </a>
                 </li>
+
+                <ul className="nav-links">
+                  <li>
+                    <Link to="/admin" className="btn btn-link">
+                      <span className="text-secondary">powerdings</span>
+                    </Link>
+                  </li>
+
+                  <Link to="/u/killstream" className="btn btn-link">
+                    <span className="text-secondary">donate</span>
+                  </Link>
+                  <Link to="/dashboard" className="btn btn-link">
+                    <span className="text-secondary">account</span>
+                  </Link>
+                </ul>
                 {/*  <li className="nav_search">
                   <SearchBar />
                 </li> */}
@@ -69,6 +82,9 @@ class Navbar extends Component {
                 </Link>
                 <Link to="/signup" className="btn btn-link">
                   <span className="text-secondary">sign up</span>
+                </Link>
+                <Link to="/u/killstream" className="btn btn-link">
+                  <span className="text-secondary">donate</span>
                 </Link>
               </div>
             )}
