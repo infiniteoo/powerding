@@ -55,7 +55,7 @@ exports.confirmEmail = (req, res) => {
       else if (user && !user.confirmed) {
         User.findByIdAndUpdate(id, { confirmed: true, accessLevel: 1 })
           // then redirect to localhost:3000/login
-          .then(() => res.redirect("http://powerding.com"))
+          .then(() => res.redirect("/welcome"))
           .catch((err) => console.log(err));
       }
 
