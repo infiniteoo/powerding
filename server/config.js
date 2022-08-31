@@ -1,3 +1,3 @@
 exports.PORT = process.env.PORT || 8080;
 
-exports.CLIENT_ORIGIN = "http://localhost:7777";
+exports.CLIENT_ORIGIN = "http://powerding.com";
