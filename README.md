@@ -2,6 +2,12 @@
 
 PowerDing is a full stack, real-time, talk-to-speech (TTS), livestream donation platform similar to PowerChat, built with React, Node.js, MongoDB, Google Pay, and protected by ReCAPTCHA.
 
+## Live Demo
+
+http://www.powerding.com
+
+While the site will accept donations via Google Pay, the third party payment processor is currently in Sandbox mode.  You will NOT be charged as the site is currently in demo mode.
+
 ### Table of Contents
 
 - [Introduction](#introduction)
