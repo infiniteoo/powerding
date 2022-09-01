@@ -12,6 +12,7 @@ import StreamerHomePage from "./components/StreamerHomePage";
 import Dashboard from "./components/dashboard";
 import StreamerAdmin from "./components/StreamerAdmin/StreamerAdmin";
 import Welcome from "./components/Welcome/Welcome";
+import About from "./components/About/About";
 
 class App extends Component {
   constructor() {
@@ -148,6 +149,7 @@ class App extends Component {
           />
           <Route path="/signup" render={() => <SignUp />} />
           <Route path="/welcome" render={() => <Welcome />} />
+          <Route path="/about" render={() => <About />} />
 
           <Route path="/u/:streamer" component={StreamerHomePage} />
         </div>

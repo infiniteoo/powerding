@@ -60,6 +60,9 @@ class Navbar extends Component {
                   <Link to="/dashboard" className="btn btn-link">
                     <span className="text-secondary">account</span>
                   </Link>
+                  <Link to="/about" className="btn btn-link">
+                    <span className="text-secondary">about</span>
+                  </Link>
                 </ul>
                 {/*  <li className="nav_search">
                   <SearchBar />
@@ -85,6 +88,9 @@ class Navbar extends Component {
                 </Link>
                 <Link to="/u/killstream" className="btn btn-link">
                   <span className="text-secondary">donate</span>
+                </Link>
+                <Link to="/about" className="btn btn-link">
+                  <span className="text-secondary">about</span>
                 </Link>
               </div>
             )}

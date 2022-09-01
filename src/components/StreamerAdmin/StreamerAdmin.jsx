@@ -6,6 +6,8 @@ import Header from "./Header";
 import DonationBar from "./DonationBar";
 import PowerDings from "./PowerDings";
 import DingPlayback from "./DingPlayback";
+import AutoplayButton from "./AutoplayButton";
+import { Row } from "../Donation_Form/shared";
 
 const StreamerAdmin = ({ userInfo, updateUser, loggedIn }) => {
   console.log("in streamer admin", userInfo);
@@ -22,6 +24,7 @@ const StreamerAdmin = ({ userInfo, updateUser, loggedIn }) => {
   const [goalPercentage, setGoalPercentage] = useState(null);
   const [dingPlaybackText, setDingPlaybackText] = useState("");
   const [dingCurrentlyPlaying, setDingCurrentlyPlaying] = useState(false);
+  const [autoplayOn, setAutoplayOn] = useState(false);
 
   useEffect(() => {
     setGoalPercentage((donationsCollected / donationGoal) * 100);
@@ -47,6 +50,12 @@ const StreamerAdmin = ({ userInfo, updateUser, loggedIn }) => {
     <div className="dashboard_container">
       <div className="homeSplash">
         <Header />
+        <Row>
+          <AutoplayButton
+            autoplayOn={autoplayOn}
+            setAutoplayOn={setAutoplayOn}
+          />
+        </Row>
         <PowerDings
           powerdings={powerdings}
           setPowerdings={setPowerdings}

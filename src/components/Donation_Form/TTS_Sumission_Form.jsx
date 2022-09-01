@@ -10,12 +10,14 @@ import GooglePayButton from "./GooglePayButton";
 import TransactionDisclosure from "./TransactionDisclosure";
 import DonatorNameInput from "./donatorName";
 
+
 const TTS_Submission_Form = ({ streamer }) => {
   const [text, setText] = useState("");
   const [voiceIndex, setVoiceIndex] = useState(null);
   const [charsRemaining, setCharsRemaining] = useState(250);
   const [donationAmount, setDonationAmount] = useState("0.00");
   const [isAnonymous, setIsAnonymous] = useState(true);
+  
   const [donatorName, setDonatorName] = useState("");
   const [mediaLink, setMediaLink] = useState("");
 
@@ -30,7 +32,7 @@ const TTS_Submission_Form = ({ streamer }) => {
     });
 
   const submitPowerDing = () => {
-    console.log("submitting powerding");
+    /* console.log("submitting powerding"); */
     axios
       .post("/powerding", {
         text,
@@ -125,8 +127,7 @@ const TTS_Submission_Form = ({ streamer }) => {
             <Row>
               <h3>
                 <em>
-                  DEMO MODE - DONATIONS ARE SIMULATED - YOU
-                  WILL NOT BE CHARGED
+                  DEMO MODE - DONATIONS ARE SIMULATED - YOU WILL NOT BE CHARGED
                 </em>
               </h3>
             </Row>
