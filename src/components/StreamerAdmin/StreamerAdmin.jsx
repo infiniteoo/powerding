@@ -8,6 +8,7 @@ import PowerDings from "./PowerDings";
 import DingPlayback from "./DingPlayback";
 import AutoplayButton from "./AutoplayButton";
 import { Row } from "../Donation_Form/shared";
+import VolumeSlider from "./VolumeSlider";
 
 const StreamerAdmin = ({ userInfo, updateUser, loggedIn }) => {
   console.log("in streamer admin", userInfo);
@@ -25,6 +26,7 @@ const StreamerAdmin = ({ userInfo, updateUser, loggedIn }) => {
   const [dingPlaybackText, setDingPlaybackText] = useState("");
   const [dingCurrentlyPlaying, setDingCurrentlyPlaying] = useState(false);
   const [autoplayOn, setAutoplayOn] = useState(false);
+  const [volume, setVolume] = React.useState(0.3);
 
   useEffect(() => {
     setGoalPercentage((donationsCollected / donationGoal) * 100);
@@ -55,6 +57,7 @@ const StreamerAdmin = ({ userInfo, updateUser, loggedIn }) => {
             autoplayOn={autoplayOn}
             setAutoplayOn={setAutoplayOn}
           />
+          <VolumeSlider volume={volume} setVolume={setVolume} />
         </Row>
         <PowerDings
           powerdings={powerdings}
