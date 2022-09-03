@@ -5,6 +5,7 @@ const express = require("express");
 const dbConnection = require("./database");
 const morgan = require("morgan");
 const session = require("express-session");
+const quoteGenerator = require("./quotes/quoteGenerator");
 
 const passport = require("./passport");
 const app = express();
@@ -43,6 +44,8 @@ app.use("/email", email);
 app.use("/powerding", powerdings);
 
 app.use(express.static("public"));
+
+quoteGenerator();
 
 // Starting Server
 app.listen(PORT, () => {
