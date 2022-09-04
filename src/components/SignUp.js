@@ -154,7 +154,7 @@ const SignUp = () => {
                 type="text"
                 id="username"
                 name="username"
-                placeholder="enter name"
+                placeholder="enter username"
                 value={state.username}
                 onChange={handleChange}
               />

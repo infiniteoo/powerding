@@ -1,11 +1,13 @@
 const express = require("express");
 const router = express.Router();
 const User = require("../database/models/user");
+const Powerding = require("../database/models/powerdings");
 const passport = require("../passport");
-
+const OPTIONS = require("../config").CHUCK_NORRIS_OPTIONS;
 const sendEmail = require("../email/email.send");
 const templates = require("../email/email.templates");
 const emailMsgs = require("../email/email.msgs");
+const axios = require("axios");
 
 router.post("/", (req, res) => {
   console.log("user signup");
@@ -34,6 +36,36 @@ router.post("/", (req, res) => {
         // today's date plus five days
         fifteenDayReset: Date.now() + 1000 * 60 * 60 * 24 * 15,
       });
+
+      // create three powerding entries in the database for the user
+      // loop 3 times
+      for (let i = 0; i < 3; i++) {
+        axios
+          .request(OPTIONS)
+          .then(function (response) {
+            const newPowerding = new Powerding({
+              // set the user to the new user
+              streamer: username,
+              ttsVoice: 1,
+              senderName: "Demo User",
+              amountPaid: "1",
+              played: "false",
+              archived: "false",
+              message: response.data.value,
+              mediaLink: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+            });
+
+            // save the powerding
+            newPowerding.save((err, savedPowerding) => {
+              if (err) console.log(err);
+              console.log("saved powerding", savedPowerding);
+            });
+          })
+          .catch(function (error) {
+            console.error(error);
+          });
+        // create a new powerding
+      }
 
       newUser.save((err, savedUser) => {
         if (err) return res.json(err);
