@@ -58,6 +58,7 @@ class App extends Component {
           lastLogin: response.data.user.lastLogin,
           email: response.data.user.email,
           confirmed: response.data.user.confirmed,
+          redirectTo: "/dashboard",
         });
       } else {
         console.log("Get user: no user, state", this.state);

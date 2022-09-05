@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import axios from "axios";
 import "../App.css";
 import PopOver from "./accountpopover";
@@ -25,6 +25,7 @@ class Navbar extends Component {
             downloadsRemaining: null,
             accessLevel: null,
             confirmed: null,
+            redirectTo: "/",
           });
         }
       })
@@ -36,8 +37,6 @@ class Navbar extends Component {
   render() {
     const loggedIn = this.props.loggedIn;
     const userInfo = this.props.userInfo;
-    console.log("loggedin? ", loggedIn);
-    console.log("userInfo: ", userInfo);
 
     return (
       <div>
@@ -69,9 +68,6 @@ class Navbar extends Component {
                     <span className="text-secondary">about</span>
                   </Link>
                 </ul>
-                {/*  <li className="nav_search">
-                  <SearchBar />
-                </li> */}
 
                 <li className="nav-account">
                   <PopOver
