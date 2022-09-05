@@ -34,6 +34,9 @@ class Navbar extends Component {
 
   render() {
     const loggedIn = this.props.loggedIn;
+    const userInfo = this.props.userInfo;
+    console.log("loggedin? ", loggedIn);
+    console.log("userInfo: ", userInfo);
 
     return (
       <div>
@@ -53,10 +56,20 @@ class Navbar extends Component {
                       <span className="text-secondary">powerdings</span>
                     </Link>
                   </li>
+                  {loggedIn ? (
+                    <Link
+                      to={`/u/` + userInfo.username}
+                      className="btn btn-link"
+                    >
+                      <span className="text-secondary">donate</span>
+                    </Link>
+                  ) : (
+                    // put a generic log in page here
+                    <Link to={`/u/killstream`} className="btn btn-link">
+                      <span className="text-secondary">donate</span>
+                    </Link>
+                  )}
 
-                  <Link to="/u/killstream" className="btn btn-link">
-                    <span className="text-secondary">donate</span>
-                  </Link>
                   <Link to="/dashboard" className="btn btn-link">
                     <span className="text-secondary">account</span>
                   </Link>

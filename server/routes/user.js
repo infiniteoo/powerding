@@ -132,6 +132,7 @@ router.post(
 );
 
 router.get("/streamer/:streamer", (req, res) => {
+  console.log(req.params.streamer);
   User.findOne({ username: req.params.streamer }, (err, user) => {
     if (err) {
       console.log(err);
