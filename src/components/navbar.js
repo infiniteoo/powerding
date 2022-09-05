@@ -4,6 +4,7 @@ import axios from "axios";
 import "../App.css";
 import PopOver from "./accountpopover";
 import logo from "../assets/amfmfx.com text logo.png";
+import GenericDonate from "./GenericDonate/GenericDonate";
 
 class Navbar extends Component {
   constructor() {
@@ -56,19 +57,10 @@ class Navbar extends Component {
                       <span className="text-secondary">powerdings</span>
                     </Link>
                   </li>
-                  {loggedIn ? (
-                    <Link
-                      to={`/u/` + userInfo.username}
-                      className="btn btn-link"
-                    >
-                      <span className="text-secondary">donate</span>
-                    </Link>
-                  ) : (
-                    // put a generic log in page here
-                    <Link to={`/u/killstream`} className="btn btn-link">
-                      <span className="text-secondary">donate</span>
-                    </Link>
-                  )}
+
+                  <Link to={`/u/` + userInfo.username} className="btn btn-link">
+                    <span className="text-secondary">donate</span>
+                  </Link>
 
                   <Link to="/dashboard" className="btn btn-link">
                     <span className="text-secondary">account</span>
@@ -99,7 +91,7 @@ class Navbar extends Component {
                 <Link to="/signup" className="btn btn-link">
                   <span className="text-secondary">sign up</span>
                 </Link>
-                <Link to="/u/killstream" className="btn btn-link">
+                <Link to="generic" className="btn btn-link">
                   <span className="text-secondary">donate</span>
                 </Link>
                 <Link to="/about" className="btn btn-link">
