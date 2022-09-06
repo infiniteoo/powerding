@@ -7,7 +7,7 @@ import {
 } from "./Dashboard.styled";
 
 const AccountInformation = (props) => {
-  const { email, accessLevel, username, lastLogin, confirmed } = props.state;
+  const { email, username, lastLogin, confirmed } = props.state;
   const customDonationURL = "/u/" + username;
   let dateToConvert = new Date(lastLogin);
   let formattedDate =

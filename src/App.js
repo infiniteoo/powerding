@@ -27,6 +27,8 @@ class App extends Component {
       userId: null,
       lastLogin: null,
       confirmed: false,
+      minAmountForMedia: "10.00",
+      mediaLength: 180,
     };
 
     this.getUser = this.getUser.bind(this);
@@ -60,6 +62,8 @@ class App extends Component {
           email: response.data.user.email,
           confirmed: response.data.user.confirmed,
           soundEffect: response.data.user.soundEffect,
+          minAmountForMedia: response.data.user.minAmountForMedia,
+          mediaLength: response.data.user.mediaLength,
           redirectTo: "/dashboard",
         });
       } else {
@@ -74,6 +78,8 @@ class App extends Component {
           lastLogin: null,
           email: null,
           confirmed: false,
+          minAmountForMedia: "10.00",
+          mediaLength: 180,
         });
       }
     });

@@ -30,7 +30,8 @@ router.post("/", (req, res) => {
         accessLevel: 0,
         bannerImage: null,
         soundEffect: null,
-
+        minAmountForMedia: "10.00",
+        mediaLength: 180,
         confirmed: false,
 
         lastLogin: Date.now(),
@@ -121,6 +122,8 @@ router.post(
           soundEffect: user.soundEffect,
           email: user.email,
           confirmed: user.confirmed,
+          minAmountForMedia: user.minAmountForMedia,
+          mediaLength: user.mediaLength,
         };
         res.send(userInfo);
       }
@@ -200,5 +203,43 @@ router.post(
     ).catch((err) => console.log("caught an error", err));
   }
 );
+
+router.post("/update-min-amount", (req, res) => {
+  console.log("req.body", req.body);
+  User.findOneAndUpdate(
+    { username: req.body.username },
+    {
+      $set: { minAmountForMedia: req.body.minAmount },
+    },
+    { new: true },
+    (err, user) => {
+      if (err) {
+        console.log(err);
+        res.json(err);
+      } else {
+        res.json(user);
+      }
+    }
+  );
+});
+
+router.post("/update-media-length", (req, res) => {
+  console.log("req.body", req.body);
+  User.findOneAndUpdate(
+    { username: req.body.username },
+    {
+      $set: { mediaLength: req.body.mediaLen },
+    },
+    { new: true },
+    (err, user) => {
+      if (err) {
+        console.log(err);
+        res.json(err);
+      } else {
+        res.json(user);
+      }
+    }
+  );
+});
 
 module.exports = router;

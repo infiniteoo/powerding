@@ -13,7 +13,7 @@ const Dashboard = (props) => {
         <div className="homeSplash">
           <Container>
             <Column>
-              <AccountSettings />
+              <AccountSettings state={props.state} />
             </Column>
             <Column>
               <ChangePassword state={props.state} />

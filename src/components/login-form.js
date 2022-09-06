@@ -51,6 +51,8 @@ class LoginForm extends Component {
             soundEffect: response.data.soundEffect,
             email: response.data.email,
             confirmed: response.data.confirmed,
+            minAmountForMedia: response.data.minAmountForMedia,
+            mediaLength: response.data.mediaLength,
           });
 
           // update the state to redirect to home
