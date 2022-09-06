@@ -1,10 +1,10 @@
 import React, { Component } from "react";
-import { Link, Redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 import axios from "axios";
 import "../App.css";
 import PopOver from "./accountpopover";
 import logo from "../assets/amfmfx.com text logo.png";
-import GenericDonate from "./GenericDonate/GenericDonate";
+
 
 class Navbar extends Component {
   constructor() {

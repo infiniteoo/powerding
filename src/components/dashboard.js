@@ -24,17 +24,27 @@ const Dashboard = (props) => {
   const handleSnackbarClose = () => {
     setSnackbarClose(false);
   };
+
+  const customDonationURL = "/u/" + username;
   return (
     <div>
       <div className="dashboard_container">
         <div className="homeSplash">
           <div>
             <h1>account information</h1>
+
             <AccountLabel>Username:</AccountLabel>
             <AccountInfo> {username}</AccountInfo>
 
             <AccountLabel>Email Address:</AccountLabel>
             <AccountInfo>{email}</AccountInfo>
+
+            <AccountLabel>Your Custom Donation URL:</AccountLabel>
+            <AccountInfo>
+              <a href={customDonationURL}>
+                http://www.powerding.com/{username}
+              </a>
+            </AccountInfo>
 
             <AccountLabel>Last Login:</AccountLabel>
             <AccountInfo>{formattedDate}</AccountInfo>
