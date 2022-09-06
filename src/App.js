@@ -29,6 +29,7 @@ class App extends Component {
       confirmed: false,
       minAmountForMedia: "10.00",
       mediaLength: 180,
+      reactionGif: null,
     };
 
     this.getUser = this.getUser.bind(this);
@@ -64,6 +65,7 @@ class App extends Component {
           soundEffect: response.data.user.soundEffect,
           minAmountForMedia: response.data.user.minAmountForMedia,
           mediaLength: response.data.user.mediaLength,
+          reactionGif: response.data.user.reactionGif,
           redirectTo: "/dashboard",
         });
       } else {
@@ -80,6 +82,7 @@ class App extends Component {
           confirmed: false,
           minAmountForMedia: "10.00",
           mediaLength: 180,
+          reactionGif: null,
         });
       }
     });

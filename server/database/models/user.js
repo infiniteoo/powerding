@@ -14,6 +14,7 @@ const userSchema = new Schema({
   confirmed: { type: Boolean, unique: false, required: false },
   email: { type: String, unique: true, required: false },
   minAmountForMedia: { type: String, unique: false, required: false },
+  reactionGif: { type: String, unique: false, required: false },
   mediaLength: { type: Number, unique: false, required: false },
 });
 

@@ -2,11 +2,18 @@ import React, { useState } from "react";
 import { AccountLabel } from "./Dashboard.styled";
 import SoundEffectSelectButton from "./SoundEffectSelectButton.jsx";
 import BannerSelectButton from "./BannerSelectButton.jsx";
+import ReactionGif from "./ReactionGif.jsx";
 import axios from "axios";
 
 const AccountSettings = (props) => {
-  const { bannerImage, soundEffect, minAmountForMedia, mediaLength, username } =
-    props.state;
+  const {
+    bannerImage,
+    soundEffect,
+    minAmountForMedia,
+    mediaLength,
+    username,
+    reactionGif,
+  } = props.state;
 
   const [minAmount, setMinAmount] = useState(minAmountForMedia);
   const [mediaLen, setMediaLen] = useState(mediaLength);
@@ -25,7 +32,6 @@ const AccountSettings = (props) => {
       });
   };
 
-
   const updateMinAmount = () => {
     axios
       .post("/user/update-min-amount", {
@@ -42,11 +48,14 @@ const AccountSettings = (props) => {
 
   return (
     <div>
+      <br /> <br /> <br />
       <h1 className="dashboard_title">settings</h1>
       <AccountLabel>Banner Image:</AccountLabel>
-      <BannerSelectButton />
+      <BannerSelectButton bannerImage={bannerImage} />
+      <AccountLabel>Reaction GIF:</AccountLabel>
+      <ReactionGif reactionGif={reactionGif} />
       <AccountLabel>Sound Effect:</AccountLabel>
-      <SoundEffectSelectButton />
+      <SoundEffectSelectButton soundEffect={soundEffect} />
       <AccountLabel>Min. Amount for Media:</AccountLabel>
       <input
         type="number"
@@ -55,7 +64,6 @@ const AccountSettings = (props) => {
         onChange={(e) => setMinAmount(e.target.value)}
       />
       <button onClick={updateMinAmount}>Update</button>
-
       <AccountLabel>Media Length (in seconds):</AccountLabel>
       <input
         type="number"
@@ -63,7 +71,6 @@ const AccountSettings = (props) => {
         value={mediaLen}
         onChange={(e) => setMediaLen(e.target.value)}
       />
-
       <button onClick={updateMediaLength}>Update</button>
       <br />
     </div>

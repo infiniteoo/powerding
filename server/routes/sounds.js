@@ -79,25 +79,7 @@ router.post("/sounds/uploadFile", upload.single("file"), (req, res, next) => {
   res.send(file);
 });
 
-router.get("/dates/new_this_week", (req, res) => {
-  console.log("route hit");
 
-  // get all sounds from the database uploaded within the last seven days
-  Sounds.find({ dateEntered: { $gte: Date.now() - 604800000 } })
-    .sort({ dateEntered: -1 })
-    .then((sounds) => {
-      console.log("new this week db response", sounds);
-      res.json(sounds);
-    });
-});
-
-router.get("/search/:search", (req, res) => {
-  console.log("search route hit");
-  console.log(req.params.search);
-  Sounds.find({ $text: { $search: req.params.search } }).then((sounds) =>
-    res.json(sounds)
-  );
-});
 
 router.post("/sounds/moveFile", (req, res) => {
   // move file to subdirectory named after category and subcategory

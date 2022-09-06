@@ -33,6 +33,7 @@ router.post("/", (req, res) => {
         minAmountForMedia: "10.00",
         mediaLength: 180,
         confirmed: false,
+        reactionGif: null,
 
         lastLogin: Date.now(),
       });
@@ -123,6 +124,7 @@ router.post(
           email: user.email,
           confirmed: user.confirmed,
           minAmountForMedia: user.minAmountForMedia,
+          reactionGif: user.reactionGif,
           mediaLength: user.mediaLength,
         };
         res.send(userInfo);

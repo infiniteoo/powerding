@@ -53,6 +53,7 @@ class LoginForm extends Component {
             confirmed: response.data.confirmed,
             minAmountForMedia: response.data.minAmountForMedia,
             mediaLength: response.data.mediaLength,
+            reactionGif: response.data.reactionGif,
           });
 
           // update the state to redirect to home
