@@ -19,6 +19,7 @@ export const Container = styled.div`
   background-color: black;
   padding: 20px;
   margin: 0 20px 20px 20px;
+
   width: 100%;
   button {
     border-radius: 4px;
