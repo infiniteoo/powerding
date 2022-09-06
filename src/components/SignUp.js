@@ -11,7 +11,6 @@ const SignUp = () => {
     confirmPassword: "",
     email: "",
     successfulSignUp: "false",
-    organization: "",
 
     snackbarSeverity: "error",
     alertMsg: "",
@@ -64,7 +63,6 @@ const SignUp = () => {
               username: state.username,
               password: state.password,
               email: state.email,
-              organization: state.organization,
             })
             .then((response) => {
               console.log(response.data.errmsg);
@@ -159,18 +157,7 @@ const SignUp = () => {
                 onChange={handleChange}
               />
             </div>
-            <div className="form-group mt-3">
-              <input
-                className="form-control p-3"
-                type="text"
-                id="organization"
-                name="organization"
-                placeholder="enter organization"
-                value={state.organization}
-                onChange={handleChange}
-              />
-              <br></br>
-            </div>
+            <br></br>
             <RECAPTCHA
               sitekey={process.env.REACT_APP_SITE_KEY}
               ref={captchaRef}

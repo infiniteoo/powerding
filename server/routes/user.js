@@ -12,7 +12,7 @@ const axios = require("axios");
 router.post("/", (req, res) => {
   console.log("user signup");
 
-  const { username, password, email, organization, streamer } = req.body;
+  const { username, password, email, streamer } = req.body;
 
   // ADD VALIDATION
   User.findOne({ email }, (err, user) => {
@@ -28,13 +28,12 @@ router.post("/", (req, res) => {
         username: username,
         password: password,
         accessLevel: 0,
-        organization: organization,
+        bannerImage: null,
+        soundEffect: null,
 
         confirmed: false,
-        downloadsRemaining: 5,
+
         lastLogin: Date.now(),
-        // today's date plus five days
-        fifteenDayReset: Date.now() + 1000 * 60 * 60 * 24 * 15,
       });
 
       // create three powerding entries in the database for the user
@@ -95,13 +94,11 @@ router.post(
         if (err) {
           console.log(err);
         } else {
-          // store lastLogin to temporary variable
-          let tempDateVariable = user.lastLogin;
           // set lastLogin to current date
           User.findOneAndUpdate(
             { _id: req.user._id },
             {
-              $set: { lastLogin: Date.now(), previousLogin: tempDateVariable },
+              $set: { lastLogin: Date.now() },
             },
             { new: true },
             function (err, success) {
@@ -118,10 +115,10 @@ router.post(
           username: user.username,
           password: user.password,
           accessLevel: user.accessLevel,
-          downloadsRemaining: user.downloadsRemaining,
+          bannerImage: user.bannerImage,
           lastLogin: user.lastLogin,
           userId: user._id,
-          previousLogin: user.previousLogin,
+          soundEffect: user.soundEffect,
           email: user.email,
           confirmed: user.confirmed,
         };

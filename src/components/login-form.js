@@ -44,14 +44,13 @@ class LoginForm extends Component {
           this.props.updateUser({
             loggedIn: true,
             username: response.data.username,
-            downloadsRemaining: response.data.downloadsRemaining,
+            bannerImage: response.data.bannerImage,
             accessLevel: response.data.accessLevel,
             userId: response.data.userId,
             lastLogin: response.data.lastLogin,
-            previousLogin: response.data.previousLogin,
+            soundEffect: response.data.soundEffect,
             email: response.data.email,
             confirmed: response.data.confirmed,
-            
           });
 
           // update the state to redirect to home

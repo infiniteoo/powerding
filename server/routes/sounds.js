@@ -91,18 +91,6 @@ router.get("/dates/new_this_week", (req, res) => {
     });
 });
 
-router.get("/dates/new_since_last_visit", (req, res) => {
-  console.log("new since last visit route hit");
-  console.log("req", req);
-  // get all sounds from the database uploaded since the user last logged in
-  Sounds.find({ dateEntered: { $gte: req.user.previousLogin } })
-    .sort({ dateEntered: -1 })
-    .then((sounds) => {
-      console.log("new since last visit db response", sounds);
-      res.json(sounds);
-    });
-});
-
 router.get("/search/:search", (req, res) => {
   console.log("search route hit");
   console.log(req.params.search);

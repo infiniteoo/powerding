@@ -22,7 +22,7 @@ class Navbar extends Component {
           this.props.updateUser({
             loggedIn: false,
             username: null,
-            downloadsRemaining: null,
+           
             accessLevel: null,
             confirmed: null,
             redirectTo: "/",

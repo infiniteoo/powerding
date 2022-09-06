@@ -22,7 +22,8 @@ class App extends Component {
       loggedIn: false,
       username: null,
       accessLevel: null,
-      downloadsRemaining: null,
+      bannerImage: null,
+      soundEffect: null,
       userId: null,
       lastLogin: null,
       confirmed: false,
@@ -53,11 +54,12 @@ class App extends Component {
           loggedIn: true,
           username: response.data.user.username,
           accessLevel: response.data.user.accessLevel,
-          downloadsRemaining: response.data.user.downloadsRemaining,
+          bannerImage: response.data.user.bannerImage,
           userId: response.data.user.userId,
           lastLogin: response.data.user.lastLogin,
           email: response.data.user.email,
           confirmed: response.data.user.confirmed,
+          soundEffect: response.data.user.soundEffect,
           redirectTo: "/dashboard",
         });
       } else {
@@ -66,7 +68,8 @@ class App extends Component {
           loggedIn: false,
           username: null,
           accessLevel: null,
-          downloadsRemaining: null,
+          bannerImage: null,
+          soundEffect: null,
           userId: null,
           lastLogin: null,
           email: null,
@@ -85,13 +88,6 @@ class App extends Component {
           userInfo={this.state}
         />
         <div className="mainContainer">
-          {/* greet user if logged in: */}
-          {this.state.loggedIn && (
-            <p>
-              welcome, {this.state.username}! (downloads remaining:{" "}
-              {this.state.downloadsRemaining})
-            </p>
-          )}
           {/* Routes to different components */}
           <Route
             exact
