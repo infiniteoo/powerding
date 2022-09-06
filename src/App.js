@@ -10,7 +10,7 @@ import Navbar from "./components/navbar";
 import SplashPage from "./components/SplashPage";
 import StreamerHomePage from "./components/StreamerHomePage";
 import AccountDashboard from "./components/Settings/AccountDashboard";
-import StreamerAdmin from "./components/StreamerAdmin/StreamerAdmin";
+import StreamerAdmin from "./components/PowerDingPlayback/StreamerAdmin";
 import Welcome from "./components/Welcome/Welcome";
 import About from "./components/About/About";
 import GenericDonate from "./components/GenericDonate/GenericDonate";

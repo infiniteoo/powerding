@@ -1,10 +1,5 @@
 import React from "react";
-import {
-  AccountLabel,
-  AccountInfo,
-  Column,
-  Container,
-} from "./Dashboard.styled";
+import { AccountLabel } from "./Dashboard.styled";
 import SoundEffectSelectButton from "./SoundEffectSelectButton.jsx";
 import BannerSelectButton from "./BannerSelectButton.jsx";
 const updateSettings = () => {
