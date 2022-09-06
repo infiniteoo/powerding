@@ -7,7 +7,7 @@ import DonationBar from "./DonationBar";
 import PowerDings from "./PowerDings";
 import DingPlayback from "./DingPlayback";
 import AutoplayButton from "./AutoplayButton";
-import { Row } from "../Donation_Form/shared";
+import { Row } from "../DonationForm/shared";
 import VolumeSlider from "./VolumeSlider";
 
 const StreamerAdmin = ({ userInfo, updateUser, loggedIn }) => {

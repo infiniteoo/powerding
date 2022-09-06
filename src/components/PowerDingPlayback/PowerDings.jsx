@@ -7,7 +7,7 @@ import {
   PowerDingText,
   NoPowerDingsToDisplay,
 } from "./StreamerAdmin.styled";
-import { useSpeechSynthesis } from "../Donation_Form/index.js";
+import { useSpeechSynthesis } from "../DonationForm/index.js";
 import CancelIcon from "@mui/icons-material/Cancel";
 import axios from "axios";
 import marioDing from "../../assets/mario.mp3";
