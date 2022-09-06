@@ -9,7 +9,7 @@ import LoginForm from "./components/login-form";
 import Navbar from "./components/navbar";
 import SplashPage from "./components/SplashPage";
 import StreamerHomePage from "./components/StreamerHomePage";
-import Dashboard from "./components/dashboard";
+import AccountDashboard from "./components/Settings/AccountDashboard";
 import StreamerAdmin from "./components/StreamerAdmin/StreamerAdmin";
 import Welcome from "./components/Welcome/Welcome";
 import About from "./components/About/About";
@@ -99,7 +99,7 @@ class App extends Component {
             render={
               this.state.loggedIn
                 ? () => (
-                    <Dashboard
+                    <AccountDashboard
                       updateUser={this.updateUser}
                       state={this.state}
                     />
@@ -113,7 +113,7 @@ class App extends Component {
             render={
               this.state.loggedIn
                 ? () => (
-                    <Dashboard
+                    <AccountDashboard
                       updateUser={this.updateUser}
                       state={this.state}
                     />
@@ -137,7 +137,7 @@ class App extends Component {
                   this.state.accessLevel < 4 &&
                   this.state.confirmed
                 ? () => (
-                    <Dashboard
+                    <AccountDashboard
                       updateUser={this.updateUser}
                       state={this.state}
                     />

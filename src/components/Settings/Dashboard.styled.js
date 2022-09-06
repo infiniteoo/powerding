@@ -22,7 +22,7 @@ export const Container = styled.div`
   height: 100%;
 `;
 
-export const RightSide = styled.div`
+export const Column = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -30,17 +30,6 @@ export const RightSide = styled.div`
   margin: 0 auto;
   width: 100%;
   /* max-width: 1000px; */
-  padding: 0 1rem;
-  height: 100%;
-`;
-export const LeftSide = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto;
-  width: 100%;
-  /*  max-width: 1000px; */
   padding: 0 1rem;
   height: 100%;
 `;
