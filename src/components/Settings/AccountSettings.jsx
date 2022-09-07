@@ -51,7 +51,7 @@ const AccountSettings = (props) => {
       <br /> <br /> <br />
       <h1 className="dashboard_title">settings</h1>
       <AccountLabel>Banner Image:</AccountLabel>
-      <BannerSelectButton bannerImage={bannerImage} />
+      <BannerSelectButton bannerImage={bannerImage} username={username} />
       <AccountLabel>Reaction GIF:</AccountLabel>
       <ReactionGif reactionGif={reactionGif} />
       <AccountLabel>Sound Effect:</AccountLabel>

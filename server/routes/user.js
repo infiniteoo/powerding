@@ -244,4 +244,23 @@ router.post("/update-media-length", (req, res) => {
   );
 });
 
+router.post("/update-banner", (req, res) => {
+  
+  User.findOneAndUpdate(
+    { username: req.body.username },
+    {
+      $set: { bannerImage: req.body.item.image },
+    },
+    { new: true },
+    (err, user) => {
+      if (err) {
+        console.log(err);
+        res.json(err);
+      } else {
+        res.json(user);
+      }
+    }
+  );
+});
+
 module.exports = router;
