@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { SFXButtonWrap } from "./SoundEffectSelectButton.js";
 
 const SoundEffectSelectButton = () => {
   const [fileToUpload, setFileToUpload] = useState({

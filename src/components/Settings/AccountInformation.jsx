@@ -1,10 +1,5 @@
 import React from "react";
-import {
-  AccountLabel,
-  AccountInfo,
-  Column,
-  Container,
-} from "./Dashboard.styled";
+import { AccountLabel, AccountInfo } from "./Dashboard.styled";
 
 const AccountInformation = (props) => {
   const { email, username, lastLogin, confirmed } = props.state;

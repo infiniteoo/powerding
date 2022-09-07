@@ -7,7 +7,6 @@ import AccountSettings from "./AccountSettings.jsx";
 import AccountInformation from "./AccountInformation.jsx";
 
 const Dashboard = (props) => {
-  console.log("dashboard props", props);
   return (
     <div>
       <div className="dashboard_container">

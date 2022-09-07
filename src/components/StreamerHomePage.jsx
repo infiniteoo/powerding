@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import TTSSubmissionForm from "./DonationForm/TTS_Sumission_Form";
 import { GlobalStyles } from "./DonationForm/shared";
 import amfmfxLogo from "../assets/amfmfx.com text logo.png";
@@ -13,9 +13,6 @@ const StreamerHome = (props) => {
   props.match
     ? (streamer = props.match.params.streamer)
     : (streamer = "nostreamer");
-
-  console.log("streamer name", streamer);
-  console.log("donateSettings", donateSettings.bannerImage);
 
   const getStreamerData = () => {
     axios.get(`/user/streamer/` + streamer).then((res) => {
@@ -43,10 +40,7 @@ const StreamerHome = (props) => {
             alt=""
           />
         ) : (
-          <img
-            src={amfmfxLogo}
-            /* style={{ width: "100%", height: 200 }} */ alt=""
-          />
+          <img src={amfmfxLogo} alt="" />
         )}
 
         <TTSSubmissionForm streamer={streamer} />

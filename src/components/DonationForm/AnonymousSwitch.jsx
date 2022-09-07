@@ -3,7 +3,7 @@ import BootstrapSwitchButton from "bootstrap-switch-button-react";
 import { Row } from "./shared";
 
 const AnonymousSwitch = ({ isAnonymous, setIsAnonymous }) => {
-  console.log("isAnonymous", isAnonymous);
+  
   return (
     <Row>
       <BootstrapSwitchButton
@@ -12,7 +12,7 @@ const AnonymousSwitch = ({ isAnonymous, setIsAnonymous }) => {
         offlabel="On"
         onChange={(isAnonymous) => {
           setIsAnonymous(!isAnonymous);
-          console.log("isAnonymous", isAnonymous);
+          
         }}
         size="sm"
       />

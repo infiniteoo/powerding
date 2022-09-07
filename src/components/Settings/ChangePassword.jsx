@@ -1,10 +1,5 @@
 import React, { useState } from "react";
-import {
-  AccountLabel,
-  AccountInfo,
-  Column,
-  Container,
-} from "./Dashboard.styled";
+import { AccountLabel } from "./Dashboard.styled";
 import ErrorSnackbar from "../Snackbar";
 import axios from "axios";
 

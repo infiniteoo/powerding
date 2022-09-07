@@ -1,7 +1,6 @@
 import React from "react";
 
 const MediaLink = ({ setMediaLink, minAmount, mediaLength }) => {
-  console.log("minAmount", minAmount);
   if (!minAmount) {
     minAmount = "10.00";
   }

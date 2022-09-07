@@ -4,8 +4,8 @@ import FileBase64 from "react-file-base64";
 
 const BannerSelectButton = (props) => {
   const [item, setItem] = useState({ image: "" });
-  const [items, setItems] = useState([]);
-  const { bannerImage, username } = props;
+
+  const { username } = props;
 
   const handleClick = async () => {
     console.log(item);

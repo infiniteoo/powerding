@@ -3,7 +3,7 @@ import Button from "@mui/material/Button";
 import ButtonGroup from "@mui/material/ButtonGroup";
 
 const Amount = ({ donationAmount, setDonationAmount }) => {
-  console.log("in amount ", donationAmount);
+  
   return (
     <div>
       <label>Amount</label>

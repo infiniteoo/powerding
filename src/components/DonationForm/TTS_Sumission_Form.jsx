@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useSpeechSynthesis } from ".";
 import { Container, Row } from "./shared";
 import axios from "axios";
@@ -55,7 +55,6 @@ const TTS_Submission_Form = ({ streamer }) => {
         mediaLink,
       })
       .then((response) => {
-        console.log(response);
         setDonatorName("");
         setMediaLink("");
         setDonationAmount("0.00");

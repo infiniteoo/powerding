@@ -1,7 +1,6 @@
 import React from "react";
 import { GlobalStyles } from "./DonationForm/shared";
 import amfmfxLogo from "../assets/amfmfx.com text logo.png";
-import axios from "axios";
 
 const Home = (props) => {
   return (

@@ -51,14 +51,12 @@ const PayButton = ({ donationAmount, submitPowerDing }) => {
           },
         }}
         onLoadPaymentData={(paymentRequest) => {
-          console.log("load payment data", paymentRequest, donationAmount);
           axios
             .post("/powerding/payment", { paymentRequest, donationAmount })
 
             .then((response) => {
-              console.log("response after successfull payment", response);
+             
               if (response.status === 200) {
-                console.log("status is 200");
                 submitPowerDing();
               }
             })
