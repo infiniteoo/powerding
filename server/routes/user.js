@@ -270,4 +270,22 @@ router.post("/update-banner", (req, res) => {
   );
 });
 
+router.post("/reaction-gif-update", (req, res) => {
+  User.findOneAndUpdate(
+    { username: req.body.username },
+    {
+      $set: { reactionGif: req.body.item.image },
+    },
+    { new: true },
+    (err, user) => {
+      if (err) {
+        console.log(err);
+        res.json(err);
+      } else {
+        res.json(user);
+      }
+    }
+  );
+});
+
 module.exports = router;
