@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useSpeechSynthesis } from ".";
 import { Container, Row } from "./shared";
 import axios from "axios";
@@ -10,18 +10,34 @@ import GooglePayButton from "./GooglePayButton";
 import TransactionDisclosure from "./TransactionDisclosure";
 import DonatorNameInput from "./donatorName";
 
-
 const TTS_Submission_Form = ({ streamer }) => {
   const [text, setText] = useState("");
   const [voiceIndex, setVoiceIndex] = useState(null);
   const [charsRemaining, setCharsRemaining] = useState(250);
   const [donationAmount, setDonationAmount] = useState("0.00");
   const [isAnonymous, setIsAnonymous] = useState(true);
-  
+
   const [donatorName, setDonatorName] = useState("");
   const [mediaLink, setMediaLink] = useState("");
+  const [donateSettings, setDonateSettings] = useState({});
+  const [minAmount, setMinAmount] = useState("");
+  const [mediaLength, setMediaLength] = useState("");
 
-  /*  const [contentCreator, setContentCreator] = useState(streamer); */
+  const getStreamerData = () => {
+    axios.get(`/user/streamer/` + streamer).then((res) => {
+      setDonateSettings(res.data);
+      setMinAmount(res.data.minAmountForMedia);
+      setMediaLength(res.data.mediaLength);
+    });
+  };
+
+  console.log("in tts submission.", streamer);
+
+  if (streamer !== "nostreamer" && donateSettings.bannerImage === undefined) {
+    getStreamerData();
+  }
+
+  console.log(donateSettings);
 
   const onEnd = () => {
     // You could do something here after speaking has finished
@@ -109,7 +125,11 @@ const TTS_Submission_Form = ({ streamer }) => {
                 setCharsRemaining(250 - event.target.value.length);
               }}
             />
-            <MediaLink setMediaLink={setMediaLink} />
+            <MediaLink
+              setMediaLink={setMediaLink}
+              mediaLength={mediaLength}
+              minAmount={minAmount}
+            />
             <Amount
               donationAmount={donationAmount}
               setDonationAmount={setDonationAmount}

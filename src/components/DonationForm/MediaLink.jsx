@@ -1,9 +1,20 @@
 import React from "react";
 
-const MediaLink = ({ setMediaLink }) => {
+const MediaLink = ({ setMediaLink, minAmount, mediaLength }) => {
+  console.log("minAmount", minAmount);
+  if (!minAmount) {
+    minAmount = "10.00";
+  }
+
+  if (!mediaLength) {
+    mediaLength = "720";
+  }
+
   return (
     <div>
-      <label>Media ($10 for 720s)</label>
+      <label>
+        Media (${minAmount} for {mediaLength} seconds)
+      </label>
       <div>
         <input
           type="text"

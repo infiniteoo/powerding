@@ -134,13 +134,21 @@ router.post(
 );
 
 router.get("/streamer/:streamer", (req, res) => {
-  console.log(req.params.streamer);
+  console.log("streamer route hit", req.params.streamer);
   User.findOne({ username: req.params.streamer }, (err, user) => {
     if (err) {
       console.log(err);
       res.json(err);
     } else {
-      res.json(user);
+      if (user) {
+        res.json({
+          bannerImage: user.bannerImage,
+          soundEffect: user.soundEffect,
+          minAmountForMedia: user.minAmountForMedia,
+          reactionGif: user.reactionGif,
+          mediaLength: user.mediaLength,
+        });
+      }
     }
   });
 });
@@ -245,7 +253,6 @@ router.post("/update-media-length", (req, res) => {
 });
 
 router.post("/update-banner", (req, res) => {
-  
   User.findOneAndUpdate(
     { username: req.body.username },
     {
