@@ -66,6 +66,7 @@ const StreamerAdmin = ({ userInfo, updateUser, loggedIn }) => {
           setYoutubeStartTime={setYoutubeStartTime}
           setDingPlaybackText={setDingPlaybackText}
           setDingCurrentlyPlaying={setDingCurrentlyPlaying}
+          userInfo={userInfo}
         />
         <div
           style={{
@@ -80,7 +81,7 @@ const StreamerAdmin = ({ userInfo, updateUser, loggedIn }) => {
             setDonationsCollected={setDonationsCollected}
           />
           {dingCurrentlyPlaying ? (
-            <DingPlayback dingPlaybackText={dingPlaybackText} />
+            <DingPlayback dingPlaybackText={dingPlaybackText} userInfo={userInfo} />
           ) : null}
 
           <YouTube videoId={youtubeVideoID} opts={opts} />

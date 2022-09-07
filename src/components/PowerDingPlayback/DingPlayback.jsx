@@ -1,12 +1,19 @@
 import React from "react";
 
-const DingPlayback = ({ dingPlaybackText }) => {
+const DingPlayback = ({ dingPlaybackText, userInfo }) => {
+  let playbackGif = userInfo.reactionGif;
+  if (playbackGif === undefined || playbackGif === null) {
+    playbackGif = "https://giphy.com/embed/14SAx6S02Io1ThOlOY";
+  } else {
+    playbackGif = userInfo.reactionGif;
+  }
+
   return (
     <div
       style={{ display: "flex", flexDirection: "column", alignItems: "center" }}
     >
       <iframe
-        src="https://giphy.com/embed/14SAx6S02Io1ThOlOY"
+        src={playbackGif}
         width="480"
         height="270"
         frameBorder={0}

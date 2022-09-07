@@ -17,7 +17,7 @@ const PowerDings = ({
   setPowerdings,
   setYoutubeVideoID,
   setYoutubeStartTime,
-
+  userInfo,
   setDingPlaybackText,
   setDingCurrentlyPlaying,
 }) => {
@@ -32,7 +32,7 @@ const PowerDings = ({
   const getPowerdings = async () => {
     const res = await axios.get("/powerding", {
       params: {
-        streamerName: "killstream",
+        streamerName: userInfo.username,
       },
     });
     const filteredPowerdings = res.data.filter((powerding) => {
@@ -130,8 +130,11 @@ const PowerDings = ({
                 let voice = voices[powerding.ttsVoice];
                 speak({ text, voice });
                 dingPlayed = powerding;
-                videoID = extractVideoID(powerding.mediaLink);
-                startTime = extractVideoTimeStamp(powerding.mediaLink);
+                if (powerding.mediaLink) {
+                  videoID = extractVideoID(powerding.mediaLink);
+                  startTime = extractVideoTimeStamp(powerding.mediaLink);
+                }
+
                 setDingCurrentlyPlaying(true);
                 setDingPlaybackText(powerding.message);
               }}
