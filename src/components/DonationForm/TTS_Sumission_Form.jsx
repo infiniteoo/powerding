@@ -16,7 +16,6 @@ const TTS_Submission_Form = ({ streamer }) => {
   const [charsRemaining, setCharsRemaining] = useState(250);
   const [donationAmount, setDonationAmount] = useState("0.00");
   const [isAnonymous, setIsAnonymous] = useState(true);
-
   const [donatorName, setDonatorName] = useState("");
   const [mediaLink, setMediaLink] = useState("");
   const [donateSettings, setDonateSettings] = useState({});
@@ -31,13 +30,9 @@ const TTS_Submission_Form = ({ streamer }) => {
     });
   };
 
-  console.log("in tts submission.", streamer);
-
   if (streamer !== "nostreamer" && donateSettings.bannerImage === undefined) {
     getStreamerData();
   }
-
-  console.log(donateSettings);
 
   const onEnd = () => {
     // You could do something here after speaking has finished
