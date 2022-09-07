@@ -53,7 +53,7 @@ const AccountSettings = (props) => {
       <AccountLabel>Banner Image:</AccountLabel>
       <BannerSelectButton bannerImage={bannerImage} username={username} />
       <AccountLabel>Reaction GIF:</AccountLabel>
-      <ReactionGif reactionGif={reactionGif} />
+      <ReactionGif reactionGif={reactionGif} username={username} />
       <AccountLabel>Sound Effect:</AccountLabel>
       <SoundEffectSelectButton soundEffect={soundEffect} />
       <AccountLabel>Min. Amount for Media:</AccountLabel>

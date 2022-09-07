@@ -9,6 +9,7 @@ const ReactionGif = (props) => {
 
   const handleClick = async () => {
     console.log(item);
+    console.log(username);
     axios
       .post("/user/reaction-gif-update", { item, username })
       .then((res) => {

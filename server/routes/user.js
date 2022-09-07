@@ -271,6 +271,7 @@ router.post("/update-banner", (req, res) => {
 });
 
 router.post("/reaction-gif-update", (req, res) => {
+  console.log("req.body", req.body);
   User.findOneAndUpdate(
     { username: req.body.username },
     {
