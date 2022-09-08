@@ -55,7 +55,7 @@ const AccountSettings = (props) => {
       <AccountLabel>Reaction GIF:</AccountLabel>
       <ReactionGif reactionGif={reactionGif} username={username} />
       <AccountLabel>Sound Effect:</AccountLabel>
-      <SoundEffectSelectButton soundEffect={soundEffect} />
+      <SoundEffectSelectButton soundEffect={soundEffect} username={username} />
       <AccountLabel>Min. Amount for Media:</AccountLabel>
       <input
         type="number"

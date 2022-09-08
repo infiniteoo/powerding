@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import axios from "axios";
 
-const SoundEffectSelectButton = () => {
+const SoundEffectSelectButton = (props) => {
+  const { username } = props;
+
   const [fileToUpload, setFileToUpload] = useState({
-    length: "",
+    username: username,
 
     filename: "",
   });
@@ -16,7 +18,7 @@ const SoundEffectSelectButton = () => {
 
     // send fileToUpload to server with axios
     axios
-      .post("/api/sounds/upload", fileToUpload)
+      .post("/user/sound-effect-update", fileToUpload, username)
       .then((res) => {
         console.log(res);
       })
@@ -25,12 +27,12 @@ const SoundEffectSelectButton = () => {
       });
 
     axios
-      .post("/api/sounds/uploadFile", data)
+      .post("/user/upload-file", data, fileToUpload)
       .then((res) => {
         console.log(res);
       })
       .then(() => {
-        axios.post("/api/sounds/moveFile", fileToUpload).then((res) => {
+        axios.post("/user/move-file", fileToUpload).then((res) => {
           console.log(res);
         });
       });
@@ -72,7 +74,7 @@ const SoundEffectSelectButton = () => {
 
                   setFileToUpload({
                     ...fileToUpload,
-                    length: parseInt(duration, 10),
+                    username: username,
 
                     filename: file.name,
                   });

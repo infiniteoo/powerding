@@ -8,6 +8,19 @@ const sendEmail = require("../email/email.send");
 const templates = require("../email/email.templates");
 const emailMsgs = require("../email/email.msgs");
 const axios = require("axios");
+const path = require("path");
+const multer = require("multer");
+const fs = require("fs");
+
+const storage = multer.diskStorage({
+  destination: (req, file, callBack) => {
+    callBack(null, "server/public/sounds/");
+  },
+  filename: (req, file, callBack) => {
+    callBack(null, `${file.originalname}`);
+  },
+});
+let upload = multer({ dest: "server/public/sounds", storage: storage });
 
 router.post("/", (req, res) => {
   console.log("user signup");
@@ -289,4 +302,46 @@ router.post("/reaction-gif-update", (req, res) => {
   );
 });
 
+router.post("/sound-effect-update", (req, res) => {
+  User.findOneAndUpdate(
+    { username: req.body.username },
+    {
+      $set: { soundEffect: req.body.filename },
+    },
+    { new: true },
+    (err, user) => {
+      if (err) {
+        console.log(err);
+        res.json(err);
+      } else {
+        res.json(user);
+      }
+    }
+  );
+});
+
+router.post("/upload-file", upload.single("file"), (req, res, next) => {
+  const file = req.file;
+  console.log(file.filename);
+  if (!file) {
+    const error = new Error("no file");
+    error.httpStatusCode = 400;
+    return next(error);
+  }
+  res.send(file);
+});
+
+router.post("/move-file", (req, res) => {
+  // move file to subdirectory named after category and subcategory
+  console.log("move file ", req.body);
+  const subdirectory = `${req.body.username}`;
+  const newPath = path.join(__dirname, "../public/sounds/", subdirectory);
+  console.log("REQ.BODY", req.body);
+  console.log("NEWPATH:", newPath);
+  fs.mkdirSync(newPath, { recursive: true });
+  fs.renameSync(
+    path.join(__dirname, "../public/sounds/") + req.body.filename,
+    path.join(newPath, req.body.filename)
+  );
+});
 module.exports = router;

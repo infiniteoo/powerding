@@ -68,7 +68,7 @@ router.post("/sounds/upload/", (req, res) => {
   newSound.save().then((sound) => res.json(sound));
 });
 
-router.post("/sounds/uploadFile", upload.single("file"), (req, res, next) => {
+router.post("/sounds/upload-file", upload.single("file"), (req, res, next) => {
   const file = req.file;
   console.log(file.filename);
   if (!file) {
