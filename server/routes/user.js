@@ -344,4 +344,17 @@ router.post("/move-file", (req, res) => {
     path.join(newPath, req.body.filename)
   );
 });
+
+router.get("/:username/:filename", (req, res) => {
+  console.log("in file get route", req.params);
+  res.sendFile(
+    path.join(
+      __dirname,
+      `../public/sounds/${req.params.username}/${req.params.filename}`
+    )
+  );
+});
+
+
+
 module.exports = router;
