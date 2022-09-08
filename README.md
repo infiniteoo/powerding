@@ -95,6 +95,15 @@ A donation bar is located on this admin page as well to track the total amount o
 
 The streamer can X out of a powerding to archive it, and it will no longer be displayed in the ding table.
 
+### New Features in version 1.1 (September 9th 2022)
+
+* New users are greeted with three automatically generated demo powerdings to showcase the platform complete with a media link and a randomly generated Chuck Norris joke as the text.
+
+* The accounts page now has a settings columns which lets the user customize their banner image, react GIF, intro sound effect, minimum amount for a media play, and how long the video will play for if that minumum amount is met.
+
+![example gif](/src/assets/powerding_settings.gif)
+ 
+
 ### License
 
 Copyright (c) 2020 PowerDing
