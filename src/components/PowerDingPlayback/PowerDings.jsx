@@ -1,6 +1,8 @@
 import React, { useEffect } from "react";
 import { extractVideoID, extractVideoTimeStamp } from "../../utils/youTube";
 import { convertDate, convertTime } from "../../utils/timeAndDates";
+import playSoundEffect from "../../utils/playSoundEffect";
+
 import {
   PowerDing,
   PowerDingContainer,
@@ -27,7 +29,7 @@ const PowerDings = ({
 
   let dingPlayed, videoID, startTime;
 
-  let moneySoundEffect = new Audio(marioDing);
+  let genericMoneyEffect = new Audio(marioDing);
 
   const getPowerdings = async () => {
     const res = await axios.get("/powerding", {
@@ -125,7 +127,12 @@ const PowerDings = ({
               onClick={() => {
                 speaking && cancel();
                 stopVideo();
-                moneySoundEffect.play();
+                if (userInfo.soundEffect) {
+                  playSoundEffect(userInfo.soundEffect, userInfo.username);
+                } else {
+                  genericMoneyEffect.play();
+                }
+
                 let text = powerDingToSpeak(powerding);
                 let voice = voices[powerding.ttsVoice];
                 speak({ text, voice });
