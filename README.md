@@ -103,6 +103,11 @@ The streamer can X out of a powerding to archive it, and it will no longer be di
 
 ![example gif](/src/assets/powerding_settings.gif)
  
+### Stuff to Work On
+
+* [] The top priority at the moment is to make the site mobile responsive.  Currently, the site is only optimized for desktop and looks like crap on mobile.
+
+
 
 ### License
 
