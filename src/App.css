@@ -62,6 +62,8 @@ body {
   justify-content: center;
   height: 94.5vh;
 }
+
+/* make responsive */
 .homeSplash {
   display: flex;
   flex-direction: column;
@@ -71,6 +73,23 @@ body {
   height: 90.5vh;
   width: 100%;
 }
+
+/* make img responsive */
+img {
+  width: 100%;
+  height: auto;
+}
+
+/* media query  */
+@media (max-width: 768px) {
+  .homeSplash h3 {
+    font-size: 1rem;
+  }
+  .homeSplash h1 {
+    font-size: 1.5rem;
+  }
+}
+
 .adminSplash {
   display: flex;
   flex-direction: column;
@@ -203,13 +222,14 @@ body {
 .dashboard_container {
   display: grid;
   grid-template-columns: auto;
-
-  height: 100%;
+  width: 100%;
+  height: auto;
 }
 
 .mainContainer {
   width: 90%;
   margin-left: 7%;
+  height: 100%;
 }
 
 .dashboard_container img {
