@@ -47,15 +47,6 @@ body {
   --bs-gutter-x: 0rem !important;
 }
 
-.audioPlayer_container {
-  position: relative;
-
-  margin-top: 2.05%;
-  width: 100%;
-
-  border-radius: 10px;
-  border: 2px solid white;
-}
 .splashScreen {
   display: flex;
   align-items: center;
@@ -80,14 +71,8 @@ img {
   height: auto;
 }
 
-/* media query  */
-@media (max-width: 768px) {
-  .homeSplash h3 {
-    font-size: 1rem;
-  }
-  .homeSplash h1 {
-    font-size: 1.5rem;
-  }
+.homeSplash img {
+  width: 50%;
 }
 
 .adminSplash {
@@ -247,4 +232,35 @@ img {
 
 .css-bf9wz-MuiButtonBase-root-MuiPaginationItem-root {
   color: #fff !important;
+}
+
+/* media query  */
+@media (max-width: 1198px) {
+  .homeSplash h3 {
+    width: 100%;
+    font-size: 1.4rem !important;
+  }
+}
+@media (max-width: 963px) {
+  .homeSplash h3 {
+    font-size: 1.2rem !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .homeSplash h1 {
+    font-size: 1.5rem;
+  }
+
+  .homeSplash img {
+    width: 100%;
+  }
+
+  #nav-container span {
+    font-size: 0.9rem;
+  }
+
+  .homeSplash {
+    justify-content: space-around;
+  }
 }
