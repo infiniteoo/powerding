@@ -24,15 +24,10 @@ export default function Why() {
         <img src={linkmanagement} alt="" />
         <div>
           <h3>
-            <strong>Link Management</strong>
+            <strong>What We Do</strong>
           </h3>
           <p>
-            I'm baby poke fingerstache coloring book big mood disrupt occupy
-            paleo wayfarers wolf lumbersexual. Paleo iceland fixie vegan. Before
-            they sold out food truck keytar echo park art party PBR&B lo-fi
-            humblebrag swag blue bottle kinfolk. Chicharrones thundercats
-            raclette sus same, austin try-hard literally palo santo twee pickled
-            marfa biodiesel.
+            PowerDing is a a livestream text-to-speech (TTS) platform that accepts donations for your favorite content creators.  When submitted, your message is read aloud along with playing accompanying YouTube links.  The streamer can respond to your message.
           </p>
         </div>
       </section>
@@ -40,20 +35,10 @@ export default function Why() {
         <img src={brandedlinks} alt="" />
         <div>
           <h3>
-            <strong>Branded Links</strong>
+            <strong>Secure Platform</strong>
           </h3>
           <p>
-            I'm baby photo booth yuccie brunch cloud bread. Viral fixie cardigan
-            photo booth YOLO trust fund kickstarter literally pour-over fit pork
-            belly whatever vibecession mumblecore VHS. Kitsch bicycle rights
-            seitan, irony butcher photo booth hot chicken succulents synth
-            tousled tattooed narwhal knausgaard shabby chic. Coloring book
-            iceland selvage ugh food truck, kitsch street art brunch scenester
-            tilde cold-pressed yuccie. Fam snackwave truffaut mumblecore +1
-            offal. Hashtag roof party helvetica, JOMO bushwick green juice etsy
-            leggings. Twee woke shabby chic, umami hella chillwave taiyaki
-            everyday carry echo park taxidermy wolf readymade fashion axe
-            mustache bicycle rights.
+            PowerDing is a secure platform developed with the latest technologies.  We use the latest encryption and security protocols to ensure your data is safe and your anonymity remains intact.  No federal agencies have access to your data and we remain a proud, neutral platform.
           </p>
         </div>
       </section>
@@ -61,18 +46,10 @@ export default function Why() {
         <img src={mobilelinks} alt="" />
         <div>
           <h3>
-            <strong>Mobile Links</strong>
+            <strong>Content Creators</strong>
           </h3>
           <p>
-            I'm baby af paleo williamsburg bespoke pork belly live-edge
-            asymmetrical snackwave cold-pressed kombucha trust fund. Deep v
-            mlkshk four dollar toast organic plaid meggings glossier venmo sus
-            skateboard direct trade yuccie twee chicharrones palo santo.
-            Biodiesel fashion axe thundercats bitters bruh taxidermy VHS
-            heirloom stumptown gluten-free squid godard gentrify readymade
-            church-key. Ethical meditation hella kinfolk paleo. Man braid
-            bitters direct trade hot chicken, scenester hell of mustache
-            vibecession tattooed YOLO.
+            PowerDing is pro content creator, and a champion of free speech and expression for all sides of the isle.  We take no sides and claim no allegiance to any group.  We are a platform for content creators to earn a living and for their fans to support them.  
           </p>
         </div>
       </section>
@@ -83,17 +60,10 @@ export default function Why() {
             <strong>Campaigns</strong>
           </h3>
           <p>
-            I'm baby venmo cloud bread copper mug, street art occupy gochujang
-            deep v iPhone knausgaard chia +1. PBR&B wolf cray, tonx shoreditch
-            mixtape raclette kogi vape. Ugh squid echo park, brunch enamel pin
-            mustache letterpress four dollar toast tote bag street art bruh
-            tousled. Ramps wolf vibecession, tbh kombucha ennui pok pok.
-            Wayfarers deep v franzen, salvia you probably haven't heard of them
-            distillery pop-up artisan DIY tattooed try-hard skateboard. Gentrify
-            cred vaporware glossier shabby chic.
+            I'm baby venmo cloud bread copper mug.
           </p>
         </div>
-      </section>
+      </section>   
       <section className="card">
         <img src={analytics} alt="" />
         <div>
@@ -116,15 +86,10 @@ export default function Why() {
         <img src={qrcodes} alt="" />
         <div>
           <h3>
-            <strong>QR Codes</strong>
+            <strong>About Us</strong>
           </h3>
           <p>
-            I'm baby green juice selvage try-hard lomo craft beer lyft
-            fingerstache polaroid semiotics JOMO blog keffiyeh letterpress
-            iceland. Helvetica polaroid pok pok listicle four dollar toast.
-            Gochujang humblebrag crucifix DIY. Brunch vibecession craft beer you
-            probably haven't heard of them, tumeric bushwick pinterest coloring
-            book bruh mumblecore slow-carb photo booth.
+            PowerDing is the creation of Troy Dorman, an indepedent, dissident developer and entreprenur.  This website was primarly created as a way to learn and experiment with new technologies.  It is a work in progress and will be updated frequently.  If you have any questions or comments, please feel free to contact us.  <a href="mailto:troydorman@gmail.com">troydorman@gmail.com</a>
           </p>
         </div>
       </section>

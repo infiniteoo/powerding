@@ -192,6 +192,10 @@ img {
   overflow: hidden;
 }
 
+#nav-container {
+  width: 100%;
+}
+
 .nav-links {
   display: flex;
   flex-direction: row;
@@ -242,8 +246,17 @@ img {
   }
 }
 @media (max-width: 963px) {
+  body {
+    background-image: none !important;
+    background-color: black !important;
+  }
+
   .homeSplash h3 {
     font-size: 1.2rem !important;
+  }
+
+  .dashboard_title {
+    margin-top: 50px;
   }
 }
 

@@ -4,10 +4,17 @@ export const AccountLabel = styled.div`
   color: #ea39b8;
   font-size: 1.25rem;
   margin-top: 0.5rem;
+
+  @media (max-width: 974px) {
+    font-size: 1rem;
+  }
 `;
 
 export const AccountInfo = styled.div`
   color: white;
+  @media (max-width: 974px) {
+    font-size: 1rem;
+  }
 `;
 
 export const Container = styled.div`
@@ -20,6 +27,10 @@ export const Container = styled.div`
   /*  max-width: 1000px; */
   padding: 0 1rem;
   height: 100%;
+
+  @media (max-width: 974px) {
+    flex-direction: column;
+  }
 `;
 
 export const Column = styled.div`

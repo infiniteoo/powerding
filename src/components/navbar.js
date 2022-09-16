@@ -5,11 +5,27 @@ import "../App.css";
 import PopOver from "./accountpopover";
 import logo from "../assets/amfmfx.com text logo.png";
 
-
 class Navbar extends Component {
   constructor() {
     super();
     this.logout = this.logout.bind(this);
+    this.state = {
+      areWeMobile: false,
+    };
+
+    const mql = window.matchMedia("(max-width: 680px)");
+    let mobileView = mql.matches;
+    mql.addEventListener("change", (e) => {
+      console.log(e.matches);
+      mobileView = e.matches;
+      if (mobileView) {
+        this.state.areWeMobile = true;
+        this.forceUpdate();
+      } else {
+        this.state.areWeMobile = false;
+        this.forceUpdate();
+      }
+    });
   }
 
   logout(event) {
@@ -22,7 +38,7 @@ class Navbar extends Component {
           this.props.updateUser({
             loggedIn: false,
             username: null,
-           
+
             accessLevel: null,
             confirmed: null,
             redirectTo: "/",
@@ -37,6 +53,17 @@ class Navbar extends Component {
   render() {
     const loggedIn = this.props.loggedIn;
     const userInfo = this.props.userInfo;
+    /* const mql = window.matchMedia("(max-width: 680px)");
+    let mobileView = mql.matches;
+    mql.addEventListener("change", (e) => {
+      console.log(e.matches);
+      mobileView = e.matches;
+      if (mobileView) {
+        this.state.areWeMobile = true;
+      } else {
+        this.state.areWeMobile = false;
+      }
+    }); */
 
     return (
       <div>
@@ -49,26 +76,29 @@ class Navbar extends Component {
                     <img src={logo} alt="" srcSet="" height="60px" />
                   </a>
                 </li>
+                {!this.state.areWeMobile ? (
+                  <ul className="nav-links">
+                    <li>
+                      <Link to="/admin" className="btn btn-link">
+                        <span className="text-secondary">powerdings</span>
+                      </Link>
+                    </li>
 
-                <ul className="nav-links">
-                  <li>
-                    <Link to="/admin" className="btn btn-link">
-                      <span className="text-secondary">powerdings</span>
+                    <Link
+                      to={`/u/` + userInfo.username}
+                      className="btn btn-link"
+                    >
+                      <span className="text-secondary">donate</span>
                     </Link>
-                  </li>
 
-                  <Link to={`/u/` + userInfo.username} className="btn btn-link">
-                    <span className="text-secondary">donate</span>
-                  </Link>
-
-                  <Link to="/dashboard" className="btn btn-link">
-                    <span className="text-secondary">account</span>
-                  </Link>
-                  <Link to="/about" className="btn btn-link">
-                    <span className="text-secondary">about</span>
-                  </Link>
-                </ul>
-
+                    <Link to="/dashboard" className="btn btn-link">
+                      <span className="text-secondary">account</span>
+                    </Link>
+                    <Link to="/about" className="btn btn-link">
+                      <span className="text-secondary">about</span>
+                    </Link>
+                  </ul>
+                ) : null}
                 <li className="nav-account">
                   <PopOver
                     userInfo={this.props.userInfo}
@@ -77,7 +107,7 @@ class Navbar extends Component {
                 </li>
               </ul>
             ) : (
-              <div>
+              <ul>
                 <Link to="/" className="btn btn-link text-secondary">
                   <span className="text-secondary">home</span>
                 </Link>
@@ -93,7 +123,7 @@ class Navbar extends Component {
                 <Link to="/about" className="btn btn-link">
                   <span className="text-secondary">about</span>
                 </Link>
-              </div>
+              </ul>
             )}
           </div>
         </header>
