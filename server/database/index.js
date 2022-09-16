@@ -10,7 +10,7 @@ mongoose
     autoIndex: false,
     useUnifiedTopology: true,
     useNewUrlParser: true,
-    useFindAndModify: false,
+    /*  useFindAndModify: false, */
   })
   .then(
     () => {

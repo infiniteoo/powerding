@@ -23,7 +23,7 @@ const GenericDonate = () => {
           <br />
           <Row>
             <h3>
-              <a href="/u/killstream">http://www.powerding.com/u/killstream</a>
+              <a href="/u/killstream">http://www.powerding.com/u/q</a>
             </h3>
           </Row>
         </div>

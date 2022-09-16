@@ -6,7 +6,9 @@ const Home = (props) => {
   return (
     <div width="100%">
       <div className="homeSplash">
-        <img src={amfmfxLogo} alt="" />
+        <a href="/">
+          <img src={amfmfxLogo} alt="" />
+        </a>
         <div>
           <h1>livestream TTS donations</h1>
           <h5 style={{ color: "#EA39B8" }}>

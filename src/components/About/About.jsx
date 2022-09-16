@@ -17,7 +17,7 @@ export default function Why() {
   });
 
   return (
-    <Container style={{ marginTop: "100px" }}>
+    <Container style={{ marginTop: "100px" }} className="aboutContainer">
       {/* <img src={amfmfxLogo} alt="" /> */}
 
       <section className="card">
@@ -27,7 +27,11 @@ export default function Why() {
             <strong>What We Do</strong>
           </h3>
           <p>
-            PowerDing is a a livestream text-to-speech (TTS) platform that accepts donations for your favorite content creators.  When submitted, your message is read aloud along with playing accompanying YouTube links.  The streamer can respond to your message.
+            PowerDing is a a livestream text-to-speech (TTS) platform that
+            accepts donations for your favorite content creators. When
+            submitted, your message is read aloud along with playing
+            accompanying YouTube links. The streamer can respond to your
+            message.
           </p>
         </div>
       </section>
@@ -38,7 +42,11 @@ export default function Why() {
             <strong>Secure Platform</strong>
           </h3>
           <p>
-            PowerDing is a secure platform developed with the latest technologies.  We use the latest encryption and security protocols to ensure your data is safe and your anonymity remains intact.  No federal agencies have access to your data and we remain a proud, neutral platform.
+            PowerDing is a secure platform developed with the latest
+            technologies. We use the latest encryption and security protocols to
+            ensure your data is safe and your anonymity remains intact. No
+            federal agencies have access to your data and we remain a proud,
+            neutral platform.
           </p>
         </div>
       </section>
@@ -49,7 +57,10 @@ export default function Why() {
             <strong>Content Creators</strong>
           </h3>
           <p>
-            PowerDing is pro content creator, and a champion of free speech and expression for all sides of the isle.  We take no sides and claim no allegiance to any group.  We are a platform for content creators to earn a living and for their fans to support them.  
+            PowerDing is pro content creator, and a champion of free speech and
+            expression for all sides of the isle. We take no sides and claim no
+            allegiance to any group. We are a platform for content creators to
+            earn a living and for their fans to support them.
           </p>
         </div>
       </section>
@@ -57,28 +68,33 @@ export default function Why() {
         <img src={campaigns} alt="" />
         <div>
           <h3>
-            <strong>Campaigns</strong>
+            <strong>Technology</strong>
           </h3>
           <p>
-            I'm baby venmo cloud bread copper mug.
+            PowerDing.com was created with the MERN stack (MongoDB, Express,
+            React, Node.js). We use the latest technologies to ensure your data
+            is safe and your anonymity remains intact. Google's ReCAPTCHA is
+            utilized to prevent spam and abuse. Our servers are deployed on
+            DigitalOcean and we use Cloudflare for CDN and DDoS protection. We
+            use the latest encryption and security protocols to ensure your data
+            is safe and your anonymity remains intact. No federal agencies have
+            access to your data and we remain a proud, neutral platform.
           </p>
         </div>
-      </section>   
+      </section>
       <section className="card">
         <img src={analytics} alt="" />
         <div>
           <h3>
-            <strong>Management & Analytics</strong>
+            <strong>Payment Processing</strong>
           </h3>
           <p>
-            I'm baby dSA hammock you probably haven't heard of them godard. Man
-            braid vape ascot iPhone. Kinfolk VHS gatekeep, slow-carb vice
-            distillery tacos lomo authentic XOXO ramps hexagon. Mustache
-            adaptogen selvage chambray gastropub affogato microdosing, +1 squid
-            food truck deep v. Keffiyeh ennui Brooklyn umami literally.
-            Farm-to-table microdosing gatekeep plaid migas, offal retro fam you
-            probably haven't heard of them cliche yes plz lumbersexual ethical
-            flannel raclette.
+            PowerDing uses Google Pay as our payment processor. We do not store
+            or have access to your payment information. All payments are
+            processed by Google Pay and our third-party payment processor,
+            EpicPay. We plan to add more payment processors in the future. WE
+            are currently in Sandbox/demo mode, so all donations are simulated.
+            
           </p>
         </div>
       </section>
@@ -89,7 +105,12 @@ export default function Why() {
             <strong>About Us</strong>
           </h3>
           <p>
-            PowerDing is the creation of Troy Dorman, an indepedent, dissident developer and entreprenur.  This website was primarly created as a way to learn and experiment with new technologies.  It is a work in progress and will be updated frequently.  If you have any questions or comments, please feel free to contact us.  <a href="mailto:troydorman@gmail.com">troydorman@gmail.com</a>
+            PowerDing is the creation of Troy Dorman, an indepedent, dissident
+            developer and entreprenur. This website was primarly created as a
+            way to learn and experiment with new technologies. It is a work in
+            progress and will be updated frequently. If you have any questions
+            or comments, please feel free to contact us.{" "}
+            <a href="mailto:troydorman@gmail.com">troydorman@gmail.com</a>
           </p>
         </div>
       </section>

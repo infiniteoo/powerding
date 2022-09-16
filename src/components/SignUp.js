@@ -170,7 +170,7 @@ const SignUp = () => {
               Sign up
             </button>
           </form>
-          <p className="lead mt-4">
+          <p className="lead mt-4 text-primary">
             No Account? <a href="/signup">Register</a>
           </p>
         </div>

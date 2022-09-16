@@ -53,17 +53,6 @@ class Navbar extends Component {
   render() {
     const loggedIn = this.props.loggedIn;
     const userInfo = this.props.userInfo;
-    /* const mql = window.matchMedia("(max-width: 680px)");
-    let mobileView = mql.matches;
-    mql.addEventListener("change", (e) => {
-      console.log(e.matches);
-      mobileView = e.matches;
-      if (mobileView) {
-        this.state.areWeMobile = true;
-      } else {
-        this.state.areWeMobile = false;
-      }
-    }); */
 
     return (
       <div>
@@ -108,9 +97,6 @@ class Navbar extends Component {
               </ul>
             ) : (
               <ul>
-                <Link to="/" className="btn btn-link text-secondary">
-                  <span className="text-secondary">home</span>
-                </Link>
                 <Link to="/login" className="btn btn-link text-secondary">
                   <span className="text-secondary">login</span>
                 </Link>
